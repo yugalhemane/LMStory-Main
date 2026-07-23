@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LMStory Learner Player</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f8f9ff",
+                        "primary": "#000000",
+                        "on-secondary-fixed": "#001a42",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#2170e4",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "primary-container": "#131b2e",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-dim": "#cbdbf5",
+                        "secondary": "#0058be",
+                        "inverse-surface": "#213145",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface": "#0b1c30",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-secondary-container": "#fefcff",
+                        "surface-container-high": "#dce9ff",
+                        "outline": "#76777d",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed": "#dae2fd",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#009668",
+                        "on-primary-container": "#7c839b",
+                        "on-background": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#002113",
+                        "surface-tint": "#565e74",
+                        "inverse-primary": "#bec6e0",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary-fixed": "#d8e2ff",
+                        "tertiary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .scrollbar-thin::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .lesson-active {
+            @apply bg-secondary-container text-on-secondary-container rounded-lg;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-hidden h-screen flex">
+<!-- Sidebar: Curriculum -->
+<aside class="w-[320px] bg-primary-container text-on-primary-container flex flex-col shrink-0 border-r border-outline-variant z-20">
+<!-- Sidebar Header -->
+<div class="p-lg space-y-md border-b border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-fixed-dim" data-icon="school">school</span>
+<h1 class="text-title-md font-title-md text-white">LMStory</h1>
+</div>
+<div>
+<h2 class="text-body-sm font-body-sm text-on-primary-container opacity-80 uppercase tracking-wider mb-xs">Course Title</h2>
+<p class="text-title-lg font-title-lg text-white leading-tight">Mastering Cyber Security: Advanced Defense</p>
+</div>
+<!-- Progress Bar -->
+<div class="space-y-xs">
+<div class="flex justify-between text-label-sm font-label-sm text-on-primary-container">
+<span>Your Progress</span>
+<span>42%</span>
+</div>
+<div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[42%] rounded-full shadow-[0_0_8px_rgba(33,112,228,0.5)]"></div>
+</div>
+</div>
+</div>
+<!-- Curriculum List -->
+<nav class="flex-1 overflow-y-auto scrollbar-thin p-md space-y-sm">
+<!-- Section 1 -->
+<div class="space-y-xs">
+<button class="w-full flex items-center justify-between p-sm text-white font-bold text-label-md">
+<span class="uppercase tracking-widest">Section 1: Introduction</span>
+<span class="material-symbols-outlined text-body-sm" data-icon="expand_more">expand_more</span>
+</button>
+<div class="space-y-[2px]">
+<a class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-title-md" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<div class="flex-1 min-w-0">
+<p class="text-body-sm font-body-sm truncate">Introduction to Cybersecurity</p>
+<p class="text-label-sm opacity-80">12:45</p>
+</div>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-primary-container hover:bg-white/5 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-title-md text-on-tertiary-container" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1 min-w-0">
+<p class="text-body-sm font-body-sm truncate">The Landscape of 2024 Threats</p>
+<p class="text-label-sm opacity-80">08:20</p>
+</div>
+</a>
+</div>
+</div>
+<!-- Section 2 -->
+<div class="space-y-xs pt-md">
+<button class="w-full flex items-center justify-between p-sm text-white font-bold text-label-md opacity-60">
+<span class="uppercase tracking-widest">Section 2: Network Defense</span>
+<span class="material-symbols-outlined text-body-sm" data-icon="expand_more">expand_more</span>
+</button>
+<div class="space-y-[2px]">
+<div class="flex items-center gap-sm p-sm text-on-primary-container/40 cursor-not-allowed">
+<span class="material-symbols-outlined text-title-md" data-icon="lock">lock</span>
+<div class="flex-1 min-w-0">
+<p class="text-body-sm font-body-sm truncate">Firewall Architectures</p>
+<p class="text-label-sm">15:10</p>
+</div>
+</div>
+<div class="flex items-center gap-sm p-sm text-on-primary-container/40 cursor-not-allowed">
+<span class="material-symbols-outlined text-title-md" data-icon="lock">lock</span>
+<div class="flex-1 min-w-0">
+<p class="text-body-sm font-body-sm truncate">Intrusion Detection Systems</p>
+<p class="text-label-sm">22:30</p>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface-bright relative">
+<!-- Content Header -->
+<header class="h-16 flex items-center justify-between px-xl bg-surface border-b border-outline-variant shrink-0">
+<div class="flex items-center gap-md min-w-0">
+<button class="md:hidden p-sm text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h3 class="text-title-md font-title-md text-on-surface truncate">1.1 Introduction to Cybersecurity</h3>
+</div>
+<div class="flex items-center gap-sm">
+<!-- Resources Dropdown -->
+<div class="relative group">
+<button class="flex items-center gap-xs px-md py-sm hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-colors rounded-lg">
+<span class="material-symbols-outlined text-title-md" data-icon="folder_open">folder_open</span>
+                        Resources
+                        <span class="material-symbols-outlined text-body-sm" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<!-- Hidden dropdown logic would go here -->
+</div>
+<div class="w-[1px] h-6 bg-outline-variant mx-sm"></div>
+<button class="flex items-center gap-xs px-md py-sm hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-colors rounded-lg" id="toggle-notes">
+<span class="material-symbols-outlined text-title-md" data-icon="sticky_note_2">sticky_note_2</span>
+                    Notes
+                </button>
+<button class="p-sm hover:bg-surface-container-low text-on-surface-variant transition-colors rounded-lg" title="Full Screen">
+<span class="material-symbols-outlined text-title-md" data-icon="fullscreen">fullscreen</span>
+</button>
+</div>
+</header>
+<!-- Video Player & Content Canvas -->
+<div class="flex-1 overflow-y-auto flex flex-col">
+<div class="w-full max-w-[1100px] mx-auto p-lg lg:p-xl space-y-lg">
+<!-- Video Player Container (16:9) -->
+<div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-xl ring-1 ring-white/10 group cursor-pointer">
+<div class="w-full h-full bg-cover bg-center opacity-60" data-alt="A clean, high-tech video player interface showing a cinematic presentation slide with 'Cybersecurity Basics' text. The scene is lit with soft blue and teal glows against a dark, professional studio background, creating a high-end educational atmosphere typical of a premium LMS platform like LMStory. The lighting is cinematic and focused." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDN7BsbMJ4oJ1GpYkJ8aucXHeoGfknnuJUH2_LgsK4yiA9d_xqTrpTe2zxlehe6XrW0E8aZgFdKkoj6qGWHlCXP_JjiiGb4VjkDwervHqxCUzsoYfLSvyNsyJd7pfSZOn6WPF7IThGQhck_58Q-aVsYULq2vuKlFaiNr4wDjV9kHZ8boiucNRlKdX5rk1E5eh1z0hXF0q99giPLX06Hn6SyYP72DS9V1YZPkhOOmbylqbxFHBF7M8sBecJQnSWaASoPJy27G4QIV-zk')"></div>
+<!-- Player UI Overlays -->
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="w-20 h-20 bg-secondary-container text-white rounded-full flex items-center justify-center shadow-2xl scale-100 hover:scale-110 transition-transform duration-200">
+<span class="material-symbols-outlined text-[40px]" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Bottom Controls -->
+<div class="absolute bottom-0 left-0 right-0 p-lg bg-gradient-to-t from-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<div class="h-1 w-full bg-white/20 rounded-full mb-md overflow-hidden cursor-pointer">
+<div class="h-full bg-secondary-container w-[35%] relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-white">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined cursor-pointer" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="volume_up">volume_up</span>
+<span class="text-label-md font-label-md">04:22 / 12:45</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined cursor-pointer" data-icon="settings">settings</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="subtitles">subtitles</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="fullscreen">fullscreen</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Info -->
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<h4 class="text-headline-md font-headline-md text-on-surface">Lesson Overview</h4>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-md font-label-md text-on-tertiary-container">LMS Verified Content</span>
+</div>
+</div>
+<p class="text-body-lg text-on-surface-variant max-w-3xl">
+                        In this introductory module, we explore the foundational pillars of modern cybersecurity. 
+                        We will cover the CIA triad (Confidentiality, Integrity, and Availability), understand 
+                        the role of defensive architectures, and analyze why human factors remain the most 
+                        critical vulnerability in any technical system.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Content Footer -->
+<footer class="h-20 bg-surface border-t border-outline-variant px-xl flex items-center justify-between shrink-0">
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-xs px-lg py-sm border border-outline text-on-surface-variant font-label-md text-label-md rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                    Previous
+                </button>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-xl py-sm bg-surface-container-highest text-on-surface-variant font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-colors">
+                    Mark as Complete
+                </button>
+<button class="flex items-center gap-xs px-xl py-sm bg-secondary text-white font-label-md text-label-md rounded-lg hover:opacity-90 transition-all shadow-md">
+                    Next Lesson
+                    <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</footer>
+<!-- Slide-out Notes Panel -->
+<aside class="absolute top-0 right-0 h-full w-[380px] bg-white shadow-2xl border-l border-outline-variant z-30 transition-transform duration-300 translate-x-full flex flex-col" id="notes-panel">
+<div class="p-lg border-b border-outline-variant flex items-center justify-between">
+<h3 class="text-title-md font-title-md">Course Notes</h3>
+<button class="p-sm hover:bg-surface-container-low rounded-full" id="close-notes">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-lg space-y-lg scrollbar-thin">
+<div class="space-y-md">
+<div class="p-md bg-surface-container-low border border-outline-variant rounded-xl space-y-sm">
+<div class="flex items-center justify-between">
+<span class="px-xs py-[2px] bg-secondary-container/20 text-on-secondary-container text-label-sm font-label-sm rounded">02:15</span>
+<button class="text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined text-body-sm" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="text-body-sm italic text-on-surface-variant">
+                            "The CIA triad is the core of security policy. Confidentiality is priority one for this specific client use-case."
+                        </p>
+</div>
+</div>
+<div class="mt-auto pt-lg border-t border-outline-variant">
+<div class="space-y-md">
+<div class="flex items-center justify-between text-label-md font-label-md text-on-surface-variant">
+<span>Capture note at <span class="text-secondary font-bold">04:22</span></span>
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<textarea class="w-full h-32 p-md text-body-sm border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none resize-none bg-surface-bright" placeholder="Type your note here..."></textarea>
+<button class="w-full py-sm bg-secondary text-white font-label-md text-label-md rounded-lg shadow-sm">Save Note</button>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<script>
+        const notesToggle = document.getElementById('toggle-notes');
+        const notesPanel = document.getElementById('notes-panel');
+        const closeNotes = document.getElementById('close-notes');
+
+        notesToggle.addEventListener('click', () => {
+            notesPanel.classList.remove('translate-x-full');
+        });
+
+        closeNotes.addEventListener('click', () => {
+            notesPanel.classList.add('translate-x-full');
+        });
+
+        // Micro-interaction for markers
+        const markComplete = document.querySelector('button.bg-surface-container-highest');
+        markComplete.addEventListener('click', function() {
+            this.innerHTML = '<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: \'FILL\' 1;">check_circle</span> Completed';
+            this.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+        });
+    </script>
+</body></html>

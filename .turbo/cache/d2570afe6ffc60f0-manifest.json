@@ -1,0 +1,31 @@
+{
+  "files": {
+    "apps/platform/.turbo/turbo-build.log": {
+      "size": 794,
+      "mtime_nanos": 1784703191126290500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/platform/dist/assets/index-zQUwYY_T.js": {
+      "size": 793199,
+      "mtime_nanos": 1784703190955148300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/platform/dist": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/platform/dist/assets": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/platform/dist/index.html": {
+      "size": 327,
+      "mtime_nanos": 1784703190954149200,
+      "mode": 420,
+      "is_dir": false
+    }
+  },
+  "order": [
+    "apps/platform/.turbo/turbo-build.log",
+    "apps/platform/dist",
+    "apps/platform/dist/assets",
+    "apps/platform/dist/assets/index-zQUwYY_T.js",
+    "apps/platform/dist/index.html"
+  ]
+}

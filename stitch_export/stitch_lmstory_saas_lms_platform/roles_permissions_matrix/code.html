@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roles &amp; Permissions | LMStory Enterprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#131b2e",
+                    "on-tertiary-container": "#009668",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface": "#f8f9ff",
+                    "on-surface": "#0b1c30",
+                    "on-background": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "tertiary-container": "#002113",
+                    "surface-tint": "#565e74",
+                    "primary": "#000000",
+                    "primary-fixed-dim": "#bec6e0",
+                    "inverse-surface": "#213145",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-primary": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#dce9ff",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#dae2fd",
+                    "on-secondary-container": "#fefcff",
+                    "surface-variant": "#d3e4fe",
+                    "on-surface-variant": "#45464d",
+                    "secondary": "#0058be",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#002113",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#001a42",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "outline": "#76777d",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#2170e4",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "outline-variant": "#c6c6cd",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "tertiary": "#000000",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-primary-container": "#7c839b",
+                    "background": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "display": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .permission-row:hover { background-color: #eff4ff; }
+        .sticky-col { position: sticky; left: 0; z-index: 10; }
+        .matrix-container::-webkit-scrollbar { height: 8px; width: 8px; }
+        .matrix-container::-webkit-scrollbar-track { background: #f1f5f9; }
+        .matrix-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] z-50 bg-primary-container dark:bg-surface-container-lowest flex flex-col py-lg shadow-md dark:shadow-none hidden md:flex">
+<div class="px-md mb-xl flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-on-secondary font-black text-headline-md">L</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-black text-on-primary dark:text-primary-fixed">LMStory</h1>
+<p class="font-label-md text-[10px] uppercase tracking-widest text-on-primary-container opacity-70">Admin Console</p>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-base">
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary dark:text-on-surface-variant dark:hover:text-on-surface px-md py-sm transition-all hover:bg-on-primary-fixed-variant rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary dark:text-on-surface-variant dark:hover:text-on-surface px-md py-sm transition-all hover:bg-on-primary-fixed-variant rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-label-md text-label-md">Courses</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary dark:text-on-surface-variant dark:hover:text-on-surface px-md py-sm transition-all hover:bg-on-primary-fixed-variant rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Learners</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary dark:text-on-surface-variant dark:hover:text-on-surface px-md py-sm transition-all hover:bg-on-primary-fixed-variant rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary dark:text-on-surface-variant dark:hover:text-on-surface px-md py-sm transition-all hover:bg-on-primary-fixed-variant rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-sm border-t border-on-primary-fixed-variant pt-lg space-y-base">
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-label-md">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-[260px] min-w-0 bg-background flex flex-col h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="w-full h-16 sticky top-0 z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter max-w-[1440px] mx-auto">
+<div class="flex items-center gap-lg">
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Roles &amp; Permissions</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-sm bg-secondary text-on-secondary rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    Add Role
+                </button>
+<div class="h-6 w-[1px] bg-outline-variant mx-sm"></div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="help">help</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of a middle-aged woman with glasses, smiling confidently. She is wearing a modern navy blazer against a soft-focus office background with high-key lighting. The aesthetic is clean, professional, and trustworthy, matching a high-end enterprise SaaS environment with a bright, modern palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvfBimFrUYiLVVinnCG87kx2ct7A3NVGJvyCflMQv8yTadLvLDhT24w7mR4eVwo3d-6vNPeH3YJqUcdisskhgduDYAH377gQ3XqBv3_nxTUosAXC_THBWT3Vt_h1yI1LVCUGxANr-HFYFBdUxLjTkbsvidY9abSwiRkIjg6lhZVmkgtbOjS3jhAInDDdC64fME-ekfQg8h6RFbhq7KcQosjyEN0M59C_GnNJW_XChd2eQFGtVKuQ7gaa1_7TdMOM-cXaT0xTQEHUSN"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-lg max-w-[1440px] mx-auto w-full">
+<!-- Controls Bar -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md mb-lg bg-surface-container-lowest p-md rounded-xl border border-outline-variant">
+<div class="flex flex-col gap-xs">
+<span class="font-title-md text-title-md text-on-surface">Access Control Matrix</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Configure granular permissions for system modules. Changes are applied in real-time.</span>
+</div>
+<div class="flex items-center gap-xl">
+<div class="flex items-center gap-sm">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+<span class="font-label-md text-label-md text-on-surface">View-only mode</span>
+</div>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-sm flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="search">search</span>
+</span>
+<input class="pl-xl pr-md py-sm bg-surface rounded-lg border border-outline-variant text-body-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none w-64 transition-all" placeholder="Search permissions..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Permission Matrix Bento Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+<div class="matrix-container overflow-x-auto">
+<table class="w-full border-collapse text-left">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="sticky-col bg-surface-container-low p-lg min-w-[280px]">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Module / Capability</span>
+</th>
+<th class="p-lg text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-title-md text-title-md text-on-surface">Super Admin</span>
+<span class="font-label-sm text-[10px] text-on-tertiary-container bg-tertiary-container/10 px-base rounded">FULL ACCESS</span>
+</div>
+</th>
+<th class="p-lg text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="domain">domain</span>
+<span class="font-title-md text-title-md text-on-surface">Tenant Admin</span>
+</div>
+</th>
+<th class="p-lg text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person">person</span>
+<span class="font-title-md text-title-md text-on-surface">Trainer</span>
+</div>
+</th>
+<th class="p-lg text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="school">school</span>
+<span class="font-title-md text-title-md text-on-surface">Learner</span>
+</div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Section: Users -->
+<tr class="bg-surface-container-lowest/50">
+<td class="px-lg py-sm sticky-col bg-surface-container-lowest/90 backdrop-blur-sm" colspan="5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="group">group</span>
+<span class="font-label-md text-label-md text-on-surface-variant">USERS &amp; AUTHENTICATION</span>
+</div>
+</td>
+</tr>
+<tr class="permission-row transition-colors">
+<td class="p-lg sticky-col bg-white">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Create &amp; Invite Users</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ability to add new members to the platform</span>
+</div>
+</td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+</tr>
+<tr class="permission-row transition-colors">
+<td class="p-lg sticky-col bg-white">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Reset Passwords</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Initiate manual password reset emails</span>
+</div>
+</td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+</tr>
+<!-- Section: Library -->
+<tr class="bg-surface-container-lowest/50">
+<td class="px-lg py-sm sticky-col bg-surface-container-lowest/90 backdrop-blur-sm" colspan="5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="book">book</span>
+<span class="font-label-md text-label-md text-on-surface-variant">CONTENT LIBRARY</span>
+</div>
+</td>
+</tr>
+<tr class="permission-row transition-colors">
+<td class="p-lg sticky-col bg-white">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Publish Courses</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Make draft content visible to learners</span>
+</div>
+</td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+</tr>
+<!-- Section: Analytics -->
+<tr class="bg-surface-container-lowest/50">
+<td class="px-lg py-sm sticky-col bg-surface-container-lowest/90 backdrop-blur-sm" colspan="5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="insights">insights</span>
+<span class="font-label-md text-label-md text-on-surface-variant">REPORTS &amp; ANALYTICS</span>
+</div>
+</td>
+</tr>
+<tr class="permission-row transition-colors">
+<td class="p-lg sticky-col bg-white">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Export Financial Data</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Download CSV/XLS of revenue and billing</span>
+</div>
+</td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+</tr>
+<!-- Section: API -->
+<tr class="bg-surface-container-lowest/50">
+<td class="px-lg py-sm sticky-col bg-surface-container-lowest/90 backdrop-blur-sm" colspan="5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="api">api</span>
+<span class="font-label-md text-label-md text-on-surface-variant">DEVELOPER ACCESS (API)</span>
+</div>
+</td>
+</tr>
+<tr class="permission-row transition-colors">
+<td class="p-lg sticky-col bg-white">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Manage API Keys</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Generate secret keys for external integrations</span>
+</div>
+</td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="text-center p-lg"><input class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 42 specific permissions across 4 roles.</span>
+<div class="flex gap-sm">
+<button class="px-md py-sm border border-outline-variant text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface transition-colors">Discard Changes</button>
+<button class="px-md py-sm bg-secondary text-on-secondary rounded-lg font-label-md text-label-md hover:bg-secondary-container shadow-sm transition-colors">Save Configurations</button>
+</div>
+</div>
+</div>
+<!-- Role Insights Bento Grid Section -->
+<div class="mt-lg grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Active Users by Role</span>
+<span class="material-symbols-outlined text-secondary" data-icon="groups">groups</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-display text-display text-on-surface">2,481</span>
+<span class="font-label-sm text-on-tertiary-container">+12% this month</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full" style="width: 5%"></div>
+<div class="bg-secondary-container h-full" style="width: 15%"></div>
+<div class="bg-primary-container h-full" style="width: 30%"></div>
+<div class="bg-outline h-full" style="width: 50%"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Most Active Permissions</span>
+<span class="material-symbols-outlined text-secondary" data-icon="bolt">bolt</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface">Course Editor</span>
+<span class="font-label-md text-label-md text-on-surface">84%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full">
+<div class="bg-secondary h-full rounded-full" style="width: 84%"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface">Report Generation</span>
+<span class="font-label-md text-label-md text-on-surface">62%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full">
+<div class="bg-secondary h-full rounded-full" style="width: 62%"></div>
+</div>
+</div>
+</div>
+<div class="bg-primary-container p-lg rounded-xl flex flex-col justify-between text-on-primary">
+<div class="space-y-xs">
+<span class="font-title-md text-title-md">Security Audit</span>
+<p class="font-body-sm text-body-sm opacity-80">Last comprehensive permission review was 14 days ago. We recommend monthly audits.</p>
+</div>
+<button class="mt-md w-full py-sm bg-on-secondary text-primary-container font-label-md text-label-md rounded-lg hover:bg-white transition-colors">Start Review</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions for the matrix checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const row = this.closest('tr');
+                if (this.checked) {
+                    this.parentElement.classList.add('bg-secondary/5');
+                } else {
+                    this.parentElement.classList.remove('bg-secondary/5');
+                }
+                
+                // Visual feedback
+                this.classList.add('scale-125');
+                setTimeout(() => this.classList.remove('scale-125'), 200);
+            });
+        });
+
+        // View-only toggle simulation
+        const viewOnlyToggle = document.querySelector('input[type="checkbox"].sr-only');
+        viewOnlyToggle.addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.disabled = this.checked;
+                cb.closest('td').style.opacity = this.checked ? '0.6' : '1';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LMStory | Knowledge Check</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f8f9ff",
+                    "primary": "#000000",
+                    "on-secondary-fixed": "#001a42",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#45464d",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#2170e4",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "primary-container": "#131b2e",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-dim": "#cbdbf5",
+                    "secondary": "#0058be",
+                    "inverse-surface": "#213145",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed": "#002113",
+                    "on-surface": "#0b1c30",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-secondary-container": "#fefcff",
+                    "surface-container-high": "#dce9ff",
+                    "outline": "#76777d",
+                    "on-primary-fixed": "#131b2e",
+                    "primary-fixed": "#dae2fd",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-container": "#009668",
+                    "on-primary-container": "#7c839b",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed": "#6ffbbe",
+                    "tertiary-container": "#002113",
+                    "surface-tint": "#565e74",
+                    "inverse-primary": "#bec6e0",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "inverse-on-surface": "#eaf1ff",
+                    "secondary-fixed": "#d8e2ff",
+                    "tertiary": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display": ["Inter"],
+                    "label-md": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .option-card:hover {
+            border-color: #3B82F6;
+            background-color: #F1F5F9;
+        }
+        .option-card.selected {
+            border-color: #3B82F6;
+            background-color: #E5EEFF;
+            box-shadow: 0 0 0 1px #3B82F6;
+        }
+        .feedback-correct {
+            border: 1px solid #009668;
+            background-color: #f0fdf4;
+        }
+        .feedback-incorrect {
+            border: 1px solid #ba1a1a;
+            background-color: #fef2f2;
+        }
+        .progress-dot-active {
+            background-color: #2170e4;
+            width: 24px;
+        }
+        body {
+            background-color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
+<!-- Learner Player Shell - Top Navigation -->
+<header class="h-16 bg-white border-b border-outline-variant flex items-center justify-between px-margin-desktop sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<div class="bg-primary-container p-sm rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-md">school</span>
+</div>
+<div>
+<h1 class="font-title-md text-title-md text-on-surface leading-tight">Knowledge Check: Threat Types</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Security Fundamentals 101</p>
+</div>
+</div>
+<div class="flex items-center gap-xl">
+<div class="hidden md:flex items-center gap-sm bg-surface-container-low px-md py-xs rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">timer</span>
+<span class="font-label-md text-label-md text-on-surface" id="timer">08:42</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Question 4 of 10</span>
+<div class="w-32 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[40%] h-full bg-secondary-container rounded-full"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Quiz Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center px-margin-mobile py-xl md:py-0">
+<div class="w-full max-w-[720px] space-y-lg">
+<!-- Question Box -->
+<div class="space-y-md">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Multiple Choice</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Which of the following is an example of a Social Engineering attack?</h2>
+</div>
+<!-- Options Container -->
+<div class="grid grid-cols-1 gap-md" id="quiz-options">
+<button class="option-card group flex items-center gap-md p-md bg-white border border-outline-variant rounded-lg transition-all text-left w-full" data-correct="true" onclick="selectOption(this)">
+<div class="w-10 h-10 rounded border-2 border-outline-variant group-hover:border-secondary flex items-center justify-center shrink-0 transition-colors bg-surface-container-lowest">
+<span class="font-title-md text-title-md text-on-surface-variant group-hover:text-secondary">A</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">Phishing</span>
+</button>
+<button class="option-card group flex items-center gap-md p-md bg-white border border-outline-variant rounded-lg transition-all text-left w-full" data-correct="false" onclick="selectOption(this)">
+<div class="w-10 h-10 rounded border-2 border-outline-variant group-hover:border-secondary flex items-center justify-center shrink-0 transition-colors bg-surface-container-lowest">
+<span class="font-title-md text-title-md text-on-surface-variant group-hover:text-secondary">B</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">SQL Injection</span>
+</button>
+<button class="option-card group flex items-center gap-md p-md bg-white border border-outline-variant rounded-lg transition-all text-left w-full" data-correct="false" onclick="selectOption(this)">
+<div class="w-10 h-10 rounded border-2 border-outline-variant group-hover:border-secondary flex items-center justify-center shrink-0 transition-colors bg-surface-container-lowest">
+<span class="font-title-md text-title-md text-on-surface-variant group-hover:text-secondary">C</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">Brute Force</span>
+</button>
+<button class="option-card group flex items-center gap-md p-md bg-white border border-outline-variant rounded-lg transition-all text-left w-full" data-correct="false" onclick="selectOption(this)">
+<div class="w-10 h-10 rounded border-2 border-outline-variant group-hover:border-secondary flex items-center justify-center shrink-0 transition-colors bg-surface-container-lowest">
+<span class="font-title-md text-title-md text-on-surface-variant group-hover:text-secondary">D</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">Cross-Site Scripting</span>
+</button>
+</div>
+<!-- Feedback Area (Hidden by default) -->
+<div class="hidden animate-in fade-in slide-in-from-bottom-4 duration-300" id="feedback-panel">
+<div class="p-lg rounded-lg flex items-start gap-md" id="feedback-container">
+<div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0" id="feedback-icon-bg">
+<span class="material-symbols-outlined text-white" id="feedback-icon"></span>
+</div>
+<div class="space-y-xs">
+<h3 class="font-title-md text-title-md" id="feedback-title"></h3>
+<p class="font-body-md text-body-md text-on-surface-variant" id="feedback-text"></p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-between pt-md">
+<button class="flex items-center gap-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors px-md py-sm" onclick="exitQuiz()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+                    Exit Quiz
+                </button>
+<div class="flex gap-md">
+<button class="px-xl py-md bg-secondary-container text-on-secondary rounded-lg font-label-md text-label-md opacity-50 cursor-not-allowed transition-all active:scale-95 disabled:hover:bg-secondary-container" disabled="" id="submit-btn" onclick="submitAnswer()">
+                        Submit Answer
+                    </button>
+<button class="hidden px-xl py-md bg-primary text-on-primary rounded-lg font-label-md text-label-md transition-all active:scale-95 hover:bg-opacity-90" id="next-btn">
+                        Continue to Question 5
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Progress Indicator -->
+<footer class="h-16 bg-white border-t border-outline-variant flex items-center justify-center px-margin-desktop mt-auto">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+<div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+<div class="w-6 h-2 rounded-full bg-secondary-container transition-all duration-300"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container"></div>
+</div>
+</footer>
+<script>
+        let selectedOption = null;
+
+        function selectOption(element) {
+            // Check if already submitted
+            if (document.getElementById('submit-btn').classList.contains('hidden')) return;
+
+            // Remove previous selection
+            const options = document.querySelectorAll('.option-card');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add new selection
+            element.classList.add('selected');
+            selectedOption = element;
+            
+            // Enable submit button
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        function submitAnswer() {
+            if (!selectedOption) return;
+
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            const feedbackPanel = document.getElementById('feedback-panel');
+            const feedbackContainer = document.getElementById('feedback-container');
+            const feedbackIconBg = document.getElementById('feedback-icon-bg');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackText = document.getElementById('feedback-text');
+            const submitBtn = document.getElementById('submit-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            feedbackPanel.classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+            nextBtn.classList.remove('hidden');
+
+            // Disable further option clicks
+            const options = document.querySelectorAll('.option-card');
+            options.forEach(opt => {
+                opt.style.cursor = 'default';
+                if(opt.getAttribute('data-correct') === 'true') {
+                    opt.style.borderColor = '#009668';
+                    opt.style.backgroundColor = '#f0fdf4';
+                }
+            });
+
+            if (isCorrect) {
+                feedbackContainer.className = 'p-lg rounded-lg flex items-start gap-md feedback-correct';
+                feedbackIconBg.className = 'w-12 h-12 rounded-full flex items-center justify-center shrink-0 bg-on-tertiary-container';
+                feedbackIcon.innerText = 'check';
+                feedbackTitle.innerText = 'Correct! Great job.';
+                feedbackTitle.className = 'font-title-md text-title-md text-on-tertiary-container';
+                feedbackText.innerText = 'Phishing is a deceptive practice where attackers manipulate individuals into divulging sensitive information by posing as a trustworthy entity in electronic communications.';
+            } else {
+                selectedOption.style.borderColor = '#ba1a1a';
+                selectedOption.style.backgroundColor = '#fef2f2';
+                feedbackContainer.className = 'p-lg rounded-lg flex items-start gap-md feedback-incorrect';
+                feedbackIconBg.className = 'w-12 h-12 rounded-full flex items-center justify-center shrink-0 bg-error';
+                feedbackIcon.innerText = 'close';
+                feedbackTitle.innerText = 'Incorrect Answer';
+                feedbackTitle.className = 'font-title-md text-title-md text-error';
+                feedbackText.innerText = 'Social engineering relies on human interaction and psychological manipulation. While technical, phishing targets the user rather than software vulnerabilities like SQL Injection or XSS.';
+            }
+        }
+
+        function exitQuiz() {
+            if(confirm("Are you sure you want to exit? Your progress will be saved.")) {
+                window.history.back();
+            }
+        }
+
+        // Simple Timer Simulation
+        let seconds = 522; // 8:42
+        const timerDisplay = document.getElementById('timer');
+        setInterval(() => {
+            seconds--;
+            let mins = Math.floor(seconds / 60);
+            let secs = seconds % 60;
+            timerDisplay.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }, 1000);
+    </script>
+</body></html>

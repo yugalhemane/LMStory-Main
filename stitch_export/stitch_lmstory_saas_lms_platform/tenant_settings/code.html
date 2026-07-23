@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tenant Settings | LMStory Enterprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed": "#002113",
+                    "on-primary-container": "#7c839b",
+                    "outline-variant": "#c6c6cd",
+                    "background": "#f8f9ff",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary-fixed": "#6ffbbe",
+                    "inverse-primary": "#bec6e0",
+                    "primary-container": "#131b2e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "primary": "#000000",
+                    "on-tertiary-container": "#009668",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-error": "#ffffff",
+                    "outline": "#76777d",
+                    "on-secondary-fixed": "#001a42",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary-container": "#002113",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#565e74",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dae2fd",
+                    "on-background": "#0b1c30",
+                    "on-primary-fixed": "#131b2e",
+                    "inverse-surface": "#213145",
+                    "tertiary": "#000000",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-container": "#fefcff",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed": "#d8e2ff",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#45464d",
+                    "surface": "#f8f9ff",
+                    "secondary": "#0058be",
+                    "secondary-fixed-dim": "#adc6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            border-bottom: 2px solid #0058be;
+            color: #0058be;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3B82F6 !important;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container flex flex-col py-4 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 bg-secondary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-title-lg">school</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">LMStory</h1>
+<p class="font-label-sm text-label-sm text-on-primary-container">Enterprise LMS</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto custom-scrollbar">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Groups</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">local_library</span>
+<span class="font-label-md text-label-md">Library</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-md text-label-md">Campaigns</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-md text-label-md">Courses</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<!-- Active Navigation -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg mx-2 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="bg-surface-variant/10 rounded-xl p-4 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border-2 border-secondary-container object-cover" data-alt="Close-up portrait of a professional woman with glasses, smiling warmly, in a corporate office setting with soft background bokeh. The lighting is bright and clean, emphasizing a modern enterprise environment with a light blue and white color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgzPnKIofGLl1aYt6MUcDvcDmfavdVQQyt2Oh99gTOq_60njrxLk7GJdhLW85c9uLidnrPDhgP-w57g1m_xj9X_JvOSOYUf5wtGAseeih9IcIEidTmWQjzMTq6i5uaz2KnukFingNnyvkmFz2IowkJJBfNLKddbxhH6RVNqi00k-GrFdQZmp6Yr9uOKDQ6yVlj36BvBATUF-0EKG8PRajG0t8sQZ7tz2rNkgdhPvHl5E4ZNkrE5N9yFxth9I7UKBkUv4N1fd3IjaAa"/>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md text-on-primary truncate">Admin User</p>
+<p class="font-label-sm text-label-sm text-on-primary-container truncate">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="flex justify-between items-center h-16 px-margin-desktop ml-[260px] w-[calc(100%-260px)] sticky top-0 bg-surface dark:bg-surface-dim z-40 border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 w-80 font-body-sm text-body-sm focus:ring-2 focus:ring-secondary/20" placeholder="Search configurations..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border border-surface"></span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<span class="font-title-md text-title-md text-primary group-hover:text-secondary transition-colors">Global Headquarters</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] p-margin-desktop h-[calc(100vh-64px)] overflow-y-auto bg-background custom-scrollbar">
+<div class="max-w-[1440px] mx-auto">
+<header class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-1">Tenant Settings</h2>
+<p class="text-on-surface-variant font-body-md">Manage global configurations, feature flags, and system infrastructure for this enterprise instance.</p>
+</header>
+<!-- Tabs Interface -->
+<div class="bg-surface rounded-xl border border-outline-variant overflow-hidden">
+<nav class="flex border-b border-outline-variant bg-surface-container-low px-6 overflow-x-auto">
+<button class="px-6 py-4 font-label-md text-label-md whitespace-nowrap active-tab hover:text-secondary transition-colors" id="tab-general" onclick="switchTab('general')">GENERAL</button>
+<button class="px-6 py-4 font-label-md text-label-md whitespace-nowrap text-on-surface-variant hover:text-secondary transition-colors" id="tab-features" onclick="switchTab('features')">FEATURES</button>
+<button class="px-6 py-4 font-label-md text-label-md whitespace-nowrap text-on-surface-variant hover:text-secondary transition-colors" id="tab-smtp" onclick="switchTab('smtp')">SMTP &amp; EMAIL</button>
+<button class="px-6 py-4 font-label-md text-label-md whitespace-nowrap text-on-surface-variant hover:text-secondary transition-colors" id="tab-storage" onclick="switchTab('storage')">STORAGE &amp; QUOTA</button>
+<button class="px-6 py-4 font-label-md text-label-md whitespace-nowrap text-on-surface-variant hover:text-secondary transition-colors" id="tab-security" onclick="switchTab('security')">SECURITY</button>
+</nav>
+<div class="p-8">
+<!-- General Tab -->
+<div class="space-y-8" id="content-general">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-4">
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">TENANT NAME</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 font-body-md" type="text" value="LMStory Enterprise Global"/>
+</label>
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">PRIMARY DOMAIN</span>
+<div class="flex">
+<span class="bg-surface-container-high border border-r-0 border-outline-variant px-4 flex items-center rounded-l-lg text-on-surface-variant font-body-sm">https://</span>
+<input class="w-full border border-outline-variant rounded-r-lg px-4 py-3 font-body-md" type="text" value="acme.lmstory.io"/>
+</div>
+</label>
+</div>
+<div class="space-y-4">
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">PLAN TYPE</span>
+<select class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 font-body-md appearance-none">
+<option selected="">Enterprise Tier Plus</option>
+<option>Business Standard</option>
+<option>Academic Open</option>
+</select>
+</label>
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">TIMEZONE</span>
+<select class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 font-body-md appearance-none">
+<option selected="">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option>(GMT+00:00) UTC</option>
+<option>(GMT+01:00) Central European Time</option>
+</select>
+</label>
+</div>
+</div>
+</div>
+<!-- Features Tab (Hidden initially) -->
+<div class="hidden space-y-6" id="content-features">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Feature Toggle Item -->
+<div class="flex items-start justify-between p-4 border border-outline-variant rounded-xl bg-surface-container-lowest">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed-dim/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container">emoji_events</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface">Enable Gamification</h4>
+<p class="text-body-sm text-on-surface-variant">Badges, experience points, and leaderboards for learners.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex items-start justify-between p-4 border border-outline-variant rounded-xl bg-surface-container-lowest">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">public</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface">Enable Public Profiles</h4>
+<p class="text-body-sm text-on-surface-variant">Allow user profiles to be shared outside the organization.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer mt-1">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex items-start justify-between p-4 border border-outline-variant rounded-xl bg-surface-container-lowest">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">groups_3</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface">Collaborative Learning</h4>
+<p class="text-body-sm text-on-surface-variant">Enable peer-to-peer discussion boards and group assignments.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex items-start justify-between p-4 border border-outline-variant rounded-xl bg-surface-container-lowest">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-error-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-error">analytics</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface">Advanced Analytics</h4>
+<p class="text-body-sm text-on-surface-variant">Real-time engagement metrics and predictive performance modeling.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- SMTP Tab (Hidden initially) -->
+<div class="hidden space-y-6" id="content-smtp">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant mb-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="text-body-sm text-on-surface-variant">Configure your custom mail server to handle system notifications and password resets.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">SMTP HOST</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 font-body-sm" placeholder="smtp.provider.com" type="text"/>
+</label>
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">PORT</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 font-body-sm" placeholder="587" type="text"/>
+</label>
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">ENCRYPTION</span>
+<select class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 font-body-sm appearance-none">
+<option>TLS</option>
+<option>SSL</option>
+<option>None</option>
+</select>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-6">
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">USERNAME</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 font-body-sm" placeholder="admin@domain.com" type="text"/>
+</label>
+<label class="block">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">PASSWORD</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 font-body-sm" placeholder="••••••••••••" type="password"/>
+</label>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="flex items-center gap-2 px-6 py-2 border border-secondary text-secondary rounded-lg font-label-md hover:bg-secondary/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                                    SEND TEST EMAIL
+                                </button>
+</div>
+</div>
+</div>
+<!-- Storage Tab (Hidden initially) -->
+<div class="hidden space-y-8" id="content-storage">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Overall Quota -->
+<div class="col-span-1 border border-outline-variant rounded-xl p-6 bg-surface-container-lowest">
+<h4 class="font-title-md text-title-md text-on-surface mb-4">Total Instance Storage</h4>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-display font-display text-primary">2.4</span>
+<span class="text-headline-md font-headline-md text-on-surface-variant pb-2">TB / 5.0 TB</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden mb-4">
+<div class="bg-secondary h-full rounded-full" style="width: 48%"></div>
+</div>
+<div class="flex justify-between text-body-sm text-on-surface-variant">
+<span>48% Utilized</span>
+<span>2.6 TB Available</span>
+</div>
+</div>
+<!-- Detailed Usage Breakdown -->
+<div class="col-span-1 lg:col-span-2 border border-outline-variant rounded-xl overflow-hidden">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant">CATEGORY</th>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant">USED</th>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant">GROWTH (30D)</th>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant">QUOTA STATUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">movie</span>
+<span class="font-body-md">Video Content</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm">1.8 TB</td>
+<td class="px-6 py-4 font-body-sm text-tertiary-container">+12.4%</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm uppercase">Healthy</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">description</span>
+<span class="font-body-md">Documents &amp; Assets</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm">450 GB</td>
+<td class="px-6 py-4 font-body-sm text-tertiary-container">+2.1%</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm uppercase">Healthy</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">database</span>
+<span class="font-body-md">System Databases</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm">150 GB</td>
+<td class="px-6 py-4 font-body-sm text-tertiary-container">+0.5%</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm uppercase">Healthy</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Security Tab Placeholder -->
+<div class="hidden" id="content-security">
+<div class="flex flex-col items-center justify-center py-20 text-center">
+<span class="material-symbols-outlined text-[64px] text-outline-variant mb-4">security</span>
+<h3 class="font-title-lg text-title-lg text-on-surface">Security Policy Management</h3>
+<p class="text-on-surface-variant max-w-md mt-2">Manage SSO, Two-Factor Authentication, and Login Restrictions for all enterprise users.</p>
+</div>
+</div>
+<!-- Shared Action Bar -->
+<div class="mt-12 pt-8 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="font-label-sm text-label-sm">Last modified by SuperAdmin on Oct 24, 2023</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors rounded-lg">DISCARD CHANGES</button>
+<button class="px-8 py-2 bg-secondary text-on-secondary rounded-lg font-label-md shadow-sm active:scale-95 transition-all">SAVE CONFIGURATION</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Stats / Insights (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mt-8">
+<div class="bg-surface p-6 rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">ACTIVE SESSIONS</p>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-lg text-headline-lg text-primary">12,402</h3>
+<span class="text-tertiary-container font-label-sm">+8%</span>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">API LATENCY</p>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-lg text-headline-lg text-primary">42ms</h3>
+<span class="text-tertiary-container font-label-sm">-2ms</span>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">AUTH ERRORS (24H)</p>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-lg text-headline-lg text-primary">14</h3>
+<span class="text-error font-label-sm">+2%</span>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">SYSTEM UPTIME</p>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-lg text-headline-lg text-primary">99.98%</h3>
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function switchTab(tabId) {
+            // Hide all contents
+            const contents = ['general', 'features', 'smtp', 'storage', 'security'];
+            contents.forEach(id => {
+                document.getElementById(`content-${id}`).classList.add('hidden');
+                document.getElementById(`tab-${id}`).classList.remove('active-tab');
+                document.getElementById(`tab-${id}`).classList.add('text-on-surface-variant');
+            });
+
+            // Show selected content
+            document.getElementById(`content-${tabId}`).classList.remove('hidden');
+            document.getElementById(`tab-${tabId}`).classList.add('active-tab');
+            document.getElementById(`tab-${tabId}`).classList.remove('text-on-surface-variant');
+        }
+    </script>
+</body></html>

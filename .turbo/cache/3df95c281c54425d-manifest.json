@@ -1,0 +1,2843 @@
+{
+  "files": {
+    "apps/backend/dist/modules/learner/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantLibrary/repository/tenantLibrary.repository.js": {
+      "size": 7380,
+      "mtime_nanos": 1783105772409114600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantLibrary/routes/tenantLibrary.routes.js": {
+      "size": 1718,
+      "mtime_nanos": 1783763987167690000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/config/redis.js.map": {
+      "size": 738,
+      "mtime_nanos": 1783105769541664100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/storage/s3.storage.provider.js": {
+      "size": 1184,
+      "mtime_nanos": 1783678674774537100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/utils/csv.parser.js": {
+      "size": 2253,
+      "mtime_nanos": 1783105771304138700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/app.js": {
+      "size": 4614,
+      "mtime_nanos": 1783763981874407600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/repository/notification.repository.js": {
+      "size": 5117,
+      "mtime_nanos": 1783105771824816800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/utils": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantLibrary/repository/tenantLibrary.repository.js.map": {
+      "size": 5581,
+      "mtime_nanos": 1783105772408115800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/featureFlags/featureFlag.service.js": {
+      "size": 1095,
+      "mtime_nanos": 1783678674594123900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/interfaces": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/certificate/validation/certificate.validation.js": {
+      "size": 407,
+      "mtime_nanos": 1783105770555417900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/dto/campaign.dto.js.map": {
+      "size": 146,
+      "mtime_nanos": 1783105770061380800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/interfaces/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105772685766800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/interfaces": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenant/routes/tenant.routes.js.map": {
+      "size": 986,
+      "mtime_nanos": 1783105772292742700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/certificate/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/auth": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/campaign/routes/campaign.routes.js.map": {
+      "size": 1835,
+      "mtime_nanos": 1783763983885576100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/controller/library.controller.js.map": {
+      "size": 3125,
+      "mtime_nanos": 1783105771545836900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/routes/auth.routes.js.map": {
+      "size": 1460,
+      "mtime_nanos": 1783678673544113400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantBranding/controller/tenantBranding.controller.js.map": {
+      "size": 1339,
+      "mtime_nanos": 1783763986804975700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/validation/user.validation.js": {
+      "size": 1669,
+      "mtime_nanos": 1783105772644569300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105771799274300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/routes/course.routes.js": {
+      "size": 2477,
+      "mtime_nanos": 1783763984791471100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/health/health.routes.js": {
+      "size": 332,
+      "mtime_nanos": 1783105771328816300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/controller/enrollment.controller.js.map": {
+      "size": 2609,
+      "mtime_nanos": 1783105770926004200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/service/tenantLibrary.service.js": {
+      "size": 3377,
+      "mtime_nanos": 1783105772474550300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/validation/user.validation.js.map": {
+      "size": 1814,
+      "mtime_nanos": 1783105772644569300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/users/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105772647557900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenant/validation/tenant.validation.js.map": {
+      "size": 967,
+      "mtime_nanos": 1783105772312941400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/user/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/responses/ApiResponse.js.map": {
+      "size": 837,
+      "mtime_nanos": 1783105772715513800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/requireSuperAdmin.js": {
+      "size": 469,
+      "mtime_nanos": 1783105772707296000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantBranding": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/report": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/enrollment/service/enrollment.service.js": {
+      "size": 4142,
+      "mtime_nanos": 1783105771086202900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/dto/tenantBranding.dto.js": {
+      "size": 123,
+      "mtime_nanos": 1783678674409073600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/routes/library.routes.js.map": {
+      "size": 1333,
+      "mtime_nanos": 1783105771684188100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/config/database.js": {
+      "size": 113,
+      "mtime_nanos": 1783105769507939700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/learner/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/analytics": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/library/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenant/controller/tenant.controller.js.map": {
+      "size": 1857,
+      "mtime_nanos": 1783105772197528900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105772204067900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/index.js.map": {
+      "size": 129,
+      "mtime_nanos": 1783105771799274300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/dto/learner.dto.js.map": {
+      "size": 143,
+      "mtime_nanos": 1783105771407549800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/user/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/user/middleware/requireTenantAdmin.js": {
+      "size": 1004,
+      "mtime_nanos": 1783105772512709800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/library/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/user/repository/user.repository.js": {
+      "size": 3247,
+      "mtime_nanos": 1783105772543713800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/helpers/asyncHandler.js": {
+      "size": 292,
+      "mtime_nanos": 1783105772674737200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/controller/group.controller.js": {
+      "size": 3264,
+      "mtime_nanos": 1783105771150810600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/index.js.map": {
+      "size": 124,
+      "mtime_nanos": 1783105771408558100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/routes/learner.routes.js.map": {
+      "size": 685,
+      "mtime_nanos": 1783105771473793300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/utils/email.provider.js.map": {
+      "size": 837,
+      "mtime_nanos": 1783678674353185200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantLibrary/service/tenantLibrary.service.js.map": {
+      "size": 2764,
+      "mtime_nanos": 1783105772474550300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/middlewares/requestId.js.map": {
+      "size": 426,
+      "mtime_nanos": 1783105769613569600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/service/tenantEmail.service.js.map": {
+      "size": 1108,
+      "mtime_nanos": 1783678674342190300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/group/controller/group.controller.js.map": {
+      "size": 3491,
+      "mtime_nanos": 1783105771148800700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/middleware/auth.middleware.js.map": {
+      "size": 830,
+      "mtime_nanos": 1783105769697638000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/group/routes/group.routes.js": {
+      "size": 1888,
+      "mtime_nanos": 1783763985574337900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/logger/index.js.map": {
+      "size": 1236,
+      "mtime_nanos": 1783105772703298100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/__tests__/requireRole.test.js.map": {
+      "size": 2406,
+      "mtime_nanos": 1783763987447144500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105771409551100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/repository/enrollment.repository.js": {
+      "size": 7438,
+      "mtime_nanos": 1783105771012637600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/service/group.service.js.map": {
+      "size": 4148,
+      "mtime_nanos": 1783105771291608700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/services/upload.service.js.map": {
+      "size": 791,
+      "mtime_nanos": 1783678674709629300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/analytics/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105769619582100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/tenantLibrary/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/services/upload.service.js": {
+      "size": 872,
+      "mtime_nanos": 1783678674710633400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105769680628700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/service/library.service.js.map": {
+      "size": 7678,
+      "mtime_nanos": 1783105771712704700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/middlewares/errorHandler.js": {
+      "size": 1640,
+      "mtime_nanos": 1783105769606048900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/analytics/index.js.map": {
+      "size": 126,
+      "mtime_nanos": 1783105769618582800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/dto/notification.dto.js": {
+      "size": 121,
+      "mtime_nanos": 1783105771796748400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/auth/service/__tests__/auth.service.test.js.map": {
+      "size": 857,
+      "mtime_nanos": 1783763982149675600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/routes/course.routes.js.map": {
+      "size": 1701,
+      "mtime_nanos": 1783763984790143700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/notification/routes/notification.routes.js.map": {
+      "size": 1717,
+      "mtime_nanos": 1783763986034670300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/dto/report.dto.js.map": {
+      "size": 140,
+      "mtime_nanos": 1783105772060182600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/course/controller/course.controller.js": {
+      "size": 4405,
+      "mtime_nanos": 1783105770608477600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/validation/learner.validation.js.map": {
+      "size": 588,
+      "mtime_nanos": 1783105771497797300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/rateLimiter.middleware.js": {
+      "size": 1480,
+      "mtime_nanos": 1783678674604035200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/certificate/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/enums": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/config/jwt.js": {
+      "size": 108,
+      "mtime_nanos": 1783105769523477100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/groups/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105771313279700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105771552364700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/validation/learner.validation.js": {
+      "size": 581,
+      "mtime_nanos": 1783105771500318700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/library/routes/library.routes.js": {
+      "size": 2167,
+      "mtime_nanos": 1783105771684188100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/service/tenant.service.js.map": {
+      "size": 4199,
+      "mtime_nanos": 1783105772308935900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/service/tenantBranding.service.js": {
+      "size": 1316,
+      "mtime_nanos": 1783763986922147700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/repository/group.repository.js": {
+      "size": 6907,
+      "mtime_nanos": 1783105771206906800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/dto/tenantLibrary.dto.js": {
+      "size": 122,
+      "mtime_nanos": 1783105772353552800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/routes/tenantLibrary.routes.js.map": {
+      "size": 1040,
+      "mtime_nanos": 1783763987166682900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/storage/storage.provider.interface.js": {
+      "size": 131,
+      "mtime_nanos": 1783678674804900400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/index.js.map": {
+      "size": 123,
+      "mtime_nanos": 1783105772204067900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/errors/index.js.map": {
+      "size": 1149,
+      "mtime_nanos": 1783105772668741800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/logger/index.js": {
+      "size": 1456,
+      "mtime_nanos": 1783105772703298100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/learner/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenant/validation/tenant.validation.js": {
+      "size": 970,
+      "mtime_nanos": 1783105772313937400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantLibrary/dto/tenantLibrary.dto.js.map": {
+      "size": 161,
+      "mtime_nanos": 1783105772352550900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/__tests__/requireRole.test.js": {
+      "size": 2942,
+      "mtime_nanos": 1783763987450149100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/repository/tenantBranding.repository.js": {
+      "size": 803,
+      "mtime_nanos": 1783763986814225000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/requireRole.js.map": {
+      "size": 942,
+      "mtime_nanos": 1783763987470141500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/constants/jwt.js": {
+      "size": 237,
+      "mtime_nanos": 1783105769559110700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/utils/csv.parser.js.map": {
+      "size": 2069,
+      "mtime_nanos": 1783105772640557600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/report/validation/report.validation.js": {
+      "size": 1593,
+      "mtime_nanos": 1783105772169514100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/responses": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/constants/permissions.js": {
+      "size": 275,
+      "mtime_nanos": 1783105769562630900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/validation/tenantLibrary.validation.js.map": {
+      "size": 1577,
+      "mtime_nanos": 1783105772477555000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/certificate/dto/certificate.dto.js.map": {
+      "size": 155,
+      "mtime_nanos": 1783105770466268400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/constants/http-status.js": {
+      "size": 340,
+      "mtime_nanos": 1783105769554119600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/notification/service/notification.service.js": {
+      "size": 6063,
+      "mtime_nanos": 1783678674310632600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/requireTenantAdmin.js.map": {
+      "size": 397,
+      "mtime_nanos": 1783678674614033500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/helpers": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/enrollment/dto/enrollment.dto.js": {
+      "size": 119,
+      "mtime_nanos": 1783105770932008900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/campaign/repository/campaign.repository.js": {
+      "size": 9328,
+      "mtime_nanos": 1783105770247124600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/middleware": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/certificate/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/enrollment/dto/enrollment.dto.js.map": {
+      "size": 152,
+      "mtime_nanos": 1783105770932008900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/validation/enrollment.validation.js": {
+      "size": 1440,
+      "mtime_nanos": 1783105771090203300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/repository/tenant.repository.js": {
+      "size": 2286,
+      "mtime_nanos": 1783105772243876700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/middlewares/requestId.js": {
+      "size": 429,
+      "mtime_nanos": 1783105769614576900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/user/service/user.service.js.map": {
+      "size": 5759,
+      "mtime_nanos": 1783105772626544100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/service/learner.service.js": {
+      "size": 4502,
+      "mtime_nanos": 1783105771493798600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/health/health.controller.js": {
+      "size": 653,
+      "mtime_nanos": 1783105771319813400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/notification/utils/template.renderer.js.map": {
+      "size": 619,
+      "mtime_nanos": 1783105771919678000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/service/tenantBranding.service.js.map": {
+      "size": 967,
+      "mtime_nanos": 1783763986921141000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/auth/interfaces/auth.interface.js.map": {
+      "size": 153,
+      "mtime_nanos": 1783763982079958300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/config/env.js": {
+      "size": 1859,
+      "mtime_nanos": 1783105769521475500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/constants": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/database": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/campaign/validation/campaign.validation.js": {
+      "size": 3041,
+      "mtime_nanos": 1783105770423717400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/dto/learner.dto.js": {
+      "size": 116,
+      "mtime_nanos": 1783105771407549800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/validation/library.validation.js.map": {
+      "size": 2977,
+      "mtime_nanos": 1783105771719228800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/controller/certificate.controller.js.map": {
+      "size": 1769,
+      "mtime_nanos": 1783105770464266400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/controller/report.controller.js": {
+      "size": 2622,
+      "mtime_nanos": 1783105772057171000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/controller/tenantLibrary.controller.js": {
+      "size": 2599,
+      "mtime_nanos": 1783105772350549600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/controller/tenantLibrary.controller.js.map": {
+      "size": 2525,
+      "mtime_nanos": 1783105772350549600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/repository/user.repository.js.map": {
+      "size": 2989,
+      "mtime_nanos": 1783105772542709800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/helpers/validate.js": {
+      "size": 509,
+      "mtime_nanos": 1783105772682740900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/dto/campaign.dto.js": {
+      "size": 117,
+      "mtime_nanos": 1783105770062371000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/index.js.map": {
+      "size": 127,
+      "mtime_nanos": 1783105770934017900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenant/dto/tenant.dto.js.map": {
+      "size": 140,
+      "mtime_nanos": 1783105772201060900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/learner/controller/learner.controller.js": {
+      "size": 1566,
+      "mtime_nanos": 1783105771404547900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/interfaces/auth.interface.js": {
+      "size": 119,
+      "mtime_nanos": 1783763982080945200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/routes/enrollment.routes.js.map": {
+      "size": 1070,
+      "mtime_nanos": 1783763985137624400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/service/group.service.js": {
+      "size": 4790,
+      "mtime_nanos": 1783105771292609200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/repository/learner.repository.js": {
+      "size": 6189,
+      "mtime_nanos": 1783105771435486500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/middlewares/tenantResolver.middleware.js": {
+      "size": 1225,
+      "mtime_nanos": 1783678674668268800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/storage/storage.provider.interface.js.map": {
+      "size": 165,
+      "mtime_nanos": 1783678674802901900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/utils": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/learner": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/certificate/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/notification/utils/template.renderer.js": {
+      "size": 960,
+      "mtime_nanos": 1783105771920667800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/storage/storage.factory.js": {
+      "size": 1116,
+      "mtime_nanos": 1783678674785924500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/server.js": {
+      "size": 2198,
+      "mtime_nanos": 1783105772653091600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/validation/certificate.validation.js.map": {
+      "size": 393,
+      "mtime_nanos": 1783105770555417900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/routes/certificate.routes.js": {
+      "size": 1935,
+      "mtime_nanos": 1783763984250614700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/repository/course.repository.js.map": {
+      "size": 7773,
+      "mtime_nanos": 1783105770751000100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenant": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/groups/index.js.map": {
+      "size": 123,
+      "mtime_nanos": 1783105771313279700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/services/auditLog.service.js": {
+      "size": 1308,
+      "mtime_nanos": 1783678674699633500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/validation/tenantBranding.validation.js.map": {
+      "size": 1019,
+      "mtime_nanos": 1783678674584159200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/server.js.map": {
+      "size": 1663,
+      "mtime_nanos": 1783105772652089000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/campaign/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/user/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/notification/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/user/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/notification/dto/notification.dto.js.map": {
+      "size": 158,
+      "mtime_nanos": 1783105771796748400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/repository/tenant.repository.js.map": {
+      "size": 2058,
+      "mtime_nanos": 1783105772242872500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/middleware/requireTenantAdmin.js.map": {
+      "size": 630,
+      "mtime_nanos": 1783105772512709800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/helpers/asyncHandler.js.map": {
+      "size": 367,
+      "mtime_nanos": 1783105772673739500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/learner/routes/learner.routes.js": {
+      "size": 1154,
+      "mtime_nanos": 1783105771474790100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/groups": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/course/service/course.service.js": {
+      "size": 4459,
+      "mtime_nanos": 1783105770876325800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/services/auditLog.service.js.map": {
+      "size": 804,
+      "mtime_nanos": 1783678674697633100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/course/validation/course.validation.js": {
+      "size": 2168,
+      "mtime_nanos": 1783105770883321400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/routes/user.routes.js.map": {
+      "size": 1164,
+      "mtime_nanos": 1783763987394013600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/repository/certificate.repository.js": {
+      "size": 3538,
+      "mtime_nanos": 1783105770492813500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/validation/group.validation.js.map": {
+      "size": 1926,
+      "mtime_nanos": 1783105771310284100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/report/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/helpers/validate.js.map": {
+      "size": 532,
+      "mtime_nanos": 1783105772681747600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/notification/controller/notification.controller.js.map": {
+      "size": 4524,
+      "mtime_nanos": 1783678674206503500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/responses/ApiResponse.js": {
+      "size": 808,
+      "mtime_nanos": 1783105772715513800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/repository/library.repository.js.map": {
+      "size": 4721,
+      "mtime_nanos": 1783105771610616300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/validation/auth.validation.js": {
+      "size": 1979,
+      "mtime_nanos": 1783105769981798800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/dto/library.dto.js": {
+      "size": 116,
+      "mtime_nanos": 1783105771549355000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/__tests__": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/auth/controller/auth.controller.js.map": {
+      "size": 3344,
+      "mtime_nanos": 1783763982069955400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/service/__tests__/auth.service.test.js": {
+      "size": 1092,
+      "mtime_nanos": 1783763982151199000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/repository/campaign.repository.js.map": {
+      "size": 8392,
+      "mtime_nanos": 1783105770246125000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/library/service/library.service.js": {
+      "size": 8559,
+      "mtime_nanos": 1783105771713704700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/group/routes/group.routes.js.map": {
+      "size": 1282,
+      "mtime_nanos": 1783763985573337300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/library/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/report/service/report.service.js.map": {
+      "size": 3133,
+      "mtime_nanos": 1783105772164519000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/validation/report.validation.js.map": {
+      "size": 1644,
+      "mtime_nanos": 1783105772169514100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/dto/user.dto.js.map": {
+      "size": 134,
+      "mtime_nanos": 1783105772507696400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/routes/auth.routes.js": {
+      "size": 2260,
+      "mtime_nanos": 1783678673545128000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/enums/index.js.map": {
+      "size": 121,
+      "mtime_nanos": 1783105772657096400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/routes/report.routes.js.map": {
+      "size": 1121,
+      "mtime_nanos": 1783763986738388500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/requireTenantAdmin.js": {
+      "size": 475,
+      "mtime_nanos": 1783678674615037000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/validation/tenantBranding.validation.js": {
+      "size": 948,
+      "mtime_nanos": 1783678674585159500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/health/health.controller.js.map": {
+      "size": 595,
+      "mtime_nanos": 1783105771318817200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/service/tenantEmail.service.js": {
+      "size": 1813,
+      "mtime_nanos": 1783678674343186700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/dto/auth.dto.js": {
+      "size": 113,
+      "mtime_nanos": 1783105769678624300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/validation/enrollment.validation.js.map": {
+      "size": 1581,
+      "mtime_nanos": 1783105771089204500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/repository/learner.repository.js.map": {
+      "size": 4319,
+      "mtime_nanos": 1783105771435486500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/course": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/library/controller/library.controller.js": {
+      "size": 3091,
+      "mtime_nanos": 1783105771546835900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/enums/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105772657096400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/service/__tests__": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/reports": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/auth/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/report/routes/report.routes.js": {
+      "size": 1800,
+      "mtime_nanos": 1783763986740382400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/controller/certificate.controller.js": {
+      "size": 1927,
+      "mtime_nanos": 1783105770464266400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/constants/app.js.map": {
+      "size": 190,
+      "mtime_nanos": 1783105769547667800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/service/auth.service.js": {
+      "size": 6453,
+      "mtime_nanos": 1783763982951740700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/campaign/controller/campaign.controller.js": {
+      "size": 4949,
+      "mtime_nanos": 1783105770055372100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/database/prisma": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/course/controller/course.controller.js.map": {
+      "size": 4710,
+      "mtime_nanos": 1783105770607473800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/dto/group.dto.js.map": {
+      "size": 137,
+      "mtime_nanos": 1783105771154817700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/report/controller/report.controller.js.map": {
+      "size": 2505,
+      "mtime_nanos": 1783105772056190700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/dto/report.dto.js": {
+      "size": 115,
+      "mtime_nanos": 1783105772061173100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/featureFlags/featureFlag.service.js.map": {
+      "size": 635,
+      "mtime_nanos": 1783678674593123100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenant/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/roles": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/certificate/service/certificate.service.js.map": {
+      "size": 2125,
+      "mtime_nanos": 1783105770552409200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/middlewares/tenantResolver.middleware.js.map": {
+      "size": 1055,
+      "mtime_nanos": 1783678674667717900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/database/prisma/index.js": {
+      "size": 515,
+      "mtime_nanos": 1783105769578643500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/storage/storage.factory.js.map": {
+      "size": 723,
+      "mtime_nanos": 1783678674784926500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/index.js.map": {
+      "size": 124,
+      "mtime_nanos": 1783105771551369700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/utils/token.utils.js.map": {
+      "size": 1196,
+      "mtime_nanos": 1783763982988834200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/users/index.js.map": {
+      "size": 122,
+      "mtime_nanos": 1783105772646566800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/services": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/notification": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/library/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantBranding/repository/tenantBranding.repository.js.map": {
+      "size": 600,
+      "mtime_nanos": 1783763986813208300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/service/learner.service.js.map": {
+      "size": 3393,
+      "mtime_nanos": 1783105771492795500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/interfaces/index.js.map": {
+      "size": 126,
+      "mtime_nanos": 1783105772684771700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/config/storage.js": {
+      "size": 112,
+      "mtime_nanos": 1783105769544661800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/index.js.map": {
+      "size": 123,
+      "mtime_nanos": 1783105770620017300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenant/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/notification/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/notification/service/notification.service.js.map": {
+      "size": 4759,
+      "mtime_nanos": 1783678674310632600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/routes/notification.routes.js": {
+      "size": 2736,
+      "mtime_nanos": 1783763986034670300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/constants/http-status.js.map": {
+      "size": 325,
+      "mtime_nanos": 1783105769553110700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/controller/campaign.controller.js.map": {
+      "size": 5213,
+      "mtime_nanos": 1783105770054371400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/requireSuperAdmin.js.map": {
+      "size": 395,
+      "mtime_nanos": 1783105772706299200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/routes/tenantBranding.routes.js.map": {
+      "size": 645,
+      "mtime_nanos": 1783763986904604200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/health": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/report/service/report.service.js": {
+      "size": 3386,
+      "mtime_nanos": 1783105772165525200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/service/enrollment.service.js.map": {
+      "size": 3345,
+      "mtime_nanos": 1783105771085204000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/utils/csv.parser.js.map": {
+      "size": 1829,
+      "mtime_nanos": 1783105771304138700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/routes/tenant.routes.js": {
+      "size": 1512,
+      "mtime_nanos": 1783105772293712300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/validation/tenantLibrary.validation.js": {
+      "size": 1554,
+      "mtime_nanos": 1783105772478554600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/requireRole.js": {
+      "size": 1305,
+      "mtime_nanos": 1783763987471145700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/storage/s3.storage.provider.js.map": {
+      "size": 850,
+      "mtime_nanos": 1783678674773535500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105770621012700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/campaign/service/campaign.service.js": {
+      "size": 6339,
+      "mtime_nanos": 1783105770416716800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/controller/notification.controller.js": {
+      "size": 4663,
+      "mtime_nanos": 1783678674207505100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/middlewares/errorHandler.js.map": {
+      "size": 1639,
+      "mtime_nanos": 1783105769605036100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/utils": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/shared/errors": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/enrollment/routes/enrollment.routes.js": {
+      "size": 1811,
+      "mtime_nanos": 1783763985140620500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/roles/index.js.map": {
+      "size": 122,
+      "mtime_nanos": 1783105772174528800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/middlewares/rateLimiter.middleware.js.map": {
+      "size": 920,
+      "mtime_nanos": 1783678674602015600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/repository/enrollment.repository.js.map": {
+      "size": 5617,
+      "mtime_nanos": 1783105771011633700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/validation/notification.validation.js": {
+      "size": 1267,
+      "mtime_nanos": 1783105771924675700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/index.js.map": {
+      "size": 125,
+      "mtime_nanos": 1783105770063382900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/storage/local.storage.provider.js.map": {
+      "size": 1701,
+      "mtime_nanos": 1783678674759076400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/types/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105772719501400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/config/jwt.js.map": {
+      "size": 108,
+      "mtime_nanos": 1783105769523477100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/controller/auth.controller.js": {
+      "size": 3442,
+      "mtime_nanos": 1783763982072948400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/repository/auth.repository.js": {
+      "size": 2688,
+      "mtime_nanos": 1783105769792807700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/dto/tenantBranding.dto.js.map": {
+      "size": 164,
+      "mtime_nanos": 1783678674408078200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/constants/app.js": {
+      "size": 221,
+      "mtime_nanos": 1783105769548664300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/auth/dto/auth.dto.js.map": {
+      "size": 134,
+      "mtime_nanos": 1783105769678624300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/utils/token.utils.js": {
+      "size": 1698,
+      "mtime_nanos": 1783763982990830400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/campaign/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/health/health.routes.js.map": {
+      "size": 281,
+      "mtime_nanos": 1783105771328816300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/controller/tenant.controller.js": {
+      "size": 1868,
+      "mtime_nanos": 1783105772199053100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/enrollment/controller/enrollment.controller.js": {
+      "size": 2685,
+      "mtime_nanos": 1783105770928003500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/service/tenant.service.js": {
+      "size": 4995,
+      "mtime_nanos": 1783105772309942200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/logger": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/reports/index.js.map": {
+      "size": 124,
+      "mtime_nanos": 1783105772171517600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/validation/campaign.validation.js.map": {
+      "size": 3155,
+      "mtime_nanos": 1783105770423717400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/storage/local.storage.provider.js": {
+      "size": 2950,
+      "mtime_nanos": 1783678674760090000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/middleware": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/constants/jwt.js.map": {
+      "size": 190,
+      "mtime_nanos": 1783105769558127500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/types/index.js.map": {
+      "size": 121,
+      "mtime_nanos": 1783105772718503100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/validation/auth.validation.js.map": {
+      "size": 1846,
+      "mtime_nanos": 1783105769981798800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/repository/certificate.repository.js.map": {
+      "size": 2790,
+      "mtime_nanos": 1783105770491809500,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/index.js.map": {
+      "size": 121,
+      "mtime_nanos": 1783105769680628700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/dto/user.dto.js": {
+      "size": 113,
+      "mtime_nanos": 1783105772507696400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/billing/index.js.map": {
+      "size": 124,
+      "mtime_nanos": 1783105769984808600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/dto/course.dto.js": {
+      "size": 115,
+      "mtime_nanos": 1783105770618014300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/course/repository/course.repository.js": {
+      "size": 8596,
+      "mtime_nanos": 1783105770752006800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/billing": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/group/dto/group.dto.js": {
+      "size": 114,
+      "mtime_nanos": 1783105771154817700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/repository/auth.repository.js.map": {
+      "size": 2341,
+      "mtime_nanos": 1783105769791807300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105770063382900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/validation/library.validation.js": {
+      "size": 2767,
+      "mtime_nanos": 1783105771720226600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/repository/report.repository.js.map": {
+      "size": 8897,
+      "mtime_nanos": 1783105772085188100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantLibrary/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/user/controller/user.controller.js": {
+      "size": 3058,
+      "mtime_nanos": 1783105772505106800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/utils/csv.parser.js": {
+      "size": 2303,
+      "mtime_nanos": 1783105772640557600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/validation/group.validation.js": {
+      "size": 1687,
+      "mtime_nanos": 1783105771310284100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/config/env.js.map": {
+      "size": 1991,
+      "mtime_nanos": 1783105769520463800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/constants/permissions.js.map": {
+      "size": 223,
+      "mtime_nanos": 1783105769562630900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/campaign/controller": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/campaign/routes/campaign.routes.js": {
+      "size": 2630,
+      "mtime_nanos": 1783763983886572900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/service/certificate.service.js": {
+      "size": 3390,
+      "mtime_nanos": 1783105770552409200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/config/storage.js.map": {
+      "size": 116,
+      "mtime_nanos": 1783105769543663200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/billing/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105769984808600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/report/repository/report.repository.js": {
+      "size": 9841,
+      "mtime_nanos": 1783105772085188100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/validation/notification.validation.js.map": {
+      "size": 1283,
+      "mtime_nanos": 1783105771923671300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/learner/controller/learner.controller.js.map": {
+      "size": 1467,
+      "mtime_nanos": 1783105771404547900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/roles/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105772175538400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/constants/roles.js": {
+      "size": 223,
+      "mtime_nanos": 1783105769567647100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/routes/certificate.routes.js.map": {
+      "size": 966,
+      "mtime_nanos": 1783763984248621200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/config/database.js.map": {
+      "size": 118,
+      "mtime_nanos": 1783105769506935000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/group/repository/group.repository.js.map": {
+      "size": 6261,
+      "mtime_nanos": 1783105771205895000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/dto/tenant.dto.js": {
+      "size": 115,
+      "mtime_nanos": 1783105772202067900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/certificate/dto/certificate.dto.js": {
+      "size": 120,
+      "mtime_nanos": 1783105770467267700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenant/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantBranding/routes/tenantBranding.routes.js": {
+      "size": 1325,
+      "mtime_nanos": 1783763986905601200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/dto/course.dto.js.map": {
+      "size": 140,
+      "mtime_nanos": 1783105770618014300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/tenantLibrary/validation": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/user/routes/user.routes.js": {
+      "size": 1722,
+      "mtime_nanos": 1783763987395013600,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/service/user.service.js": {
+      "size": 6865,
+      "mtime_nanos": 1783105772627549000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/shared/errors/index.js": {
+      "size": 1624,
+      "mtime_nanos": 1783105772669748100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/repository": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/learner/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/featureFlags": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/storage": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/enrollment/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/auth/service/auth.service.js.map": {
+      "size": 5232,
+      "mtime_nanos": 1783763982948745700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/utils/email.provider.js": {
+      "size": 1559,
+      "mtime_nanos": 1783678674353185200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/dto/library.dto.js.map": {
+      "size": 143,
+      "mtime_nanos": 1783105771549355000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/users": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/user/controller/user.controller.js.map": {
+      "size": 3252,
+      "mtime_nanos": 1783105772504107100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/database/prisma/index.js.map": {
+      "size": 448,
+      "mtime_nanos": 1783105769577644200,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/.turbo/turbo-build.log": {
+      "size": 33,
+      "mtime_nanos": 1783763987721122400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/app.js.map": {
+      "size": 2773,
+      "mtime_nanos": 1783763981872418900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/config": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/middlewares": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/course/routes": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/reports/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105772172521300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/tenantBranding/controller/tenantBranding.controller.js": {
+      "size": 1523,
+      "mtime_nanos": 1783763986806316400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/user/utils": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/shared/types": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/backend/dist/modules/tenantBranding/service": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/constants/roles.js.map": {
+      "size": 209,
+      "mtime_nanos": 1783105769566639700,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/validation/course.validation.js.map": {
+      "size": 2298,
+      "mtime_nanos": 1783105770882325000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/course/service/course.service.js.map": {
+      "size": 3959,
+      "mtime_nanos": 1783105770875316100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/notification/repository/notification.repository.js.map": {
+      "size": 4469,
+      "mtime_nanos": 1783105771823819400,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/library/repository/library.repository.js": {
+      "size": 5126,
+      "mtime_nanos": 1783105771612128100,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/config/redis.js": {
+      "size": 927,
+      "mtime_nanos": 1783105769542663800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/campaign/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/backend/dist/modules/campaign/service/campaign.service.js.map": {
+      "size": 5475,
+      "mtime_nanos": 1783105770416716800,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/auth/middleware/auth.middleware.js": {
+      "size": 922,
+      "mtime_nanos": 1783105769698639300,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/backend/dist/modules/enrollment/index.js": {
+      "size": 110,
+      "mtime_nanos": 1783105770934017900,
+      "mode": 420,
+      "is_dir": false
+    }
+  },
+  "order": [
+    "apps/backend/.turbo/turbo-build.log",
+    "apps/backend/dist",
+    "apps/backend/dist/app.js",
+    "apps/backend/dist/app.js.map",
+    "apps/backend/dist/config",
+    "apps/backend/dist/config/database.js",
+    "apps/backend/dist/config/database.js.map",
+    "apps/backend/dist/config/env.js",
+    "apps/backend/dist/config/env.js.map",
+    "apps/backend/dist/config/jwt.js",
+    "apps/backend/dist/config/jwt.js.map",
+    "apps/backend/dist/config/redis.js",
+    "apps/backend/dist/config/redis.js.map",
+    "apps/backend/dist/config/storage.js",
+    "apps/backend/dist/config/storage.js.map",
+    "apps/backend/dist/constants",
+    "apps/backend/dist/constants/app.js",
+    "apps/backend/dist/constants/app.js.map",
+    "apps/backend/dist/constants/http-status.js",
+    "apps/backend/dist/constants/http-status.js.map",
+    "apps/backend/dist/constants/jwt.js",
+    "apps/backend/dist/constants/jwt.js.map",
+    "apps/backend/dist/constants/permissions.js",
+    "apps/backend/dist/constants/permissions.js.map",
+    "apps/backend/dist/constants/roles.js",
+    "apps/backend/dist/constants/roles.js.map",
+    "apps/backend/dist/database",
+    "apps/backend/dist/database/prisma",
+    "apps/backend/dist/database/prisma/index.js",
+    "apps/backend/dist/database/prisma/index.js.map",
+    "apps/backend/dist/middlewares",
+    "apps/backend/dist/middlewares/errorHandler.js",
+    "apps/backend/dist/middlewares/errorHandler.js.map",
+    "apps/backend/dist/middlewares/requestId.js",
+    "apps/backend/dist/middlewares/requestId.js.map",
+    "apps/backend/dist/modules",
+    "apps/backend/dist/modules/analytics",
+    "apps/backend/dist/modules/analytics/index.js",
+    "apps/backend/dist/modules/analytics/index.js.map",
+    "apps/backend/dist/modules/auth",
+    "apps/backend/dist/modules/auth/controller",
+    "apps/backend/dist/modules/auth/controller/auth.controller.js",
+    "apps/backend/dist/modules/auth/controller/auth.controller.js.map",
+    "apps/backend/dist/modules/auth/dto",
+    "apps/backend/dist/modules/auth/dto/auth.dto.js",
+    "apps/backend/dist/modules/auth/dto/auth.dto.js.map",
+    "apps/backend/dist/modules/auth/index.js",
+    "apps/backend/dist/modules/auth/index.js.map",
+    "apps/backend/dist/modules/auth/interfaces",
+    "apps/backend/dist/modules/auth/interfaces/auth.interface.js",
+    "apps/backend/dist/modules/auth/interfaces/auth.interface.js.map",
+    "apps/backend/dist/modules/auth/middleware",
+    "apps/backend/dist/modules/auth/middleware/auth.middleware.js",
+    "apps/backend/dist/modules/auth/middleware/auth.middleware.js.map",
+    "apps/backend/dist/modules/auth/repository",
+    "apps/backend/dist/modules/auth/repository/auth.repository.js",
+    "apps/backend/dist/modules/auth/repository/auth.repository.js.map",
+    "apps/backend/dist/modules/auth/routes",
+    "apps/backend/dist/modules/auth/routes/auth.routes.js",
+    "apps/backend/dist/modules/auth/routes/auth.routes.js.map",
+    "apps/backend/dist/modules/auth/service",
+    "apps/backend/dist/modules/auth/service/__tests__",
+    "apps/backend/dist/modules/auth/service/__tests__/auth.service.test.js",
+    "apps/backend/dist/modules/auth/service/__tests__/auth.service.test.js.map",
+    "apps/backend/dist/modules/auth/service/auth.service.js",
+    "apps/backend/dist/modules/auth/service/auth.service.js.map",
+    "apps/backend/dist/modules/auth/utils",
+    "apps/backend/dist/modules/auth/utils/token.utils.js",
+    "apps/backend/dist/modules/auth/utils/token.utils.js.map",
+    "apps/backend/dist/modules/auth/validation",
+    "apps/backend/dist/modules/auth/validation/auth.validation.js",
+    "apps/backend/dist/modules/auth/validation/auth.validation.js.map",
+    "apps/backend/dist/modules/billing",
+    "apps/backend/dist/modules/billing/index.js",
+    "apps/backend/dist/modules/billing/index.js.map",
+    "apps/backend/dist/modules/campaign",
+    "apps/backend/dist/modules/campaign/controller",
+    "apps/backend/dist/modules/campaign/controller/campaign.controller.js",
+    "apps/backend/dist/modules/campaign/controller/campaign.controller.js.map",
+    "apps/backend/dist/modules/campaign/dto",
+    "apps/backend/dist/modules/campaign/dto/campaign.dto.js",
+    "apps/backend/dist/modules/campaign/dto/campaign.dto.js.map",
+    "apps/backend/dist/modules/campaign/index.js",
+    "apps/backend/dist/modules/campaign/index.js.map",
+    "apps/backend/dist/modules/campaign/repository",
+    "apps/backend/dist/modules/campaign/repository/campaign.repository.js",
+    "apps/backend/dist/modules/campaign/repository/campaign.repository.js.map",
+    "apps/backend/dist/modules/campaign/routes",
+    "apps/backend/dist/modules/campaign/routes/campaign.routes.js",
+    "apps/backend/dist/modules/campaign/routes/campaign.routes.js.map",
+    "apps/backend/dist/modules/campaign/service",
+    "apps/backend/dist/modules/campaign/service/campaign.service.js",
+    "apps/backend/dist/modules/campaign/service/campaign.service.js.map",
+    "apps/backend/dist/modules/campaign/validation",
+    "apps/backend/dist/modules/campaign/validation/campaign.validation.js",
+    "apps/backend/dist/modules/campaign/validation/campaign.validation.js.map",
+    "apps/backend/dist/modules/certificate",
+    "apps/backend/dist/modules/certificate/controller",
+    "apps/backend/dist/modules/certificate/controller/certificate.controller.js",
+    "apps/backend/dist/modules/certificate/controller/certificate.controller.js.map",
+    "apps/backend/dist/modules/certificate/dto",
+    "apps/backend/dist/modules/certificate/dto/certificate.dto.js",
+    "apps/backend/dist/modules/certificate/dto/certificate.dto.js.map",
+    "apps/backend/dist/modules/certificate/repository",
+    "apps/backend/dist/modules/certificate/repository/certificate.repository.js",
+    "apps/backend/dist/modules/certificate/repository/certificate.repository.js.map",
+    "apps/backend/dist/modules/certificate/routes",
+    "apps/backend/dist/modules/certificate/routes/certificate.routes.js",
+    "apps/backend/dist/modules/certificate/routes/certificate.routes.js.map",
+    "apps/backend/dist/modules/certificate/service",
+    "apps/backend/dist/modules/certificate/service/certificate.service.js",
+    "apps/backend/dist/modules/certificate/service/certificate.service.js.map",
+    "apps/backend/dist/modules/certificate/validation",
+    "apps/backend/dist/modules/certificate/validation/certificate.validation.js",
+    "apps/backend/dist/modules/certificate/validation/certificate.validation.js.map",
+    "apps/backend/dist/modules/course",
+    "apps/backend/dist/modules/course/controller",
+    "apps/backend/dist/modules/course/controller/course.controller.js",
+    "apps/backend/dist/modules/course/controller/course.controller.js.map",
+    "apps/backend/dist/modules/course/dto",
+    "apps/backend/dist/modules/course/dto/course.dto.js",
+    "apps/backend/dist/modules/course/dto/course.dto.js.map",
+    "apps/backend/dist/modules/course/index.js",
+    "apps/backend/dist/modules/course/index.js.map",
+    "apps/backend/dist/modules/course/repository",
+    "apps/backend/dist/modules/course/repository/course.repository.js",
+    "apps/backend/dist/modules/course/repository/course.repository.js.map",
+    "apps/backend/dist/modules/course/routes",
+    "apps/backend/dist/modules/course/routes/course.routes.js",
+    "apps/backend/dist/modules/course/routes/course.routes.js.map",
+    "apps/backend/dist/modules/course/service",
+    "apps/backend/dist/modules/course/service/course.service.js",
+    "apps/backend/dist/modules/course/service/course.service.js.map",
+    "apps/backend/dist/modules/course/validation",
+    "apps/backend/dist/modules/course/validation/course.validation.js",
+    "apps/backend/dist/modules/course/validation/course.validation.js.map",
+    "apps/backend/dist/modules/enrollment",
+    "apps/backend/dist/modules/enrollment/controller",
+    "apps/backend/dist/modules/enrollment/controller/enrollment.controller.js",
+    "apps/backend/dist/modules/enrollment/controller/enrollment.controller.js.map",
+    "apps/backend/dist/modules/enrollment/dto",
+    "apps/backend/dist/modules/enrollment/dto/enrollment.dto.js",
+    "apps/backend/dist/modules/enrollment/dto/enrollment.dto.js.map",
+    "apps/backend/dist/modules/enrollment/index.js",
+    "apps/backend/dist/modules/enrollment/index.js.map",
+    "apps/backend/dist/modules/enrollment/repository",
+    "apps/backend/dist/modules/enrollment/repository/enrollment.repository.js",
+    "apps/backend/dist/modules/enrollment/repository/enrollment.repository.js.map",
+    "apps/backend/dist/modules/enrollment/routes",
+    "apps/backend/dist/modules/enrollment/routes/enrollment.routes.js",
+    "apps/backend/dist/modules/enrollment/routes/enrollment.routes.js.map",
+    "apps/backend/dist/modules/enrollment/service",
+    "apps/backend/dist/modules/enrollment/service/enrollment.service.js",
+    "apps/backend/dist/modules/enrollment/service/enrollment.service.js.map",
+    "apps/backend/dist/modules/enrollment/validation",
+    "apps/backend/dist/modules/enrollment/validation/enrollment.validation.js",
+    "apps/backend/dist/modules/enrollment/validation/enrollment.validation.js.map",
+    "apps/backend/dist/modules/group",
+    "apps/backend/dist/modules/group/controller",
+    "apps/backend/dist/modules/group/controller/group.controller.js",
+    "apps/backend/dist/modules/group/controller/group.controller.js.map",
+    "apps/backend/dist/modules/group/dto",
+    "apps/backend/dist/modules/group/dto/group.dto.js",
+    "apps/backend/dist/modules/group/dto/group.dto.js.map",
+    "apps/backend/dist/modules/group/repository",
+    "apps/backend/dist/modules/group/repository/group.repository.js",
+    "apps/backend/dist/modules/group/repository/group.repository.js.map",
+    "apps/backend/dist/modules/group/routes",
+    "apps/backend/dist/modules/group/routes/group.routes.js",
+    "apps/backend/dist/modules/group/routes/group.routes.js.map",
+    "apps/backend/dist/modules/group/service",
+    "apps/backend/dist/modules/group/service/group.service.js",
+    "apps/backend/dist/modules/group/service/group.service.js.map",
+    "apps/backend/dist/modules/group/utils",
+    "apps/backend/dist/modules/group/utils/csv.parser.js",
+    "apps/backend/dist/modules/group/utils/csv.parser.js.map",
+    "apps/backend/dist/modules/group/validation",
+    "apps/backend/dist/modules/group/validation/group.validation.js",
+    "apps/backend/dist/modules/group/validation/group.validation.js.map",
+    "apps/backend/dist/modules/groups",
+    "apps/backend/dist/modules/groups/index.js",
+    "apps/backend/dist/modules/groups/index.js.map",
+    "apps/backend/dist/modules/health",
+    "apps/backend/dist/modules/health/health.controller.js",
+    "apps/backend/dist/modules/health/health.controller.js.map",
+    "apps/backend/dist/modules/health/health.routes.js",
+    "apps/backend/dist/modules/health/health.routes.js.map",
+    "apps/backend/dist/modules/learner",
+    "apps/backend/dist/modules/learner/controller",
+    "apps/backend/dist/modules/learner/controller/learner.controller.js",
+    "apps/backend/dist/modules/learner/controller/learner.controller.js.map",
+    "apps/backend/dist/modules/learner/dto",
+    "apps/backend/dist/modules/learner/dto/learner.dto.js",
+    "apps/backend/dist/modules/learner/dto/learner.dto.js.map",
+    "apps/backend/dist/modules/learner/index.js",
+    "apps/backend/dist/modules/learner/index.js.map",
+    "apps/backend/dist/modules/learner/repository",
+    "apps/backend/dist/modules/learner/repository/learner.repository.js",
+    "apps/backend/dist/modules/learner/repository/learner.repository.js.map",
+    "apps/backend/dist/modules/learner/routes",
+    "apps/backend/dist/modules/learner/routes/learner.routes.js",
+    "apps/backend/dist/modules/learner/routes/learner.routes.js.map",
+    "apps/backend/dist/modules/learner/service",
+    "apps/backend/dist/modules/learner/service/learner.service.js",
+    "apps/backend/dist/modules/learner/service/learner.service.js.map",
+    "apps/backend/dist/modules/learner/validation",
+    "apps/backend/dist/modules/learner/validation/learner.validation.js",
+    "apps/backend/dist/modules/learner/validation/learner.validation.js.map",
+    "apps/backend/dist/modules/library",
+    "apps/backend/dist/modules/library/controller",
+    "apps/backend/dist/modules/library/controller/library.controller.js",
+    "apps/backend/dist/modules/library/controller/library.controller.js.map",
+    "apps/backend/dist/modules/library/dto",
+    "apps/backend/dist/modules/library/dto/library.dto.js",
+    "apps/backend/dist/modules/library/dto/library.dto.js.map",
+    "apps/backend/dist/modules/library/index.js",
+    "apps/backend/dist/modules/library/index.js.map",
+    "apps/backend/dist/modules/library/repository",
+    "apps/backend/dist/modules/library/repository/library.repository.js",
+    "apps/backend/dist/modules/library/repository/library.repository.js.map",
+    "apps/backend/dist/modules/library/routes",
+    "apps/backend/dist/modules/library/routes/library.routes.js",
+    "apps/backend/dist/modules/library/routes/library.routes.js.map",
+    "apps/backend/dist/modules/library/service",
+    "apps/backend/dist/modules/library/service/library.service.js",
+    "apps/backend/dist/modules/library/service/library.service.js.map",
+    "apps/backend/dist/modules/library/validation",
+    "apps/backend/dist/modules/library/validation/library.validation.js",
+    "apps/backend/dist/modules/library/validation/library.validation.js.map",
+    "apps/backend/dist/modules/notification",
+    "apps/backend/dist/modules/notification/controller",
+    "apps/backend/dist/modules/notification/controller/notification.controller.js",
+    "apps/backend/dist/modules/notification/controller/notification.controller.js.map",
+    "apps/backend/dist/modules/notification/dto",
+    "apps/backend/dist/modules/notification/dto/notification.dto.js",
+    "apps/backend/dist/modules/notification/dto/notification.dto.js.map",
+    "apps/backend/dist/modules/notification/index.js",
+    "apps/backend/dist/modules/notification/index.js.map",
+    "apps/backend/dist/modules/notification/repository",
+    "apps/backend/dist/modules/notification/repository/notification.repository.js",
+    "apps/backend/dist/modules/notification/repository/notification.repository.js.map",
+    "apps/backend/dist/modules/notification/routes",
+    "apps/backend/dist/modules/notification/routes/notification.routes.js",
+    "apps/backend/dist/modules/notification/routes/notification.routes.js.map",
+    "apps/backend/dist/modules/notification/service",
+    "apps/backend/dist/modules/notification/service/notification.service.js",
+    "apps/backend/dist/modules/notification/service/notification.service.js.map",
+    "apps/backend/dist/modules/notification/service/tenantEmail.service.js",
+    "apps/backend/dist/modules/notification/service/tenantEmail.service.js.map",
+    "apps/backend/dist/modules/notification/utils",
+    "apps/backend/dist/modules/notification/utils/email.provider.js",
+    "apps/backend/dist/modules/notification/utils/email.provider.js.map",
+    "apps/backend/dist/modules/notification/utils/template.renderer.js",
+    "apps/backend/dist/modules/notification/utils/template.renderer.js.map",
+    "apps/backend/dist/modules/notification/validation",
+    "apps/backend/dist/modules/notification/validation/notification.validation.js",
+    "apps/backend/dist/modules/notification/validation/notification.validation.js.map",
+    "apps/backend/dist/modules/report",
+    "apps/backend/dist/modules/report/controller",
+    "apps/backend/dist/modules/report/controller/report.controller.js",
+    "apps/backend/dist/modules/report/controller/report.controller.js.map",
+    "apps/backend/dist/modules/report/dto",
+    "apps/backend/dist/modules/report/dto/report.dto.js",
+    "apps/backend/dist/modules/report/dto/report.dto.js.map",
+    "apps/backend/dist/modules/report/repository",
+    "apps/backend/dist/modules/report/repository/report.repository.js",
+    "apps/backend/dist/modules/report/repository/report.repository.js.map",
+    "apps/backend/dist/modules/report/routes",
+    "apps/backend/dist/modules/report/routes/report.routes.js",
+    "apps/backend/dist/modules/report/routes/report.routes.js.map",
+    "apps/backend/dist/modules/report/service",
+    "apps/backend/dist/modules/report/service/report.service.js",
+    "apps/backend/dist/modules/report/service/report.service.js.map",
+    "apps/backend/dist/modules/report/validation",
+    "apps/backend/dist/modules/report/validation/report.validation.js",
+    "apps/backend/dist/modules/report/validation/report.validation.js.map",
+    "apps/backend/dist/modules/reports",
+    "apps/backend/dist/modules/reports/index.js",
+    "apps/backend/dist/modules/reports/index.js.map",
+    "apps/backend/dist/modules/roles",
+    "apps/backend/dist/modules/roles/index.js",
+    "apps/backend/dist/modules/roles/index.js.map",
+    "apps/backend/dist/modules/tenant",
+    "apps/backend/dist/modules/tenant/controller",
+    "apps/backend/dist/modules/tenant/controller/tenant.controller.js",
+    "apps/backend/dist/modules/tenant/controller/tenant.controller.js.map",
+    "apps/backend/dist/modules/tenant/dto",
+    "apps/backend/dist/modules/tenant/dto/tenant.dto.js",
+    "apps/backend/dist/modules/tenant/dto/tenant.dto.js.map",
+    "apps/backend/dist/modules/tenant/index.js",
+    "apps/backend/dist/modules/tenant/index.js.map",
+    "apps/backend/dist/modules/tenant/repository",
+    "apps/backend/dist/modules/tenant/repository/tenant.repository.js",
+    "apps/backend/dist/modules/tenant/repository/tenant.repository.js.map",
+    "apps/backend/dist/modules/tenant/routes",
+    "apps/backend/dist/modules/tenant/routes/tenant.routes.js",
+    "apps/backend/dist/modules/tenant/routes/tenant.routes.js.map",
+    "apps/backend/dist/modules/tenant/service",
+    "apps/backend/dist/modules/tenant/service/tenant.service.js",
+    "apps/backend/dist/modules/tenant/service/tenant.service.js.map",
+    "apps/backend/dist/modules/tenant/validation",
+    "apps/backend/dist/modules/tenant/validation/tenant.validation.js",
+    "apps/backend/dist/modules/tenant/validation/tenant.validation.js.map",
+    "apps/backend/dist/modules/tenantBranding",
+    "apps/backend/dist/modules/tenantBranding/controller",
+    "apps/backend/dist/modules/tenantBranding/controller/tenantBranding.controller.js",
+    "apps/backend/dist/modules/tenantBranding/controller/tenantBranding.controller.js.map",
+    "apps/backend/dist/modules/tenantBranding/dto",
+    "apps/backend/dist/modules/tenantBranding/dto/tenantBranding.dto.js",
+    "apps/backend/dist/modules/tenantBranding/dto/tenantBranding.dto.js.map",
+    "apps/backend/dist/modules/tenantBranding/repository",
+    "apps/backend/dist/modules/tenantBranding/repository/tenantBranding.repository.js",
+    "apps/backend/dist/modules/tenantBranding/repository/tenantBranding.repository.js.map",
+    "apps/backend/dist/modules/tenantBranding/routes",
+    "apps/backend/dist/modules/tenantBranding/routes/tenantBranding.routes.js",
+    "apps/backend/dist/modules/tenantBranding/routes/tenantBranding.routes.js.map",
+    "apps/backend/dist/modules/tenantBranding/service",
+    "apps/backend/dist/modules/tenantBranding/service/tenantBranding.service.js",
+    "apps/backend/dist/modules/tenantBranding/service/tenantBranding.service.js.map",
+    "apps/backend/dist/modules/tenantBranding/validation",
+    "apps/backend/dist/modules/tenantBranding/validation/tenantBranding.validation.js",
+    "apps/backend/dist/modules/tenantBranding/validation/tenantBranding.validation.js.map",
+    "apps/backend/dist/modules/tenantLibrary",
+    "apps/backend/dist/modules/tenantLibrary/controller",
+    "apps/backend/dist/modules/tenantLibrary/controller/tenantLibrary.controller.js",
+    "apps/backend/dist/modules/tenantLibrary/controller/tenantLibrary.controller.js.map",
+    "apps/backend/dist/modules/tenantLibrary/dto",
+    "apps/backend/dist/modules/tenantLibrary/dto/tenantLibrary.dto.js",
+    "apps/backend/dist/modules/tenantLibrary/dto/tenantLibrary.dto.js.map",
+    "apps/backend/dist/modules/tenantLibrary/repository",
+    "apps/backend/dist/modules/tenantLibrary/repository/tenantLibrary.repository.js",
+    "apps/backend/dist/modules/tenantLibrary/repository/tenantLibrary.repository.js.map",
+    "apps/backend/dist/modules/tenantLibrary/routes",
+    "apps/backend/dist/modules/tenantLibrary/routes/tenantLibrary.routes.js",
+    "apps/backend/dist/modules/tenantLibrary/routes/tenantLibrary.routes.js.map",
+    "apps/backend/dist/modules/tenantLibrary/service",
+    "apps/backend/dist/modules/tenantLibrary/service/tenantLibrary.service.js",
+    "apps/backend/dist/modules/tenantLibrary/service/tenantLibrary.service.js.map",
+    "apps/backend/dist/modules/tenantLibrary/validation",
+    "apps/backend/dist/modules/tenantLibrary/validation/tenantLibrary.validation.js",
+    "apps/backend/dist/modules/tenantLibrary/validation/tenantLibrary.validation.js.map",
+    "apps/backend/dist/modules/user",
+    "apps/backend/dist/modules/user/controller",
+    "apps/backend/dist/modules/user/controller/user.controller.js",
+    "apps/backend/dist/modules/user/controller/user.controller.js.map",
+    "apps/backend/dist/modules/user/dto",
+    "apps/backend/dist/modules/user/dto/user.dto.js",
+    "apps/backend/dist/modules/user/dto/user.dto.js.map",
+    "apps/backend/dist/modules/user/middleware",
+    "apps/backend/dist/modules/user/middleware/requireTenantAdmin.js",
+    "apps/backend/dist/modules/user/middleware/requireTenantAdmin.js.map",
+    "apps/backend/dist/modules/user/repository",
+    "apps/backend/dist/modules/user/repository/user.repository.js",
+    "apps/backend/dist/modules/user/repository/user.repository.js.map",
+    "apps/backend/dist/modules/user/routes",
+    "apps/backend/dist/modules/user/routes/user.routes.js",
+    "apps/backend/dist/modules/user/routes/user.routes.js.map",
+    "apps/backend/dist/modules/user/service",
+    "apps/backend/dist/modules/user/service/user.service.js",
+    "apps/backend/dist/modules/user/service/user.service.js.map",
+    "apps/backend/dist/modules/user/utils",
+    "apps/backend/dist/modules/user/utils/csv.parser.js",
+    "apps/backend/dist/modules/user/utils/csv.parser.js.map",
+    "apps/backend/dist/modules/user/validation",
+    "apps/backend/dist/modules/user/validation/user.validation.js",
+    "apps/backend/dist/modules/user/validation/user.validation.js.map",
+    "apps/backend/dist/modules/users",
+    "apps/backend/dist/modules/users/index.js",
+    "apps/backend/dist/modules/users/index.js.map",
+    "apps/backend/dist/server.js",
+    "apps/backend/dist/server.js.map",
+    "apps/backend/dist/shared",
+    "apps/backend/dist/shared/enums",
+    "apps/backend/dist/shared/enums/index.js",
+    "apps/backend/dist/shared/enums/index.js.map",
+    "apps/backend/dist/shared/errors",
+    "apps/backend/dist/shared/errors/index.js",
+    "apps/backend/dist/shared/errors/index.js.map",
+    "apps/backend/dist/shared/featureFlags",
+    "apps/backend/dist/shared/featureFlags/featureFlag.service.js",
+    "apps/backend/dist/shared/featureFlags/featureFlag.service.js.map",
+    "apps/backend/dist/shared/helpers",
+    "apps/backend/dist/shared/helpers/asyncHandler.js",
+    "apps/backend/dist/shared/helpers/asyncHandler.js.map",
+    "apps/backend/dist/shared/helpers/validate.js",
+    "apps/backend/dist/shared/helpers/validate.js.map",
+    "apps/backend/dist/shared/interfaces",
+    "apps/backend/dist/shared/interfaces/index.js",
+    "apps/backend/dist/shared/interfaces/index.js.map",
+    "apps/backend/dist/shared/logger",
+    "apps/backend/dist/shared/logger/index.js",
+    "apps/backend/dist/shared/logger/index.js.map",
+    "apps/backend/dist/shared/middlewares",
+    "apps/backend/dist/shared/middlewares/__tests__",
+    "apps/backend/dist/shared/middlewares/__tests__/requireRole.test.js",
+    "apps/backend/dist/shared/middlewares/__tests__/requireRole.test.js.map",
+    "apps/backend/dist/shared/middlewares/rateLimiter.middleware.js",
+    "apps/backend/dist/shared/middlewares/rateLimiter.middleware.js.map",
+    "apps/backend/dist/shared/middlewares/requireRole.js",
+    "apps/backend/dist/shared/middlewares/requireRole.js.map",
+    "apps/backend/dist/shared/middlewares/requireSuperAdmin.js",
+    "apps/backend/dist/shared/middlewares/requireSuperAdmin.js.map",
+    "apps/backend/dist/shared/middlewares/requireTenantAdmin.js",
+    "apps/backend/dist/shared/middlewares/requireTenantAdmin.js.map",
+    "apps/backend/dist/shared/middlewares/tenantResolver.middleware.js",
+    "apps/backend/dist/shared/middlewares/tenantResolver.middleware.js.map",
+    "apps/backend/dist/shared/responses",
+    "apps/backend/dist/shared/responses/ApiResponse.js",
+    "apps/backend/dist/shared/responses/ApiResponse.js.map",
+    "apps/backend/dist/shared/services",
+    "apps/backend/dist/shared/services/auditLog.service.js",
+    "apps/backend/dist/shared/services/auditLog.service.js.map",
+    "apps/backend/dist/shared/services/upload.service.js",
+    "apps/backend/dist/shared/services/upload.service.js.map",
+    "apps/backend/dist/shared/storage",
+    "apps/backend/dist/shared/storage/local.storage.provider.js",
+    "apps/backend/dist/shared/storage/local.storage.provider.js.map",
+    "apps/backend/dist/shared/storage/s3.storage.provider.js",
+    "apps/backend/dist/shared/storage/s3.storage.provider.js.map",
+    "apps/backend/dist/shared/storage/storage.factory.js",
+    "apps/backend/dist/shared/storage/storage.factory.js.map",
+    "apps/backend/dist/shared/storage/storage.provider.interface.js",
+    "apps/backend/dist/shared/storage/storage.provider.interface.js.map",
+    "apps/backend/dist/shared/types",
+    "apps/backend/dist/shared/types/index.js",
+    "apps/backend/dist/shared/types/index.js.map"
+  ]
+}

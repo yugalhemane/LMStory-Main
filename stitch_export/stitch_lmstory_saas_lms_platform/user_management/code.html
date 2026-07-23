@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management - LMStory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#76777d",
+                        "surface-tint": "#565e74",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#009668",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary-fixed": "#6ffbbe",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-container": "#131b2e",
+                        "tertiary-container": "#002113",
+                        "tertiary": "#000000",
+                        "on-secondary-container": "#fefcff",
+                        "surface": "#f8f9ff",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#0058be",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "secondary-container": "#2170e4",
+                        "on-primary-container": "#7c839b",
+                        "primary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "primary-fixed": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#d8e2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F8FAFC;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-x-hidden font-body-md text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container dark:bg-primary-container border-r border-outline-variant flex flex-col py-lg z-50">
+<div class="px-md mb-xl flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<span class="text-title-lg font-title-lg font-bold text-on-primary">LMStory</span>
+</div>
+<nav class="flex-1 px-sm space-y-xs overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg opacity-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-label-md font-label-md">Groups</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-label-md font-label-md">Library</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-label-md font-label-md">Campaigns</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-label-md font-label-md">Courses</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-lg">
+<div class="p-md bg-white/5 rounded-xl flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover rounded-full" data-alt="Close up professional corporate portrait of a middle-aged woman with a friendly expression, soft studio lighting, neutral high-end office background, part of a modern enterprise software user interface design with professional blue and grey color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaV7va4zQP1RonP2AAj72EDujBH7orA0dJDWKVsmrVoKtOR1nH8LyAwz-WETeyDzsPxWiCKtR69EBJ_T0qKgypnNYdk-cgLxZEDxiom0Tb67uNIJr7numaox9TLFI12p4H7gbXherft_jfCL9auDngSMYIhB1ElzqQ10I1rfW72P6oVhV59Sj3hyFt27GEg2E0_r8XI4y5p9IpkNH_xv7ro0u99to7_tO_ChgN5TrNBt3EUuLBF6ujNm9PSwaIl6GnrGajmPzEequp"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-on-primary text-label-md font-bold truncate">Sarah Jenkins</p>
+<p class="text-on-primary-container text-label-sm truncate">Admin Account</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-[260px] min-w-0 flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center h-16 px-margin-desktop w-full max-w-[calc(1440px-260px)] bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all" placeholder="Search users, groups, or roles..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-sm px-md py-2 bg-surface-container-low rounded-lg border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
+<span class="text-label-md font-bold text-on-surface">Global Enterprise</span>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">apps</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-margin-desktop space-y-lg max-w-[1440px]">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">User Management</h1>
+<p class="text-body-sm text-on-surface-variant mt-xs">Manage organizational hierarchy, roles, and platform access.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-xs px-md py-2 bg-white border border-outline-variant rounded-lg text-label-md font-bold text-on-surface hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-md">upload_file</span>
+                        CSV Import
+                    </button>
+<button class="flex items-center gap-xs px-md py-2 bg-secondary text-white rounded-lg text-label-md font-bold hover:shadow-lg hover:shadow-secondary/20 transition-all">
+<span class="material-symbols-outlined text-md">person_add</span>
+                        Add User
+                    </button>
+</div>
+</div>
+<!-- Stats Overview (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-white p-md border border-outline-variant rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Total Users</p>
+<p class="text-headline-md font-headline-md">12,482</p>
+</div>
+</div>
+<div class="bg-white p-md border border-outline-variant rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Active Now</p>
+<p class="text-headline-md font-headline-md">842</p>
+</div>
+</div>
+<div class="bg-white p-md border border-outline-variant rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Pending Invitations</p>
+<p class="text-headline-md font-headline-md">156</p>
+</div>
+</div>
+<div class="bg-white p-md border border-outline-variant rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">block</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Inactive</p>
+<p class="text-headline-md font-headline-md">42</p>
+</div>
+</div>
+</div>
+<!-- Filters Section -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="p-md flex flex-wrap items-center gap-md border-b border-outline-variant">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">filter_list</span>
+<span class="text-label-md font-bold">Filters:</span>
+</div>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-sm py-2 text-body-sm focus:ring-2 focus:ring-secondary/20">
+<option>All Departments</option>
+<option>Engineering</option>
+<option>Marketing</option>
+<option>Operations</option>
+</select>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-sm py-2 text-body-sm focus:ring-2 focus:ring-secondary/20">
+<option>All Groups</option>
+<option>Standard Learners</option>
+<option>VIP Clients</option>
+</select>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-sm py-2 text-body-sm focus:ring-2 focus:ring-secondary/20">
+<option>All Roles</option>
+<option>Admin</option>
+<option>Instructor</option>
+<option>Learner</option>
+</select>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-sm py-2 text-body-sm focus:ring-2 focus:ring-secondary/20">
+<option>Status: All</option>
+<option>Status: Active</option>
+<option>Status: Inactive</option>
+</select>
+<button class="ml-auto text-label-md font-bold text-secondary hover:underline transition-all">Clear All</button>
+</div>
+<!-- Table Content -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md text-label-md font-bold text-outline uppercase tracking-wider">User Details</th>
+<th class="p-md text-label-md font-bold text-outline uppercase tracking-wider">Department</th>
+<th class="p-md text-label-md font-bold text-outline uppercase tracking-wider">Group</th>
+<th class="p-md text-label-md font-bold text-outline uppercase tracking-wider">Role</th>
+<th class="p-md text-label-md font-bold text-outline uppercase tracking-wider">Status</th>
+<th class="p-md text-label-md font-bold text-outline uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- User Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young creative professional man in his late 20s, featuring a stylish beard and glasses. The lighting is warm and natural against a clean, minimal tech office environment. High information density enterprise software context, elegant modern UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6LZSzft3KU7Y2Yc68dOLVatHKMlFhNaYxQYovAu9M4O0L-hFt13JrLxKVT_eXxl4RJBZQG1TuTlNM2rNR2lrxw5CsgHgnWyG6kSSl32Tj1_lUhSxaAZ_teFoKHywhpgh4oqph4bGudf91nh6iUdmXEJEoRsBqPjvqBVn6RphOP2ch_1f-CNN33JO5mO_Y-Ma67hp6JBNgexBHAayyyM71W3u1-X4pSDOCwygM0hI9N9uuXEPRdzYXDCQD4MerradGpki_jo7QGhfY"/>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Marcus Thorne</p>
+<p class="text-body-sm text-on-surface-variant">m.thorne@lmstory.corp</p>
+</div>
+</div>
+</td>
+<td class="p-md text-body-sm">Engineering</td>
+<td class="p-md text-body-sm">Lead Developers</td>
+<td class="p-md">
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-label-sm font-bold">Instructor</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-xs text-on-tertiary-container font-bold text-label-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></div>
+                                        Active
+                                    </div>
+</td>
+<td class="p-md text-right">
+<button class="p-2 hover:bg-surface-variant/20 rounded-full transition-colors text-outline">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- User Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A high-resolution corporate headshot of a smiling Asian woman professional in her 30s. She is wearing modern business attire in a sleek, architectural office setting with soft bokeh. Corporate modern style with reliable and efficient brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvY34NY5TvKg20gciXUZqi5KFGCQhQCiWZVilu5ptCmYf1qEdQltK0L4Ttp3fVwZKNuZeaRtuEZkybVrHA2umq_D1CdM658mMXmPHsJibTZxc60uaAq45r_xrTNsTysAETPFwVHBxhKD2OiZwpZsr7fEcPK5ikAhPpaX6cfmrhcp_6Uftmp6jmLgWNcDg94OQEEaomp9NQN2oAWxHY9qcPzcaoQdm-kdvw1ohG_MucQPqhMD-9ZHot2Ie2jgdQxsD1CkDmchQuMost"/>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Lena Park</p>
+<p class="text-body-sm text-on-surface-variant">lena.p@lmstory.corp</p>
+</div>
+</div>
+</td>
+<td class="p-md text-body-sm">Marketing</td>
+<td class="p-md text-body-sm">Content Creators</td>
+<td class="p-md">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full text-label-sm font-bold">Learner</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-xs text-on-tertiary-container font-bold text-label-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></div>
+                                        Active
+                                    </div>
+</td>
+<td class="p-md text-right">
+<button class="p-2 hover:bg-surface-variant/20 rounded-full transition-colors text-outline">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- User Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant bg-surface-container flex items-center justify-center">
+<span class="text-secondary font-bold">DJ</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">David Jenkins</p>
+<p class="text-body-sm text-on-surface-variant">d.jenkins@lmstory.corp</p>
+</div>
+</div>
+</td>
+<td class="p-md text-body-sm">Operations</td>
+<td class="p-md text-body-sm">Regional Admins</td>
+<td class="p-md">
+<span class="px-3 py-1 bg-primary-container text-white rounded-full text-label-sm font-bold">Admin</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-xs text-on-tertiary-container font-bold text-label-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></div>
+                                        Active
+                                    </div>
+</td>
+<td class="p-md text-right">
+<button class="p-2 hover:bg-surface-variant/20 rounded-full transition-colors text-outline">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- User Row 4 (Inactive) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant grayscale">
+<img class="w-full h-full object-cover" data-alt="A portrait of a mature professional man with grey hair, wearing a navy sweater. He has a serious yet calm demeanor. Background is a blurred bookshelf in a high-end corporate office. Professional, engineered, and precise visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbxZ2UfYFrTyrgazISqjPPZ44wuoyX_2MycHor_U_9sDayg4lE0mYVhcezxhcOCH7tvxU5sCIaGF7O1vHPa_qIuaxCbzapw9gs4XRem9UQAO7ncun9naRlWBlg1zmQPP4Stx1fEBHnBK4ATsQLjFd44teubfwK_4LL5c3ArdrUazqbf6FAkitT8GXQ056CxYedT0tvBwjcpa84L50sDOgpFsF757UHDDf6H8QHGuKNb5ODT-b27m33zhkVmrT86J7EC4fNhvdAFqrX"/>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Robert Vance</p>
+<p class="text-body-sm text-on-surface-variant">r.vance@lmstory.corp</p>
+</div>
+</div>
+</td>
+<td class="p-md text-body-sm">Human Resources</td>
+<td class="p-md text-body-sm">Onboarding</td>
+<td class="p-md">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full text-label-sm font-bold">Learner</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-xs text-outline font-bold text-label-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-outline"></div>
+                                        Inactive
+                                    </div>
+</td>
+<td class="p-md text-right">
+<button class="p-2 hover:bg-surface-variant/20 rounded-full transition-colors text-outline">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-md bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between">
+<p class="text-body-sm text-on-surface-variant">Showing 1 to 4 of 12,482 users</p>
+<div class="flex items-center gap-xs">
+<button class="p-1 rounded border border-outline-variant hover:bg-surface-container-low disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-md">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-secondary text-white text-label-md font-bold">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-low text-label-md font-bold">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-low text-label-md font-bold">3</button>
+<span class="px-2 text-outline">...</span>
+<button class="w-8 h-8 rounded hover:bg-surface-container-low text-label-md font-bold">312</button>
+<button class="p-1 rounded border border-outline-variant hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-md">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Context Menu Placeholder Logic -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple interactions for demonstration
+            const actionButtons = document.querySelectorAll('button');
+            actionButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (btn.classList.contains('bg-secondary')) {
+                        // Pulse effect for primary buttons
+                        btn.classList.add('scale-95');
+                        setTimeout(() => btn.classList.remove('scale-95'), 150);
+                    }
+                });
+            });
+
+            // Active state handling for sidebar
+            const navLinks = document.querySelectorAll('aside nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    navLinks.forEach(l => {
+                        l.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'rounded-lg');
+                        l.classList.add('text-on-surface-variant');
+                    });
+                    link.classList.add('bg-secondary-container', 'text-on-secondary-container', 'rounded-lg');
+                    link.classList.remove('text-on-surface-variant');
+                });
+            });
+        });
+    </script>
+</body></html>

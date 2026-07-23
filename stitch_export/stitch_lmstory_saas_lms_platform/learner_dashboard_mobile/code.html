@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LMStory Learner Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "surface-variant": "#d3e4fe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary-container": "#7c839b",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "secondary-container": "#2170e4",
+                    "inverse-surface": "#213145",
+                    "primary-fixed": "#dae2fd",
+                    "on-secondary-fixed": "#001a42",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface-container-low": "#eff4ff",
+                    "tertiary": "#000000",
+                    "tertiary-container": "#002113",
+                    "outline-variant": "#c6c6cd",
+                    "outline": "#76777d",
+                    "on-tertiary-fixed": "#002113",
+                    "on-surface-variant": "#45464d",
+                    "on-tertiary-container": "#009668",
+                    "surface-container": "#e5eeff",
+                    "surface-tint": "#565e74",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-bright": "#f8f9ff",
+                    "secondary": "#0058be",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#6ffbbe",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#000000",
+                    "on-background": "#0b1c30",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "surface": "#f8f9ff",
+                    "inverse-primary": "#bec6e0",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#dce9ff",
+                    "primary-container": "#131b2e",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "title-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-lg-mobile": ["16px", {"lineHeight": "22px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-surface flex items-center justify-between px-margin-mobile h-16 transition-shadow" id="mainHeader">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-title-md">school</span>
+</div>
+<h1 class="font-title-lg text-title-lg text-on-surface tracking-tight">LMStory</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-xs text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young adult learner for a corporate LMS profile, captured in a brightly lit studio with a soft, clean white background. The subject is wearing business casual attire, reflecting a reliable and professional student persona. The lighting is high-key and even, ensuring clarity and a high-end SaaS aesthetic that aligns with the light mode UI of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg6lPKKtH329gvA_0HZjwusvSeqYDVYZN_YmT5AF_1bpVbWt1aNFf595CBEgP8xka20U44rIqWH2KQfLJPdwY5xSHhzjR878cyVNpCLJAxuZpt6RPJePK1vaD5LniPkJhnrik9BUEjlyys1ITqJiVBKFkw0uv2vbpI5tMFmjukmYNfo8J-YAdHdfO2LzWLppKL-bizC777yLMhw6OdD0P5AGFHDlJyeFDdVef0Hcn34diZEUBYdGQWZe-QLXMaSPLe3z2gigotcrIM"/>
+</div>
+</div>
+</header>
+<main class="px-margin-mobile pt-lg space-y-lg max-w-lg mx-auto">
+<!-- Welcome Greeting -->
+<section class="space-y-xs">
+<p class="font-label-md text-label-md text-secondary uppercase tracking-widest">Learner Dashboard</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Hello, Alex Rivera</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">You have 3 campaigns to complete this week.</p>
+</section>
+<!-- Stats Grid (Bento Style Mobile) -->
+<section class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col justify-between aspect-square">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div>
+<p class="font-display text-[28px] text-on-surface">12</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Certificates</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col justify-between aspect-square">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="font-display text-[28px] text-on-surface">48.5</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Hours Logged</p>
+</div>
+</div>
+</section>
+<!-- Active Campaigns Vertical Stack -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md text-on-surface">Assigned Campaigns</h3>
+<button class="text-secondary font-label-md text-label-md">View All</button>
+</div>
+<div class="space-y-md">
+<!-- Campaign Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group active:scale-[0.98] transition-transform">
+<div class="h-32 relative">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist 3D rendering of abstract geometric shapes in shades of professional blue and grey, representing high-tech cyber security concepts. The lighting is focused and cinematic, creating a sense of reliability and importance. The background is a crisp white to maintain the corporate modern light-mode aesthetic of the LMStory platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIZwdmzUX7jlpAATaHPREeS4vs4ND57_Bm-1N-DuiO1P4BMHwmSdl7w00XgAglmvqfpDq6c51yP5gWAkdqTPKjY9bVJ5QQGO1e7_9IObsEcFXkWDW0Pz7weYLcxySwoTxsMVyWSVtBVfShbovg4It5PKm8pTzOKudZjdUsNU8LAIh70NwlrpZ7JVl3F8CICPkF76fr4_mM4QzYopDg2EECGgiNhFg0KX-yN2VbODJns_-jLVp2MQJV1sa6aEpihnYg9311KEFLeMPg"/>
+<div class="absolute top-sm right-sm px-sm py-xs bg-surface/90 backdrop-blur rounded text-label-sm font-label-sm text-on-surface border border-outline-variant/30">
+                            Due in 2 days
+                        </div>
+</div>
+<div class="p-md space-y-md">
+<div>
+<h4 class="font-title-lg-mobile text-title-lg-mobile text-on-surface leading-tight">Cyber Security Essentials 2024</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Required compliance training for all staff.</p>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Progress</span>
+<span class="text-on-surface">65%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary transition-all duration-700 w-[65%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Campaign Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group active:scale-[0.98] transition-transform">
+<div class="h-32 relative">
+<img class="w-full h-full object-cover" data-alt="A sophisticated digital illustration of connected nodes and light pathways forming a neural network pattern, using a palette of light emerald and deep charcoal. The visual style is engineered and precise, evoking professional growth and technical clarity. The lighting creates a subtle depth effect suitable for a high-end enterprise SaaS dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkEtU1SMgLhzmenrhXW8HTSrlB0ESN2dF_chB4zbHUhs2LoQc_m0aEo9x0Kz0QKRmAug2dGptE2X6ZN-0azAhFrNIIkDwZ2mx4g2Fc5vgdTySIZuKfPv5G6kx9nG_XcCVs5Ba5kxMr2M1_bfKGDnprYG6MiDJSZPR2u_tY1gzPUXM55qXXjjsSaOpDjHooumVnU4qUArdMCfLVF51n8l-UBb9NQTIFP6eOpwEzJjSaO9NZZVOaMUxun-BT2DHDmZQis3IS0ttFHRIx"/>
+<div class="absolute top-sm right-sm px-sm py-xs bg-surface/90 backdrop-blur rounded text-label-sm font-label-sm text-on-surface border border-outline-variant/30">
+                            New
+                        </div>
+</div>
+<div class="p-md space-y-md">
+<div>
+<h4 class="font-title-lg-mobile text-title-lg-mobile text-on-surface leading-tight">Advanced Project Management</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Mastering the Agile framework and Jira tools.</p>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Progress</span>
+<span class="text-on-surface">0%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary transition-all duration-700 w-0"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Campaign Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group active:scale-[0.98] transition-transform">
+<div class="h-32 relative">
+<img class="w-full h-full object-cover" data-alt="A modern office environment captured through a soft-focus lens, showing collaborative teams in a bright, airy workspace filled with natural light and green plants. The color palette emphasizes clean whites, warm wood tones, and cool blue accents. The mood is professional, efficient, and growth-oriented, aligning with corporate organizational clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYXCh90KfPS0f0DbkRBwrC2by5Z4rdc9vpJl5ff6DnTCla1yNnkE4Bwn_R1B97sB0UeEETFXWqRxmBrsznPaetZUMcwmYmYr2pyLThaw0d_VVtA8__3dMumfqPaC9VS67Q-y7MvP4N7qg7nMR8ErjZb2bDyoQ1Qxbun7xs8DNi0Yz0NmoawmcmjDDLDgM-7_gLA61pAyYrxsLHGL8eNl_tPd1SnT2MOOsMHvY-JlN0MR71GgIt04-p9KS1u0zjdWTD20wXAPKmFg26"/>
+<div class="absolute top-sm right-sm px-sm py-xs bg-surface/90 backdrop-blur rounded text-label-sm font-label-sm text-on-surface border border-outline-variant/30">
+                            Expiring
+                        </div>
+</div>
+<div class="p-md space-y-md">
+<div>
+<h4 class="font-title-lg-mobile text-title-lg-mobile text-on-surface leading-tight">Leadership &amp; Empathy</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Developing soft skills for mid-level management.</p>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Progress</span>
+<span class="text-on-surface">92%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary transition-all duration-700 w-[92%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Mini Section -->
+<section class="bg-surface-container-low rounded-xl p-md space-y-md">
+<h3 class="font-title-md text-title-md text-on-surface">Recent Activity</h3>
+<div class="space-y-md">
+<div class="flex gap-md">
+<div class="shrink-0 w-8 h-8 rounded-full bg-tertiary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Completed "Data Ethics" quiz</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">2 hours ago</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="shrink-0 w-8 h-8 rounded-full bg-secondary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed text-[18px]" data-icon="history" style="font-variation-settings: 'FILL' 0;">history</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Resumed "Agile Basics" module</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Yesterday</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed right-6 bottom-24 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<!-- Bottom Navigation Bar (Mandatory for Mobile Shell) -->
+<nav class="fixed bottom-0 left-0 right-0 h-16 bg-surface border-t border-outline-variant flex items-center justify-around px-md z-50">
+<a class="flex flex-col items-center gap-1 px-sm py-xs text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-sm py-xs text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-label-sm text-[10px]">Courses</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-sm py-xs text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-label-sm text-[10px]">Campaigns</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-sm py-xs text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-sm text-[10px]">Reports</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-sm py-xs text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-[10px]">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple header scroll shadow effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Micro-interaction for campaign cards
+        const cards = document.querySelectorAll('.bg-surface-container-lowest');
+        cards.forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.classList.add('bg-surface-container-high');
+            });
+            card.addEventListener('touchend', () => {
+                card.classList.remove('bg-surface-container-high');
+            });
+        });
+    </script>
+</body></html>

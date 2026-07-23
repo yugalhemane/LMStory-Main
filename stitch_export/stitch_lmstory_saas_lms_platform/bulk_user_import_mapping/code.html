@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk User Import - LMStory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#131b2e",
+                    "on-tertiary-container": "#009668",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface": "#f8f9ff",
+                    "on-surface": "#0b1c30",
+                    "on-background": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "tertiary-container": "#002113",
+                    "surface-tint": "#565e74",
+                    "primary": "#000000",
+                    "primary-fixed-dim": "#bec6e0",
+                    "inverse-surface": "#213145",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-primary": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#dce9ff",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#dae2fd",
+                    "on-secondary-container": "#fefcff",
+                    "surface-variant": "#d3e4fe",
+                    "on-surface-variant": "#45464d",
+                    "secondary": "#0058be",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#002113",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#001a42",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "outline": "#76777d",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#2170e4",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "outline-variant": "#c6c6cd",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "tertiary": "#000000",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-primary-container": "#7c839b",
+                    "background": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "display": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .step-active { color: #0058be; font-weight: 600; border-color: #0058be; }
+        .step-inactive { color: #76777d; }
+        .mapping-table-header { background: #F1F5F9; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="w-full h-16 sticky top-0 z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">LMStory</span>
+<div class="h-6 w-[1px] bg-outline-variant mx-sm hidden md:block"></div>
+<div class="hidden md:flex items-center gap-sm cursor-pointer hover:bg-surface-container-low px-sm py-xs rounded transition-colors duration-200">
+<span class="font-title-md text-title-md text-secondary">Switch Tenant</span>
+<span class="material-symbols-outlined text-secondary">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-low border border-outline-variant rounded-full px-lg py-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary/20 w-64" placeholder="Search..." type="text"/>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-base hover:bg-surface-container-low rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="p-base hover:bg-surface-container-low rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden md:flex flex-col h-full w-[260px] bg-primary-container text-on-primary py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md font-black text-on-primary">LMStory Enterprise</h1>
+<p class="text-label-md font-label-md opacity-70">Admin Console</p>
+</div>
+<nav class="flex-1 px-md flex flex-col gap-base">
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-label-md text-label-md">Courses</span>
+</a>
+<!-- Active Item: Learners -->
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">Learners</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-lg border-t border-on-primary-fixed-variant flex flex-col gap-base">
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-md text-on-primary-container hover:text-on-secondary hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-label-md">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-[#F8FAFC]">
+<div class="max-w-[1440px] mx-auto p-gutter lg:p-xl">
+<!-- Page Header -->
+<div class="mb-xl">
+<nav class="flex items-center gap-xs text-label-md font-label-md text-on-surface-variant mb-sm">
+<span class="hover:text-secondary cursor-pointer">Learners</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Bulk User Import</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Bulk User Import</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">Map your file columns to LMStory user fields to ensure accurate data synchronization.</p>
+</div>
+<!-- Stepper Wizard Navigation -->
+<div class="mb-xl bg-white rounded-xl border border-outline-variant p-md flex flex-wrap justify-between items-center gap-lg">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-label-md">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface-variant">1. Upload File</span>
+</div>
+<div class="h-[2px] flex-1 bg-secondary min-w-[40px]"></div>
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-label-md">2</div>
+<span class="font-title-md text-title-md text-secondary">2. Map Fields</span>
+</div>
+<div class="h-[2px] flex-1 bg-outline-variant min-w-[40px]"></div>
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-label-md">3</div>
+<span class="font-title-md text-title-md text-on-surface-variant">3. Validate &amp; Finalize</span>
+</div>
+</div>
+<!-- Mapping Container (Bento Grid Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+<!-- Main Table Area -->
+<div class="lg:col-span-8 bg-white rounded-xl border border-outline-variant overflow-hidden flex flex-col">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Column Mapping</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Detected 482 potential user records from <span class="font-bold text-on-surface">users_export_q3.csv</span></p>
+</div>
+<div class="flex items-center gap-sm">
+<span class="px-sm py-xs bg-tertiary-container text-on-tertiary-container text-label-sm font-label-sm rounded-lg">4 Mapped</span>
+<span class="px-sm py-xs bg-error-container text-on-error-container text-label-sm font-label-sm rounded-lg">1 Required Missing</span>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="mapping-table-header">
+<tr>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant border-b border-outline-variant">CSV COLUMN</th>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant border-b border-outline-variant">PREVIEW DATA</th>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant border-b border-outline-variant">SYSTEM FIELD</th>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant border-b border-outline-variant">STATUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row: First Name -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg">
+<span class="text-body-md font-title-md text-on-surface">F_Name</span>
+</td>
+<td class="px-lg py-lg">
+<span class="text-body-sm text-on-surface-variant italic">"Johnathan"</span>
+</td>
+<td class="px-lg py-lg">
+<select class="w-full border-outline-variant rounded-lg text-body-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20">
+<option selected="">First Name</option>
+<option>Last Name</option>
+<option>Email</option>
+<option>Department</option>
+<option>Role</option>
+</select>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-xs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-md font-label-md">Mapped</span>
+</div>
+</td>
+</tr>
+<!-- Row: Last Name -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg">
+<span class="text-body-md font-title-md text-on-surface">L_Name</span>
+</td>
+<td class="px-lg py-lg">
+<span class="text-body-sm text-on-surface-variant italic">"Doe"</span>
+</td>
+<td class="px-lg py-lg">
+<select class="w-full border-outline-variant rounded-lg text-body-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20">
+<option>First Name</option>
+<option selected="">Last Name</option>
+<option>Email</option>
+<option>Department</option>
+<option>Role</option>
+</select>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-xs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-md font-label-md">Mapped</span>
+</div>
+</td>
+</tr>
+<!-- Row: Email (Required Missing) -->
+<tr class="bg-error-container/10 group">
+<td class="px-lg py-lg">
+<span class="text-body-md font-title-md text-on-surface">contact_id</span>
+</td>
+<td class="px-lg py-lg">
+<span class="text-body-sm text-on-surface-variant italic">"john.doe@enterprise.com"</span>
+</td>
+<td class="px-lg py-lg">
+<select class="w-full border-error text-error rounded-lg text-body-sm focus:border-error focus:ring-1 focus:ring-error/20">
+<option disabled="" selected="" value="">-- Select System Field --</option>
+<option>First Name</option>
+<option>Last Name</option>
+<option>Email</option>
+<option>Department</option>
+<option>Role</option>
+</select>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-xs text-error">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-label-md font-label-md">Required Missing</span>
+</div>
+</td>
+</tr>
+<!-- Row: Department -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg">
+<span class="text-body-md font-title-md text-on-surface">Dept_Code</span>
+</td>
+<td class="px-lg py-lg">
+<span class="text-body-sm text-on-surface-variant italic">"ENG-PROD"</span>
+</td>
+<td class="px-lg py-lg">
+<select class="w-full border-outline-variant rounded-lg text-body-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20">
+<option>First Name</option>
+<option>Last Name</option>
+<option>Email</option>
+<option selected="">Department</option>
+<option>Role</option>
+</select>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-xs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-md font-label-md">Mapped</span>
+</div>
+</td>
+</tr>
+<!-- Row: Role -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg">
+<span class="text-body-md font-title-md text-on-surface">User_Type</span>
+</td>
+<td class="px-lg py-lg">
+<span class="text-body-sm text-on-surface-variant italic">"Learner"</span>
+</td>
+<td class="px-lg py-lg">
+<select class="w-full border-outline-variant rounded-lg text-body-sm focus:border-secondary focus:ring-1 focus:ring-secondary/20">
+<option>First Name</option>
+<option>Last Name</option>
+<option>Email</option>
+<option>Department</option>
+<option selected="">Role</option>
+</select>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-xs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-md font-label-md">Mapped</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Actions Footer -->
+<div class="p-lg border-t border-outline-variant flex flex-col sm:flex-row justify-between items-center gap-md">
+<button class="w-full sm:w-auto px-xl py-md border border-outline-variant text-on-surface font-title-md text-title-md rounded-lg hover:bg-surface-container-low transition-all active:scale-95 flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">arrow_back</span>
+                                Back to Upload
+                            </button>
+<div class="flex flex-col sm:flex-row items-center gap-md w-full sm:w-auto">
+<span class="text-body-sm text-on-surface-variant">1 unmapped required field remaining</span>
+<button class="w-full sm:w-auto px-xl py-md bg-secondary text-white font-title-md text-title-md rounded-lg hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-sm shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Validate &amp; Continue
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sidebar: Instructions & Tips -->
+<div class="lg:col-span-4 flex flex-col gap-lg">
+<!-- Mapping Status Card -->
+<div class="bg-white rounded-xl border border-outline-variant p-lg shadow-sm">
+<h4 class="font-title-md text-title-md text-on-surface mb-md">Import Summary</h4>
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<span class="text-body-md text-on-surface-variant">Total Rows</span>
+<span class="font-title-md text-on-surface">482</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-md text-on-surface-variant">Fields Required</span>
+<span class="font-title-md text-on-surface">5</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden mt-base">
+<div class="bg-secondary h-full rounded-full w-[80%] transition-all duration-500"></div>
+</div>
+<p class="text-label-sm text-on-surface-variant text-center">4 of 5 required fields mapped</p>
+</div>
+</div>
+<!-- Info Card -->
+<div class="bg-secondary-container/20 rounded-xl border border-secondary/20 p-lg">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<h4 class="font-title-md text-title-md text-on-secondary-fixed-variant mb-xs">Pro-Tip</h4>
+<p class="text-body-sm text-on-surface-variant leading-relaxed">
+                                        Use clear column headers in your CSV like "Email" or "Role" and our system will attempt to auto-map them for you next time.
+                                    </p>
+</div>
+</div>
+</div>
+<!-- Data Health Visual -->
+<div class="bg-white rounded-xl border border-outline-variant p-lg overflow-hidden relative">
+<h4 class="font-title-md text-title-md text-on-surface mb-md">Data Preview Visual</h4>
+<div class="flex items-end gap-base h-24">
+<div class="flex-1 bg-tertiary-container rounded-t-sm h-[90%] hover:brightness-90 transition-all cursor-help" title="Valid Rows"></div>
+<div class="flex-1 bg-tertiary-container rounded-t-sm h-[85%] hover:brightness-90 transition-all cursor-help"></div>
+<div class="flex-1 bg-error-container rounded-t-sm h-[40%] hover:brightness-90 transition-all cursor-help" title="Warning Rows"></div>
+<div class="flex-1 bg-tertiary-container rounded-t-sm h-[95%] hover:brightness-90 transition-all cursor-help"></div>
+<div class="flex-1 bg-tertiary-container rounded-t-sm h-[88%] hover:brightness-90 transition-all cursor-help"></div>
+<div class="flex-1 bg-tertiary-container rounded-t-sm h-[92%] hover:brightness-90 transition-all cursor-help"></div>
+<div class="flex-1 bg-error-container rounded-t-sm h-[15%] hover:brightness-90 transition-all cursor-help"></div>
+<div class="flex-1 bg-tertiary-container rounded-t-sm h-[75%] hover:brightness-90 transition-all cursor-help"></div>
+<div class="flex-1 bg-tertiary-container rounded-t-sm h-[80%] hover:brightness-90 transition-all cursor-help"></div>
+<div class="flex-1 bg-tertiary-container rounded-t-sm h-[90%] hover:brightness-90 transition-all cursor-help"></div>
+</div>
+<div class="mt-sm flex justify-between text-label-sm text-on-surface-variant">
+<span>Row 1</span>
+<span>Row 482</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', function() {
+                const row = this.closest('tr');
+                const statusCell = row.querySelector('.text-label-md');
+                const statusIcon = row.querySelector('.material-symbols-outlined:not([data-icon])');
+                const statusContainer = row.querySelector('.flex.items-center.gap-xs');
+
+                if (this.value) {
+                    row.classList.remove('bg-error-container/10');
+                    this.classList.remove('border-error', 'text-error');
+                    this.classList.add('border-outline-variant', 'text-on-surface');
+                    
+                    statusContainer.classList.remove('text-error');
+                    statusContainer.classList.add('text-on-tertiary-container');
+                    statusCell.textContent = 'Mapped';
+                    statusIcon.textContent = 'check_circle';
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Asset Library - LMStory Enterprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-container": "#009668",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "primary-container": "#131b2e",
+                        "tertiary-container": "#002113",
+                        "surface-tint": "#565e74",
+                        "primary": "#000000",
+                        "primary-fixed-dim": "#bec6e0",
+                        "inverse-surface": "#213145",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#dce9ff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-container": "#fefcff",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface-variant": "#45464d",
+                        "secondary": "#0058be",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-secondary-fixed": "#001a42",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "outline": "#76777d",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#2170e4",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#004395",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "outline-variant": "#c6c6cd",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary": "#000000",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#7c839b",
+                        "background": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "base": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            vertical-align: middle;
+        }
+        .file-card-hover:hover {
+            border-color: #3B82F6;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="w-full h-16 sticky top-0 z-40 bg-surface dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline">
+<div class="flex justify-between items-center px-gutter w-full max-w-[1440px] mx-auto h-full">
+<div class="flex items-center gap-xl">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface dark:text-inverse-on-surface">LMStory</span>
+<div class="hidden md:flex items-center gap-lg">
+<button class="font-title-md text-title-md text-on-surface-variant hover:text-secondary cursor-pointer transition-colors duration-200">Dashboard</button>
+<button class="font-title-md text-title-md text-secondary border-b-2 border-secondary pb-1 cursor-pointer transition-colors duration-200">Asset Library</button>
+<button class="font-title-md text-title-md text-on-surface-variant hover:text-secondary cursor-pointer transition-colors duration-200">Courses</button>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative group">
+<button class="flex items-center gap-xs font-title-md text-title-md text-secondary cursor-pointer active:opacity-80">
+<span>Switch Tenant</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm rounded-full hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm rounded-full hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-sm rounded-full hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div class="flex max-w-[1440px] mx-auto h-[calc(100vh-64px)] overflow-hidden">
+<!-- SideNavBar / Asset Tree -->
+<aside class="w-[260px] bg-primary-container dark:bg-surface-container-lowest text-on-primary-container flex flex-col h-full py-lg border-r border-outline-variant shadow-md shrink-0">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm mb-base">
+<span class="font-headline-md text-headline-md font-black text-on-primary dark:text-primary-fixed">LMStory Enterprise</span>
+</div>
+<p class="font-label-md text-label-md opacity-70">Admin Console</p>
+</div>
+<nav class="flex-1 overflow-y-auto px-sm space-y-base">
+<p class="px-md py-sm font-label-md text-label-md uppercase opacity-50 tracking-widest">Library Folders</p>
+<div class="flex items-center gap-md bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm cursor-pointer transition-all active:scale-95">
+<span class="material-symbols-outlined">folder_special</span>
+<span class="font-label-md text-label-md">Company Assets</span>
+</div>
+<div class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant dark:hover:bg-surface-container-high px-md py-sm rounded-lg cursor-pointer transition-all active:scale-95">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-label-md text-label-md">Course Material</span>
+</div>
+<div class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant dark:hover:bg-surface-container-high px-md py-sm rounded-lg cursor-pointer transition-all active:scale-95">
+<span class="material-symbols-outlined">branding_watermark</span>
+<span class="font-label-md text-label-md">Branding</span>
+</div>
+<div class="mt-xl pt-lg border-t border-white/10">
+<p class="px-md py-sm font-label-md text-label-md uppercase opacity-50 tracking-widest">Quick Filters</p>
+<div class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined">star</span>
+<span class="font-label-md text-label-md">Favorites</span>
+</div>
+<div class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">Recent</span>
+</div>
+</div>
+</nav>
+<div class="px-sm space-y-base">
+<div class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-md text-label-md">Support</span>
+</div>
+<div class="flex items-center gap-md text-on-primary-container hover:bg-on-primary-fixed-variant px-md py-sm rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md text-label-md">Documentation</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto p-gutter bg-surface">
+<!-- Asset Header / Toolbar -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md mb-xl">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Asset Library</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage and organize your organization's digital learning materials.</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-secondary text-on-secondary px-lg py-sm font-title-md text-title-md rounded-lg flex items-center gap-sm shadow-sm hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">upload</span>
+<span>Upload Asset</span>
+</button>
+<button class="bg-surface-container-lowest border border-outline-variant px-md py-sm font-title-md text-title-md rounded-lg flex items-center gap-sm hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">create_new_folder</span>
+</button>
+</div>
+</div>
+<!-- Filters Area -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-wrap gap-md items-center mb-xl shadow-sm">
+<div class="flex-1 min-w-[200px] relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-body-md focus:ring-2 focus:ring-secondary/20 outline-none" placeholder="Search assets..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">File Type:</span>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-md py-sm font-body-sm text-body-sm outline-none cursor-pointer">
+<option>All Types</option>
+<option>Videos (MP4)</option>
+<option>Documents (PDF)</option>
+<option>Images (PNG/JPG)</option>
+<option>SCORM Packages</option>
+</select>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Modified:</span>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-md py-sm font-body-sm text-body-sm outline-none cursor-pointer">
+<option>Any Time</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+<option>This Year</option>
+</select>
+</div>
+<div class="border-l border-outline-variant h-8 mx-xs"></div>
+<div class="flex p-base bg-surface-container-low rounded-lg border border-outline-variant">
+<button class="p-xs bg-surface-container-highest rounded shadow-sm">
+<span class="material-symbols-outlined text-secondary">grid_view</span>
+</button>
+<button class="p-xs hover:bg-surface-container-highest rounded">
+<span class="material-symbols-outlined text-outline">format_list_bulleted</span>
+</button>
+</div>
+</div>
+<!-- Grid View -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-lg">
+<!-- Video Asset -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm file-card-hover transition-all cursor-pointer group">
+<div class="relative h-40 bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic and high-resolution video thumbnail of a corporate training environment with soft-focus office background, featuring a play button overlay. The lighting is bright and professional, utilizing a primary blue and clean white color scheme to match an enterprise LMS dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgUXLcGPherJgpES2FAJQ3AtS8t_LJ_vpl_8WUSF2r8VU9jWwtHSuWy2rWVkTBFoYh5RMny7oCtd0t7krQMzMAaO92OZa4GkTn91exeR81eSteAdwx1dqX-w3pqaBKIoxKgDV46pb_9xIxQZjlvxYMJdg6xf6TfliyxBtXjthLR8AbIr7GSu2zDsaO0oTpympFidpkfWICmMn0R1THyLE-GQiAkYYTNnPxuO5gmn_gBj4nWXw8PLoakzh3O7g9zMp4fQQuzOQTumUN"/>
+<div class="absolute bottom-sm right-sm bg-black/70 text-white px-xs rounded font-label-sm text-label-sm">04:22</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+<span class="material-symbols-outlined text-white text-[48px]" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex items-start justify-between">
+<div class="overflow-hidden">
+<h3 class="font-title-md text-title-md truncate mb-base text-on-surface">Intro_to_LMS_2024.mp4</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">videocam</span> 12.4 MB
+                                </p>
+</div>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+</div>
+<!-- PDF Asset -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm file-card-hover transition-all cursor-pointer group">
+<div class="relative h-40 bg-surface-container-low flex items-center justify-center border-b border-outline-variant">
+<div class="w-20 h-28 bg-white border border-outline-variant rounded-sm shadow-sm flex flex-col p-base">
+<div class="h-2 w-full bg-error/20 rounded-full mb-xs"></div>
+<div class="space-y-xs">
+<div class="h-1 w-full bg-surface-container-high rounded-full"></div>
+<div class="h-1 w-5/6 bg-surface-container-high rounded-full"></div>
+<div class="h-1 w-2/3 bg-surface-container-high rounded-full"></div>
+</div>
+</div>
+<span class="absolute top-sm left-sm bg-error-container text-on-error-container px-xs py-xs rounded font-label-sm text-label-sm">PDF</span>
+</div>
+<div class="p-md">
+<div class="flex items-start justify-between">
+<div class="overflow-hidden">
+<h3 class="font-title-md text-title-md truncate mb-base text-on-surface">Compliance_Policy.pdf</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">description</span> 2.1 MB
+                                </p>
+</div>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+</div>
+<!-- SCORM ZIP Asset -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm file-card-hover transition-all cursor-pointer group">
+<div class="relative h-40 bg-surface-container-low flex items-center justify-center border-b border-outline-variant">
+<span class="material-symbols-outlined text-[64px] text-on-tertiary-fixed-variant" style="font-variation-settings: 'FILL' 1;">folder_zip</span>
+<span class="absolute top-sm left-sm bg-tertiary-fixed text-on-tertiary-fixed px-xs py-xs rounded font-label-sm text-label-sm">SCORM 1.2</span>
+</div>
+<div class="p-md">
+<div class="flex items-start justify-between">
+<div class="overflow-hidden">
+<h3 class="font-title-md text-title-md truncate mb-base text-on-surface">Safety_Module_Final.zip</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span> 45.8 MB
+                                </p>
+</div>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+</div>
+<!-- Image Asset -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm file-card-hover transition-all cursor-pointer group">
+<div class="relative h-40 bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, minimalist high-resolution corporate logo variation presentation on a white studio background. The style is modern and professional, showing various brand elements like typography and iconography in a grid. Soft shadows and high-key lighting create a crisp, high-end enterprise SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC-ow0u2g26ljaKGWucCj7LSWeXOWob3fU7vnJa521agxEmRNbVExZXK4266qMc2eIez_bhtw0KbBGP6i_fzSu5k6ANY2q8Ap9LjRzLTsAIIl7rXrCcStIQVW2-FbnaWJj4k7SioH2zKPIk8GQD7x_FYSV0n6gpzRABUtfNSZIFDuuk8hZzuxBmPGpLnVjUnLtcQQnBxvstz1Ro-YnVbZ23BiLvn-JQnYjGGZbfJd6IVKHv-jl5383fxTWzOUp8cCTdY1VoJSPl9KC"/>
+</div>
+<div class="p-md">
+<div class="flex items-start justify-between">
+<div class="overflow-hidden">
+<h3 class="font-title-md text-title-md truncate mb-base text-on-surface">Main_Logo_Vertical.png</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">image</span> 850 KB
+                                </p>
+</div>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+</div>
+<!-- Second Video Asset -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm file-card-hover transition-all cursor-pointer group">
+<div class="relative h-40 bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A detailed digital interface mockup representing a data analytics dashboard for a learning platform. Bright blues, cool grays, and glowing white text dominate the scene. The image has a futuristic yet grounded professional feel, set in a dimly lit workstation with subtle lens flares from the screen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC67SsNf6dBEzLuXchJPW0zhIR81i7ExhydsQhoDKstMaI6_AXR3fQv5GpB9WtcZ2KUO5w1mQ8OYrM5rEiPRHOETtQIAbFTnPUsagAMzmJwbvgf3uASXgHEnu01H4CETtWI5qeBCw6b1_QPBDPBlezfikERf4qS7QBApQB8W3O0__nlp2e1Bw7i0j8daaNTwnkfnmKKuYdMUVS6seHjc5x8GL_y492yFDLhTraVyf0fXemHne6XTSC_5eo5B_RuqyzSNSyQPZhvw306"/>
+<div class="absolute bottom-sm right-sm bg-black/70 text-white px-xs rounded font-label-sm text-label-sm">01:15</div>
+</div>
+<div class="p-md">
+<div class="flex items-start justify-between">
+<div class="overflow-hidden">
+<h3 class="font-title-md text-title-md truncate mb-base text-on-surface">Admin_Tutorial.mp4</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">videocam</span> 8.2 MB
+                                </p>
+</div>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+</div>
+<!-- Another PDF -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm file-card-hover transition-all cursor-pointer group">
+<div class="relative h-40 bg-surface-container-low flex items-center justify-center border-b border-outline-variant">
+<div class="w-20 h-28 bg-white border border-outline-variant rounded-sm shadow-sm flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-error text-[32px]">picture_as_pdf</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex items-start justify-between">
+<div class="overflow-hidden">
+<h3 class="font-title-md text-title-md truncate mb-base text-on-surface">Employee_Handbook.pdf</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">description</span> 3.4 MB
+                                </p>
+</div>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+</div>
+<!-- Another Image -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm file-card-hover transition-all cursor-pointer group">
+<div class="relative h-40 bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional group photo of diverse corporate professionals collaborating in a bright, high-ceilinged modern office atrium. Soft, natural sunlight streams through large windows, highlighting a palette of cool blues and warm woods. The atmosphere is energetic and positive, perfect for a company culture asset." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYxLjleYv98GjD6ZkeZSAZumVJ1cFI-exoEkG1hvahdU2pJYS10yiQTrS2Rde3X5N9N3IhkpgAijJzxmnmimPXRq4q_wckCZCoU-Z-jPMyMn6iHo11nz9A9c1pllz0sUDGBAdWqtP01vPJ8ztEBcoazVMNAVtMOl18lhR4CsijH3OycZjMuxDKK8C2OqMMGbhcaupZmY8RZP06YVqk3VovCQhOvKJM9odZXoaHA6u6lMgJ13-r4d0F9MY9wHEd8e0uA2ZI03UrOXUC"/>
+</div>
+<div class="p-md">
+<div class="flex items-start justify-between">
+<div class="overflow-hidden">
+<h3 class="font-title-md text-title-md truncate mb-base text-on-surface">Team_Photo_2023.png</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">image</span> 4.2 MB
+                                </p>
+</div>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+</div>
+<!-- Upload New Placeholder Card -->
+<div class="bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center min-h-[220px] hover:border-secondary hover:bg-surface-container-high transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-[48px] text-outline group-hover:text-secondary mb-md">add_circle</span>
+<p class="font-title-md text-title-md text-outline group-hover:text-secondary">Add New Asset</p>
+<p class="font-label-sm text-label-sm text-outline opacity-70">or drag and drop</p>
+</div>
+</div>
+</main>
+</div>
+<!-- Background Decoration / Subtle Shaders -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-30">
+<!-- Pure CSS subtle pattern to avoid heavy image loading -->
+<div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #e2e8f0 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+<script>
+        // Micro-interaction: Sidebar highlight state
+        document.querySelectorAll('aside nav > div').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('aside nav > div').forEach(el => {
+                    el.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+                    el.classList.add('text-on-primary-container');
+                });
+                this.classList.add('bg-secondary-container', 'text-on-secondary-container');
+                this.classList.remove('text-on-primary-container');
+            });
+        });
+
+        // Simple filter simulation
+        const filterSelect = document.querySelector('select');
+        filterSelect.addEventListener('change', (e) => {
+            console.log('Filtering by:', e.target.value);
+            // In a real app, this would trigger a re-render or API call
+        });
+    </script>
+</body></html>

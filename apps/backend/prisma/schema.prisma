@@ -1,0 +1,1433 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DeploymentMode {
+  SAAS
+  ON_PREM
+  HYBRID
+}
+
+enum LicenseStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  EXPIRED
+  REVOKED
+}
+
+enum SubscriptionStatus {
+  TRIAL
+  ACTIVE
+  PAST_DUE
+  CANCELLED
+  EXPIRED
+}
+
+enum PlatformType {
+  WEB
+  ANDROID
+  IOS
+  DESKTOP
+  API
+}
+
+enum BrowserType {
+  CHROME
+  EDGE
+  FIREFOX
+  SAFARI
+  OTHER
+}
+
+enum TenantStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  ARCHIVED
+  PENDING_VERIFICATION
+  VERIFIED
+  ONBOARDING
+  ACTIVE_TRIAL
+  ACTIVE_PAID
+  EXPIRED
+}
+
+enum Role {
+  SUPER_ADMIN
+  TENANT_ADMIN
+  TRAINER
+  LEARNER
+}
+
+enum GroupType {
+  STATIC
+  DYNAMIC
+  SYSTEM
+}
+
+enum CampaignStatus {
+  DRAFT
+  SCHEDULED
+  ACTIVE
+  PAUSED
+  COMPLETED
+  ARCHIVED
+}
+
+enum EnrollmentStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+  DROPPED
+}
+
+enum CertificateStatus {
+  ISSUED
+  REVOKED
+}
+
+enum NotificationType {
+  SYSTEM
+  ALERT
+  MESSAGE
+  REMINDER
+}
+
+enum NotificationChannel {
+  IN_APP
+  EMAIL
+  SMS
+  PUSH
+}
+
+enum NotificationStatus {
+  UNREAD
+  READ
+  ARCHIVED
+}
+
+enum NotificationPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum CourseStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+enum CourseItemType {
+  VIDEO
+  PDF
+  SCORM
+  HTML
+  QUIZ
+  SURVEY
+  DOCUMENT
+}
+
+enum CompletionCriteria {
+  VIEW
+  PASS_QUIZ
+  SCORM_COMPLETION
+  MANUAL
+  OPTIONAL
+}
+
+enum ContentStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ContentType {
+  VIDEO
+  PDF
+  SCORM
+  HTML
+  QUIZ
+  DOCUMENT
+  LINK
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum SyncStatus {
+  SYNCED
+  OUT_OF_SYNC
+  CONFLICT
+}
+
+model SubscriptionPlan {
+  id           String    @id @default(uuid())
+  name         String
+  code         String    @unique
+  maxUsers     Int       @default(0)
+  maxStorage   BigInt    @default(0)
+  maxCourses   Int       @default(0)
+  maxCampaigns Int       @default(0)
+  maxAdmins    Int       @default(0)
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+  createdBy    String?
+  updatedBy    String?
+
+  tenants             Tenant[]
+  SubscriptionAccount SubscriptionAccount[]
+}
+
+model Tenant {
+  id             String         @id @default(uuid())
+  code           String         @unique
+  name           String
+  slug           String         @unique
+  domain         String?        @unique
+  logo           String?
+  industry       String?
+  status         TenantStatus   @default(PENDING)
+  deploymentMode DeploymentMode @default(SAAS)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  settings                TenantSettings?
+  license                 License?
+  subscriptionAccount     SubscriptionAccount?
+  storage                 TenantStorage?
+  users                   User[]
+  invitations             Invitation[]
+  groups                  Group[]
+  libraries               TenantLibrary[]
+  libraryImports          TenantLibraryImport[]
+  courses                 Course[]
+  campaigns               Campaign[]
+  campaignCourses         CampaignCourse[]
+  campaignTargetGroups    CampaignTargetGroup[]
+  campaignTargetUsers     CampaignTargetUser[]
+  enrollments             Enrollment[]
+  certificates            EnrollmentCertificate[]
+  notificationTemplates   NotificationTemplate[]
+  notificationPreferences NotificationPreference[]
+  notifications           Notification[]
+  notificationLogs        NotificationLog[]
+  SubscriptionPlan        SubscriptionPlan?        @relation(fields: [subscriptionPlanId], references: [id])
+  subscriptionPlanId      String?
+
+  @@index([slug])
+  @@index([domain])
+}
+
+model TenantSettings {
+  id       String @id @default(uuid())
+  tenantId String @unique
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  timezone   String @default("UTC")
+  language   String @default("en")
+  dateFormat String @default("YYYY-MM-DD")
+  timeFormat String @default("24h")
+  currency   String @default("USD")
+
+  branding         Json?
+  emailSettings    Json?
+  securitySettings Json?
+  ssoProviders     Json?
+}
+
+model TenantStorage {
+  id       String @id @default(uuid())
+  tenantId String @unique
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  usedStorage      BigInt @default(0)
+  allocatedStorage BigInt @default(0)
+  fileCount        Int    @default(0)
+  maxFileSize      BigInt @default(0)
+}
+
+enum AccountStatus {
+  ACTIVE
+  SUSPENDED
+  DEACTIVATED
+}
+
+model User {
+  id              String        @id @default(uuid())
+  email           String        @unique
+  passwordHash    String
+  firstName       String
+  lastName        String
+  isEmailVerified Boolean       @default(false)
+  status          AccountStatus @default(ACTIVE)
+  role            Role          @default(LEARNER)
+
+  // Login attempt protection
+  failedLoginAttempts Int       @default(0)
+  lockedUntil         DateTime?
+
+  // Future compatibility
+  tenantId String?
+  tenant   Tenant? @relation(fields: [tenantId], references: [id])
+
+  // User Management Fields
+  employeeId   String?
+  phone        String?
+  department   String?
+  designation  String?
+  profileImage String?
+  lastLoginAt  DateTime?
+  isActive     Boolean   @default(true)
+  joinedAt     DateTime?
+  createdBy    String?
+  updatedBy    String?
+  deletedAt    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  refreshTokens           RefreshToken[]
+  passwordResetTokens     PasswordResetToken[]
+  emailVerificationTokens EmailVerificationToken[]
+  verificationChallenges  VerificationChallenge[]
+  invitationsSent         Invitation[]             @relation("InvitationsSent")
+  groupMembers            GroupMember[]
+  campaignTargets         CampaignTargetUser[]
+  enrollments             Enrollment[]
+  enrollmentActivities    EnrollmentActivity[]
+  certificates            EnrollmentCertificate[]
+  notificationPreferences NotificationPreference[]
+  notifications           Notification[]
+  notificationLogs        NotificationLog[]
+
+  @@unique([tenantId, employeeId])
+  @@index([email])
+  @@index([tenantId])
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+
+  platform     PlatformType?
+  browser      BrowserType?
+  deviceName   String?
+  ipAddress    String?
+  lastActivity DateTime      @default(now())
+
+  isCurrent Boolean   @default(false)
+  isRevoked Boolean   @default(false)
+  revokedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([tokenHash])
+}
+
+// @deprecated - Use VerificationChallenge instead
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+// @deprecated - Use VerificationChallenge instead
+model EmailVerificationToken {
+  id        String   @id @default(uuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+enum VerificationMethod {
+  EMAIL_OTP
+  EMAIL_LINK
+  SMS_OTP
+  AUTHENTICATOR
+}
+
+enum VerificationPurpose {
+  EMAIL_VERIFICATION
+  PASSWORD_RESET
+  LOGIN_MFA
+  CHANGE_EMAIL
+  INVITATION_ACCEPT
+}
+
+enum ChallengeStatus {
+  PENDING
+  VERIFIED
+  EXPIRED
+  CANCELLED
+}
+
+model VerificationChallenge {
+  id        String @id @default(uuid())
+  tokenHash String @unique
+  userId    String
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  method  VerificationMethod
+  purpose VerificationPurpose
+  status  ChallengeStatus     @default(PENDING)
+
+  attemptCount Int     @default(0)
+  ipAddress    String?
+  userAgent    String?
+
+  expiresAt  DateTime
+  verifiedAt DateTime?
+  consumedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([tokenHash])
+  @@index([status])
+  @@index([expiresAt])
+}
+
+enum InvitationType {
+  ADMIN_INVITE
+  TRAINER_INVITE
+  LEARNER_INVITE
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REVOKED
+  EXPIRED
+}
+
+model Invitation {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  email       String
+  invitedName String?
+  role        Role
+  type        InvitationType   @default(LEARNER_INVITE)
+  tokenHash   String           @unique
+  status      InvitationStatus @default(PENDING)
+
+  expiresAt  DateTime
+  acceptedAt DateTime?
+  revokedAt  DateTime?
+
+  invitedByUserId String
+  invitedByUser   User   @relation("InvitationsSent", fields: [invitedByUserId], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete
+
+  createdBy String?
+  updatedBy String?
+
+  @@unique([tenantId, email])
+  @@index([tokenHash])
+  @@index([email])
+  @@index([status])
+  @@index([expiresAt])
+}
+
+model License {
+  id       String @id @default(uuid())
+  tenantId String @unique
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  licenseKey String?       @unique
+  status     LicenseStatus @default(PENDING)
+
+  trialStartedAt   DateTime?
+  trialEndsAt      DateTime?
+  expiresAt        DateTime?
+  activatedAt      DateTime?
+  activatedBy      String?
+  lastValidatedAt  DateTime?
+  validationSource String?
+
+  maxUsers   Int?
+  maxStorage BigInt?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  createdBy String?
+  updatedBy String?
+
+  installation Installation?
+
+  @@index([status])
+  @@index([expiresAt])
+}
+
+model Installation {
+  id        String  @id @default(uuid())
+  licenseId String  @unique
+  license   License @relation(fields: [licenseId], references: [id], onDelete: Cascade)
+
+  machineFingerprint String?
+  version            String?
+  deploymentMode     DeploymentMode @default(ON_PREM)
+
+  activatedAt     DateTime?
+  lastHealthCheck DateTime?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  createdBy String?
+  updatedBy String?
+
+  @@index([deploymentMode])
+}
+
+model SubscriptionAccount {
+  id       String @id @default(uuid())
+  tenantId String @unique
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  subscriptionPlanId String
+  subscriptionPlan   SubscriptionPlan @relation(fields: [subscriptionPlanId], references: [id])
+
+  provider           String?
+  providerCustomerId String?
+  status             SubscriptionStatus @default(TRIAL)
+  trialStartedAt     DateTime?
+  trialEndsAt        DateTime?
+  currentPeriodEnd   DateTime?
+  cancelAtPeriodEnd  Boolean            @default(false)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  createdBy String?
+  updatedBy String?
+
+  @@index([status])
+}
+
+model Group {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  name        String
+  code        String
+  description String?
+  color       String?
+  type        GroupType @default(STATIC)
+  memberCount Int       @default(0)
+  isActive    Boolean   @default(true)
+
+  createdBy String?
+  updatedBy String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  members         GroupMember[]
+  campaignTargets CampaignTargetGroup[]
+
+  @@unique([tenantId, code])
+  @@index([tenantId])
+  @@index([tenantId, deletedAt])
+  @@index([tenantId, name])
+  @@index([tenantId, isActive])
+}
+
+model GroupMember {
+  id      String @id @default(uuid())
+  groupId String
+  group   Group  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  joinedAt DateTime @default(now())
+
+  @@unique([groupId, userId])
+  @@index([groupId])
+  @@index([userId])
+}
+
+// --------------------------------------------------
+// GLOBAL LIBRARY (PLATFORM SUPER ADMIN ONLY)
+// --------------------------------------------------
+
+model LibraryCategory {
+  id          String  @id @default(uuid())
+  name        String
+  slug        String  @unique
+  description String?
+
+  parentId String?
+  parent   LibraryCategory?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children LibraryCategory[] @relation("CategoryHierarchy")
+
+  contents        LibraryContent[]
+  tenantLibraries TenantLibrary[]
+}
+
+model LibraryTag {
+  id   String @id @default(uuid())
+  name String @unique
+
+  contents LibraryContent[]
+}
+
+model LibrarySkill {
+  id   String @id @default(uuid())
+  name String @unique
+
+  contents LibraryContent[]
+}
+
+model LibraryAuthor {
+  id        String  @id @default(uuid())
+  name      String
+  bio       String?
+  avatarUrl String?
+
+  contents        LibraryContent[]
+  tenantLibraries TenantLibrary[]
+}
+
+model LibraryAsset {
+  id        String         @id @default(uuid())
+  contentId String
+  content   LibraryContent @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  name     String
+  url      String
+  fileType String
+  fileSize BigInt
+
+  createdAt DateTime @default(now())
+
+  @@index([contentId])
+}
+
+model LibraryVersion {
+  id        String         @id @default(uuid())
+  contentId String
+  content   LibraryContent @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  version      Int
+  changeLog    String?
+  dataSnapshot Json // Captures the full state of the content at version creation
+
+  createdAt DateTime @default(now())
+  createdBy String?
+
+  @@unique([contentId, version])
+}
+
+model LibraryContent {
+  id               String        @id @default(uuid())
+  title            String
+  slug             String        @unique
+  description      String?
+  shortDescription String?
+  contentType      ContentType
+  status           ContentStatus @default(DRAFT)
+  difficulty       Difficulty
+
+  estimatedDuration Int? // In minutes
+  language          String  @default("en")
+  thumbnail         String?
+  coverImage        String?
+
+  categoryId String?
+  category   LibraryCategory? @relation(fields: [categoryId], references: [id])
+
+  authorId String?
+  author   LibraryAuthor? @relation(fields: [authorId], references: [id])
+
+  tags          LibraryTag[]
+  skills        LibrarySkill[]
+  assets        LibraryAsset[]
+  versions      LibraryVersion[]
+  tenantImports TenantLibraryImport[]
+
+  // Versioning
+  version         Int     @default(1)
+  isLatestVersion Boolean @default(true)
+  parentContentId String?
+
+  // Auditing
+  publishedAt DateTime?
+  publishedBy String?
+  archivedBy  String?
+  createdBy   String?
+  updatedBy   String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([slug])
+  @@index([status])
+  @@index([contentType])
+  @@index([difficulty])
+  @@index([language])
+  @@index([publishedAt])
+  @@index([deletedAt])
+  @@index([createdAt])
+}
+
+// --------------------------------------------------
+// MY LIBRARY (TENANT OWNED CLONES)
+// --------------------------------------------------
+
+model TenantLibrary {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  // Cloned Core Identity
+  title            String
+  slug             String
+  description      String?
+  shortDescription String?
+  contentType      ContentType
+  status           ContentStatus @default(DRAFT)
+  difficulty       Difficulty
+
+  estimatedDuration Int? // In minutes
+  language          String  @default("en")
+  thumbnail         String?
+  coverImage        String?
+
+  // Tenant Local Overrides
+  customTitle       String?
+  customDescription String?
+  customThumbnail   String?
+  customStatus      ContentStatus?
+
+  // Global Taxonomy Links (Referenced, Not Duplicated)
+  categoryId String?
+  category   LibraryCategory? @relation(fields: [categoryId], references: [id])
+
+  authorId String?
+  author   LibraryAuthor? @relation(fields: [authorId], references: [id])
+
+  // Auditing
+  createdBy  String?
+  updatedBy  String?
+  archivedBy String?
+  restoredBy String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  assets      TenantLibraryAsset[]
+  versions    TenantLibraryVersion[]
+  imports     TenantLibraryImport[]
+  courseItems CourseItem[]
+
+  @@unique([tenantId, slug])
+  @@index([tenantId])
+  @@index([tenantId, status])
+  @@index([tenantId, contentType])
+}
+
+model TenantLibraryAsset {
+  id              String        @id @default(uuid())
+  tenantLibraryId String
+  tenantLibrary   TenantLibrary @relation(fields: [tenantLibraryId], references: [id], onDelete: Cascade)
+
+  name     String
+  url      String? // Made optional since it's dynamic for UPLOADED
+  fileType String
+  fileSize BigInt
+
+  // V1.1 Asset Tracking
+  sourceType       AssetSourceType @default(UPLOADED)
+  uploadStatus     UploadStatus    @default(PENDING)
+  objectKey        String? // Required if sourceType = UPLOADED
+  originalFilename String?
+
+  createdAt DateTime @default(now())
+
+  @@index([tenantLibraryId])
+}
+
+enum AssetSourceType {
+  UPLOADED
+  EXTERNAL
+}
+
+enum UploadStatus {
+  PENDING
+  CONFIRMED
+}
+
+model TenantLibraryVersion {
+  id              String        @id @default(uuid())
+  tenantLibraryId String
+  tenantLibrary   TenantLibrary @relation(fields: [tenantLibraryId], references: [id], onDelete: Cascade)
+
+  version      Int
+  changeLog    String?
+  dataSnapshot Json
+
+  createdAt DateTime @default(now())
+  createdBy String?
+
+  @@unique([tenantLibraryId, version])
+}
+
+model TenantLibraryImport {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  tenantLibraryId String
+  tenantLibrary   TenantLibrary @relation(fields: [tenantLibraryId], references: [id], onDelete: Cascade)
+
+  globalLibraryContentId String
+  globalContent          LibraryContent @relation(fields: [globalLibraryContentId], references: [id], onDelete: Cascade)
+
+  globalVersion   Int        @default(1)
+  syncStatus      SyncStatus @default(SYNCED)
+  lastSyncedAt    DateTime   @default(now())
+  autoSyncEnabled Boolean    @default(false)
+
+  importStatus String   @default("COMPLETED")
+  importedBy   String?
+  importedAt   DateTime @default(now())
+
+  @@unique([tenantId, globalLibraryContentId])
+  @@index([tenantId])
+}
+
+// --------------------------------------------------
+// COURSE BUILDER
+// --------------------------------------------------
+
+model Course {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  title             String
+  slug              String
+  description       String?
+  status            CourseStatus @default(DRAFT)
+  estimatedDuration Int?
+  thumbnail         String?
+
+  version         Int     @default(1)
+  isLatestVersion Boolean @default(true)
+
+  publishedAt DateTime?
+  publishedBy String?
+  createdBy   String?
+  updatedBy   String?
+  archivedBy  String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  sections        CourseSection[]
+  versions        CourseVersion[]
+  campaignCourses CampaignCourse[]
+  certificates    EnrollmentCertificate[]
+
+  @@unique([tenantId, slug])
+  @@index([tenantId])
+  @@index([tenantId, status])
+  @@index([tenantId, deletedAt])
+}
+
+model CourseSection {
+  id       String @id @default(uuid())
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  title       String
+  description String?
+  order       Int // Gap-based ordering (1000, 2000)
+
+  items CourseItem[]
+
+  @@index([courseId])
+  @@index([courseId, order])
+}
+
+model CourseItem {
+  id        String        @id @default(uuid())
+  sectionId String
+  section   CourseSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  tenantLibraryId String
+  tenantLibrary   TenantLibrary @relation(fields: [tenantLibraryId], references: [id], onDelete: Cascade)
+
+  itemType CourseItemType
+  order    Int // Gap-based ordering (1000, 2000)
+
+  isMandatory        Boolean            @default(true)
+  completionCriteria CompletionCriteria @default(VIEW)
+
+  enrollmentProgresses EnrollmentProgress[]
+
+  @@index([sectionId])
+  @@index([sectionId, order])
+  @@index([tenantLibraryId])
+}
+
+model CourseVersion {
+  id       String @id @default(uuid())
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  version      Int
+  changeLog    String?
+  dataSnapshot Json // Full nested JSON: Course -> Sections -> Items -> TenantLibrary refs
+
+  publishedBy String?
+  publishedAt DateTime?
+
+  createdAt DateTime @default(now())
+  createdBy String?
+
+  @@unique([courseId, version])
+}
+
+// --------------------------------------------------
+// CAMPAIGN BUILDER
+// --------------------------------------------------
+
+model Campaign {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String?
+  status      CampaignStatus @default(DRAFT)
+
+  // Scheduling
+  startDate             DateTime?
+  endDate               DateTime?
+  enrollmentWindowStart DateTime?
+  enrollmentWindowEnd   DateTime?
+  timezone              String    @default("UTC")
+
+  // Audit
+  createdBy   String?
+  updatedBy   String?
+  publishedBy String?
+  archivedBy  String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  courses      CampaignCourse[]
+  targetGroups CampaignTargetGroup[]
+  targetUsers  CampaignTargetUser[]
+  enrollments  Enrollment[]
+
+  @@index([tenantId])
+  @@index([tenantId, status])
+  @@index([tenantId, startDate])
+  @@index([tenantId, endDate])
+}
+
+model CampaignCourse {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  courseVersion Int
+
+  createdAt DateTime @default(now())
+
+  enrollmentCourses EnrollmentCourse[]
+
+  @@unique([campaignId, courseId])
+  @@index([tenantId])
+}
+
+model CampaignTargetGroup {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  groupId String
+  group   Group  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([campaignId, groupId])
+  @@index([tenantId])
+}
+
+model CampaignTargetUser {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([campaignId, userId])
+  @@index([tenantId])
+}
+
+// --------------------------------------------------
+// ENROLLMENT ENGINE
+// --------------------------------------------------
+
+model Enrollment {
+  id       String @id @default(uuid())
+  code     String @unique // e.g. ENR000001
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  status EnrollmentStatus @default(NOT_STARTED)
+
+  createdBy String?
+  updatedBy String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  courses      EnrollmentCourse[]
+  activities   EnrollmentActivity[]
+  certificates EnrollmentCertificate[]
+
+  @@unique([tenantId, userId, campaignId]) // No duplicate enrollments in the same campaign
+  @@index([tenantId])
+  @@index([userId])
+  @@index([status])
+}
+
+model EnrollmentCourse {
+  id           String     @id @default(uuid())
+  enrollmentId String
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+
+  campaignCourseId String
+  campaignCourse   CampaignCourse @relation(fields: [campaignCourseId], references: [id], onDelete: Cascade)
+
+  // Locked Course Identity from CampaignCourse
+  courseId      String
+  courseVersion Int
+
+  status             EnrollmentStatus @default(NOT_STARTED)
+  progressPercentage Float            @default(0.0) // 0 to 100
+  timeSpentSeconds   Int              @default(0)
+
+  startedAt      DateTime?
+  completedAt    DateTime?
+  lastAccessedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  progress EnrollmentProgress[]
+
+  @@unique([enrollmentId, campaignCourseId])
+  @@index([enrollmentId])
+}
+
+model EnrollmentProgress {
+  id                 String           @id @default(uuid())
+  enrollmentCourseId String
+  enrollmentCourse   EnrollmentCourse @relation(fields: [enrollmentCourseId], references: [id], onDelete: Cascade)
+
+  courseItemId String
+  courseItem   CourseItem @relation(fields: [courseItemId], references: [id], onDelete: Cascade)
+
+  status           EnrollmentStatus @default(NOT_STARTED)
+  score            Float?
+  timeSpentSeconds Int              @default(0)
+
+  startedAt      DateTime?
+  completedAt    DateTime?
+  lastAccessedAt DateTime?
+
+  @@unique([enrollmentCourseId, courseItemId])
+  @@index([enrollmentCourseId])
+}
+
+model EnrollmentActivity {
+  id           String     @id @default(uuid())
+  enrollmentId String
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  action   String // e.g., "LESSON_STARTED", "QUIZ_FAILED"
+  metadata Json? // Context about the action
+
+  createdAt DateTime @default(now())
+
+  @@index([enrollmentId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model EnrollmentCertificate {
+  id                String @id @default(uuid())
+  certificateCode   String @unique
+  certificateNumber Int    @default(autoincrement())
+
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  enrollmentId String
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  courseVersion Int
+
+  verificationToken String            @unique
+  verificationUrl   String?
+  status            CertificateStatus @default(ISSUED)
+
+  templateId String?
+  pdfUrl     String?
+  metadata   Json?
+
+  issuedAt  DateTime  @default(now())
+  issuedBy  String?
+  expiresAt DateTime?
+
+  revokedAt        DateTime?
+  revokedBy        String?
+  revocationReason String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@unique([enrollmentId, courseId]) // Only one certificate per course per enrollment
+  @@index([tenantId])
+  @@index([userId])
+  @@index([verificationToken])
+  @@index([certificateCode])
+}
+
+// --------------------------------------------------
+// NOTIFICATION & EMAIL ENGINE
+// --------------------------------------------------
+
+model NotificationTemplate {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  name    String
+  code    String // e.g. ENROLLMENT_CREATED
+  type    NotificationType    @default(SYSTEM)
+  channel NotificationChannel @default(IN_APP)
+
+  subject String?
+  body    String // Supports placeholders like {{learnerName}}
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([tenantId, code, channel])
+  @@index([tenantId])
+}
+
+model NotificationPreference {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type      NotificationType
+  channel   NotificationChannel
+  isEnabled Boolean             @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, type, channel])
+  @@index([tenantId])
+}
+
+model Notification {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type     NotificationType
+  priority NotificationPriority @default(NORMAL)
+
+  title     String
+  body      String
+  actionUrl String?
+
+  status NotificationStatus @default(UNREAD)
+
+  createdAt DateTime  @default(now())
+  readAt    DateTime?
+
+  @@index([tenantId])
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([type])
+}
+
+model NotificationLog {
+  id       String @id @default(uuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  channel  NotificationChannel
+  status   String // e.g. SENT, FAILED
+  provider String? // e.g. MOCK_SMTP, SENDGRID
+
+  subject      String?
+  recipient    String?
+  errorDetails String?
+
+  createdAt DateTime @default(now())
+
+  @@index([tenantId])
+  @@index([userId])
+  @@index([status])
+}
+
+// --------------------------------------------------
+// AUDIT LOGGING
+// --------------------------------------------------
+
+model AuditLog {
+  id       String  @id @default(uuid())
+  tenantId String?
+  userId   String?
+
+  action     String
+  entityType String?
+  entityId   String?
+
+  ipAddress String?
+  userAgent String?
+
+  metadata Json?
+
+  createdAt DateTime @default(now())
+
+  @@index([tenantId])
+  @@index([userId])
+  @@index([action])
+  @@index([entityType, entityId])
+}
+
+// --------------------------------------------------
+// SCORM DATABASE FOUNDATION
+// --------------------------------------------------
+
+model ScormPackage {
+  id       String @id @default(uuid())
+  tenantId String
+
+  title        String
+  version      String @default("1.2") // SCORM 1.2 or 2004
+  manifestPath String
+  launchUrl    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  scoList  ScormSco[]
+  attempts ScormAttempt[]
+
+  @@index([tenantId])
+}
+
+model ScormManifest {
+  id        String @id @default(uuid())
+  packageId String @unique
+
+  rawManifest String @db.Text
+  parsedJson  Json
+
+  createdAt DateTime @default(now())
+}
+
+model ScormSco {
+  id        String       @id @default(uuid())
+  packageId String
+  package   ScormPackage @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  itemIdentifier String
+  title          String
+  launchUrl      String
+
+  runtimeData  ScormRuntimeData[]
+  objectives   ScormObjective[]
+  interactions ScormInteraction[]
+
+  @@index([packageId])
+  @@index([itemIdentifier])
+}
+
+model ScormAttempt {
+  id        String       @id @default(uuid())
+  tenantId  String
+  userId    String
+  packageId String
+  package   ScormPackage @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  attemptNumber Int @default(1)
+
+  status    String @default("incomplete")
+  totalTime Int    @default(0) // centiseconds or seconds
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  runtimeData ScormRuntimeData[]
+
+  @@unique([userId, packageId, attemptNumber])
+  @@index([tenantId])
+}
+
+model ScormRuntimeData {
+  id        String       @id @default(uuid())
+  attemptId String
+  attempt   ScormAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  scoId String
+  sco   ScormSco @relation(fields: [scoId], references: [id], onDelete: Cascade)
+
+  lessonStatus   String  @default("not attempted") // cmi.core.lesson_status
+  lessonLocation String? // cmi.core.lesson_location
+  suspendData    String? @db.Text // cmi.suspend_data
+
+  scoreRaw Float?
+  scoreMin Float?
+  scoreMax Float?
+
+  sessionTime String?
+  totalTime   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([attemptId, scoId])
+}
+
+model ScormObjective {
+  id    String   @id @default(uuid())
+  scoId String
+  sco   ScormSco @relation(fields: [scoId], references: [id], onDelete: Cascade)
+
+  identifier String
+  status     String?
+  scoreRaw   Float?
+  scoreMin   Float?
+  scoreMax   Float?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([scoId, identifier])
+}
+
+model ScormInteraction {
+  id    String   @id @default(uuid())
+  scoId String
+  sco   ScormSco @relation(fields: [scoId], references: [id], onDelete: Cascade)
+
+  identifier       String
+  type             String?
+  correctResponses String? @db.Text
+  learnerResponse  String? @db.Text
+  result           String?
+  latency          String?
+  timestamp        String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([scoId, identifier])
+}

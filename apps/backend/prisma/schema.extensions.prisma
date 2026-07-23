@@ -1,0 +1,157 @@
+
+// --------------------------------------------------
+// AUDIT LOGGING
+// --------------------------------------------------
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  tenantId    String?
+  userId      String?
+  
+  action      String
+  entityType  String?
+  entityId    String?
+  
+  ipAddress   String?
+  userAgent   String?
+  
+  metadata    Json?
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([tenantId])
+  @@index([userId])
+  @@index([action])
+  @@index([entityType, entityId])
+}
+
+// --------------------------------------------------
+// SCORM DATABASE FOUNDATION
+// --------------------------------------------------
+
+model ScormPackage {
+  id              String   @id @default(uuid())
+  tenantId        String
+  
+  title           String
+  version         String   @default("1.2") // SCORM 1.2 or 2004
+  manifestPath    String
+  launchUrl       String
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  scoList         ScormSco[]
+  attempts        ScormAttempt[]
+  
+  @@index([tenantId])
+}
+
+model ScormManifest {
+  id              String   @id @default(uuid())
+  packageId       String   @unique
+  
+  rawManifest     String   @db.Text
+  parsedJson      Json
+  
+  createdAt       DateTime @default(now())
+}
+
+model ScormSco {
+  id              String   @id @default(uuid())
+  packageId       String
+  package         ScormPackage @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  
+  itemIdentifier  String
+  title           String
+  launchUrl       String
+  
+  runtimeData     ScormRuntimeData[]
+  objectives      ScormObjective[]
+  interactions    ScormInteraction[]
+  
+  @@index([packageId])
+  @@index([itemIdentifier])
+}
+
+model ScormAttempt {
+  id              String   @id @default(uuid())
+  tenantId        String
+  userId          String
+  packageId       String
+  package         ScormPackage @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  
+  attemptNumber   Int      @default(1)
+  
+  status          String   @default("incomplete")
+  totalTime       Int      @default(0) // centiseconds or seconds
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  runtimeData     ScormRuntimeData[]
+  
+  @@unique([userId, packageId, attemptNumber])
+  @@index([tenantId])
+}
+
+model ScormRuntimeData {
+  id              String   @id @default(uuid())
+  attemptId       String
+  attempt         ScormAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  
+  scoId           String
+  sco             ScormSco @relation(fields: [scoId], references: [id], onDelete: Cascade)
+  
+  lessonStatus    String   @default("not attempted") // cmi.core.lesson_status
+  lessonLocation  String?  // cmi.core.lesson_location
+  suspendData     String?  @db.Text // cmi.suspend_data
+  
+  scoreRaw        Float?
+  scoreMin        Float?
+  scoreMax        Float?
+  
+  sessionTime     String?
+  totalTime       String?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@unique([attemptId, scoId])
+}
+
+model ScormObjective {
+  id              String   @id @default(uuid())
+  scoId           String
+  sco             ScormSco @relation(fields: [scoId], references: [id], onDelete: Cascade)
+  
+  identifier      String
+  status          String?
+  scoreRaw        Float?
+  scoreMin        Float?
+  scoreMax        Float?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@unique([scoId, identifier])
+}
+
+model ScormInteraction {
+  id              String   @id @default(uuid())
+  scoId           String
+  sco             ScormSco @relation(fields: [scoId], references: [id], onDelete: Cascade)
+  
+  identifier      String
+  type            String?
+  correctResponses String?  @db.Text
+  learnerResponse String?  @db.Text
+  result          String?
+  latency         String?
+  timestamp       String?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@unique([scoId, identifier])
+}

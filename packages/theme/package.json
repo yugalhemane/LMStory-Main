@@ -1,0 +1,13 @@
+{
+  "name": "theme",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "tailwindcss": "^4.3.2",
+    "tailwindcss-animate": "^1.0.7"
+  }
+}

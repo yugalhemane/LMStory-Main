@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LMStory | Course Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#76777d",
+                        "surface-tint": "#565e74",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#009668",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary-fixed": "#6ffbbe",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-container": "#131b2e",
+                        "tertiary-container": "#002113",
+                        "tertiary": "#000000",
+                        "on-secondary-container": "#fefcff",
+                        "surface": "#f8f9ff",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#0058be",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "secondary-container": "#2170e4",
+                        "on-primary-container": "#7c839b",
+                        "primary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "primary-fixed": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#d8e2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .asset-ghost {
+            opacity: 0.4;
+            border: 2px dashed #3B82F6;
+        }
+        .canvas-section:hover .section-controls {
+            opacity: 1;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background overflow-hidden">
+<!-- Sidebar Navigation (Shared Component Logic) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container border-r border-outline-variant flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<span class="text-title-lg font-title-lg font-bold text-on-primary">LMStory</span>
+<p class="text-label-md font-label-md text-on-primary-container">LMS Platform</p>
+</div>
+<nav class="flex-1 px-sm space-y-xs overflow-y-auto">
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-label-md font-label-md">Library</span>
+</div>
+<!-- Courses Active -->
+<div class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg opacity-90 transition-all duration-200 cursor-pointer">
+<span class="material-symbols-outlined">school</span>
+<span class="text-label-md font-label-md">Courses</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-label-md font-label-md">Reports</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</div>
+</nav>
+<div class="px-md mt-auto pt-lg border-t border-on-primary-container/10">
+<div class="flex items-center gap-sm bg-surface-container-low/10 p-sm rounded-lg">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed-dim flex items-center justify-center text-on-secondary-fixed font-bold">JD</div>
+<div class="overflow-hidden">
+<p class="text-label-md font-label-md text-on-primary truncate">John Doe</p>
+<p class="text-[10px] text-on-primary-container uppercase tracking-wider">Administrator</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-[260px] h-screen flex flex-col bg-surface-bright">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center h-16 px-margin-desktop w-full bg-surface border-b border-outline-variant z-40">
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">arrow_back</span>
+<h1 class="text-title-md font-title-md font-bold text-on-surface">Course Builder: Cyber Security 101</h1>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<span class="text-label-md font-label-md text-on-surface-variant px-sm py-1 bg-surface-container rounded">Draft</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-2 text-on-surface hover:bg-surface-container-low transition-colors duration-200 font-medium">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span class="text-label-md font-label-md">Save Draft</span>
+</button>
+<button class="flex items-center gap-xs px-md py-2 text-on-surface hover:bg-surface-container-low transition-colors duration-200 font-medium">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span class="text-label-md font-label-md">Preview</span>
+</button>
+<button class="bg-secondary text-white px-xl py-2 rounded-lg font-medium hover:opacity-90 active:scale-95 transition-all shadow-sm">
+<span class="text-label-md font-label-md">Publish</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-on-surface">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest cursor-pointer border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female instructional designer with a warm smile, wearing modern glasses, set against a clean, minimalist corporate office backdrop with soft natural lighting and a neutral blue-grey color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe4ggFMCh0a03J_mxvR-Oje0A-0myRcirSGBQSlTRwoDmOCbAdsIkdWJKN6k0rOgcI0s48STlP0fMibIMshXvKEZFUepsFDTTdrsLbb-kvZ5m33CA2gmAzUoNm6n-hS3lC85dcOVSPjqq52SczTG6PxrNVpquOShnVlJqdaQ3m7Ts9TJgpt6Dte7Iiea8s9yQUcGdZs_kMt92kQkv4cep3BIBa3kcTmBRzILNHqSXgm5sdDW7TpZxX47ehA6d6KxS9KMQai_s-3yHa"/>
+</div>
+</div>
+</header>
+<!-- Builder Interface -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Assets Panel (Left) -->
+<aside class="w-72 bg-white border-r border-outline-variant flex flex-col">
+<div class="p-md border-b border-outline-variant">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Learning Assets</h2>
+<p class="text-body-sm font-body-sm text-outline mt-1">Drag assets to the canvas</p>
+</div>
+<div class="flex-1 overflow-y-auto p-md space-y-md">
+<!-- Draggable Asset Item -->
+<div class="group flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-grab active:cursor-grabbing hover:border-secondary transition-all" draggable="true">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-secondary border border-outline-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">smart_display</span>
+</div>
+<div>
+<p class="text-title-md font-title-md">Video</p>
+<p class="text-label-sm font-label-sm text-outline">MP4, Vimeo, YouTube</p>
+</div>
+<span class="material-symbols-outlined text-outline ml-auto opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-grab active:cursor-grabbing hover:border-secondary transition-all" draggable="true">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-error border border-outline-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</div>
+<div>
+<p class="text-title-md font-title-md">PDF</p>
+<p class="text-label-sm font-label-sm text-outline">Document, Guide, Notes</p>
+</div>
+<span class="material-symbols-outlined text-outline ml-auto opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-grab active:cursor-grabbing hover:border-secondary transition-all" draggable="true">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-on-tertiary-container border border-outline-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<p class="text-title-md font-title-md">SCORM</p>
+<p class="text-label-sm font-label-sm text-outline">E-learning Package</p>
+</div>
+<span class="material-symbols-outlined text-outline ml-auto opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-grab active:cursor-grabbing hover:border-secondary transition-all" draggable="true">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary border border-outline-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">quiz</span>
+</div>
+<div>
+<p class="text-title-md font-title-md">Quiz</p>
+<p class="text-label-sm font-label-sm text-outline">Multiple Choice, True/False</p>
+</div>
+<span class="material-symbols-outlined text-outline ml-auto opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-grab active:cursor-grabbing hover:border-secondary transition-all" draggable="true">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-secondary-fixed-dim border border-outline-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<div>
+<p class="text-title-md font-title-md">Survey</p>
+<p class="text-label-sm font-label-sm text-outline">Learner Feedback</p>
+</div>
+<span class="material-symbols-outlined text-outline ml-auto opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-grab active:cursor-grabbing hover:border-secondary transition-all" draggable="true">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-amber-500 border border-outline-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<div>
+<p class="text-title-md font-title-md">Certificate</p>
+<p class="text-label-sm font-label-sm text-outline">Completion Award</p>
+</div>
+<span class="material-symbols-outlined text-outline ml-auto opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-highest border-t border-outline-variant">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Course Progress Logic</span>
+<span class="material-symbols-outlined text-[16px] text-outline">info</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-full bg-outline-variant h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-2/3"></div>
+</div>
+<span class="text-label-sm font-label-sm">65%</span>
+</div>
+</div>
+</aside>
+<!-- Canvas Area (Middle/Fluid) -->
+<section class="flex-1 overflow-y-auto bg-[#F8FAFC] p-xl relative">
+<div class="max-w-4xl mx-auto space-y-lg">
+<!-- Canvas Section Header -->
+<div class="bg-white rounded-xl border border-outline-variant p-lg shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex-1">
+<span class="text-label-sm font-label-sm text-secondary font-bold uppercase tracking-widest">Section 01</span>
+<input class="w-full text-headline-lg font-headline-lg border-none focus:ring-0 p-0 text-on-surface mt-xs" placeholder="Section Title" type="text" value="Introduction to Cybersecurity"/>
+<textarea class="w-full border-none focus:ring-0 p-0 text-body-md text-on-surface-variant mt-sm resize-none" placeholder="Add a brief description of this section's learning objectives..." rows="2"></textarea>
+</div>
+<div class="flex gap-xs">
+<button class="p-sm hover:bg-surface-container rounded-lg text-outline transition-colors"><span class="material-symbols-outlined">settings</span></button>
+<button class="p-sm hover:bg-error-container hover:text-error rounded-lg text-outline transition-colors"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Content Blocks List -->
+<div class="space-y-md">
+<!-- Block: Video -->
+<div class="group relative bg-white rounded-xl border border-outline-variant p-md shadow-sm hover:border-secondary transition-all canvas-section">
+<div class="absolute left-[-12px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-secondary text-white p-1 rounded cursor-grab"><span class="material-symbols-outlined text-[18px]">drag_indicator</span></div>
+</div>
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined">smart_display</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<p class="text-title-md font-title-md">Introductory Video: The Landscape</p>
+<span class="text-label-sm font-label-sm bg-surface-variant px-2 py-0.5 rounded text-on-surface-variant">Required</span>
+</div>
+<div class="mt-md aspect-video bg-black rounded-lg relative overflow-hidden flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A sleek, high-definition video frame showing a dark interface with neon blue data visualizations and server rack graphics. The center features a prominent 'Play' icon. The cinematic lighting emphasizes depth and modern technology, maintaining a professional corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1M0nmeC9uhmZPoXKRIsfW1G_fHv-zi_tOV7SIaRPu3tczHIRKngaG3yt1Z-QVp7pj0R8pDBN9DNPbfiDXQHGorljtIlXpKl8i1N9Yo3k9JL9ad25u47jcW0yISSUVA6Y7j4Zbw5UzD4oKNjrp_CXpVL43P1RSI3FZJhkURLImq1IoUwltWt0sinVuCp4twm8h9QFl_n50yV4IZnmDWznrXdZtGafKvcezSa_4BylV03cxI7bU8NnGiA1z9r9PQvNKQBkijb-WYXLw"/>
+<button class="z-10 w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-md flex justify-end gap-sm opacity-0 section-controls transition-opacity">
+<button class="text-label-md font-label-md text-secondary hover:underline px-md">Replace Media</button>
+<button class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface px-md">Settings</button>
+</div>
+</div>
+<!-- Block: Quiz -->
+<div class="group relative bg-white rounded-xl border border-outline-variant p-md shadow-sm hover:border-secondary transition-all canvas-section">
+<div class="absolute left-[-12px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-secondary text-white p-1 rounded cursor-grab"><span class="material-symbols-outlined text-[18px]">drag_indicator</span></div>
+</div>
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">quiz</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<p class="text-title-md font-title-md">Knowledge Check: Threat Types</p>
+<div class="flex gap-sm">
+<span class="text-label-sm font-label-sm text-outline">5 Questions</span>
+<span class="text-label-sm font-label-sm bg-on-tertiary-container/10 px-2 py-0.5 rounded text-on-tertiary-container">Passing: 80%</span>
+</div>
+</div>
+<div class="mt-md p-md border border-outline-variant border-dashed rounded-lg flex items-center justify-between">
+<p class="text-body-sm text-outline">Quick preview of quiz content...</p>
+<button class="bg-surface-variant text-on-surface px-md py-1 rounded text-label-md">Edit Quiz</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Drop Zone / Spacer -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl h-24 flex items-center justify-center hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="flex flex-col items-center gap-xs text-outline group-hover:text-secondary">
+<span class="material-symbols-outlined">add_circle</span>
+<p class="text-label-md font-label-md">Add content block here</p>
+</div>
+</div>
+<!-- Add New Section Trigger -->
+<div class="flex items-center gap-md py-lg">
+<div class="flex-1 h-[1px] bg-outline-variant"></div>
+<button class="flex items-center gap-sm bg-white border border-outline-variant px-lg py-sm rounded-full text-title-md font-title-md hover:bg-surface-container-low hover:border-secondary transition-all shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-secondary">add_box</span>
+                            Add New Section
+                        </button>
+<div class="flex-1 h-[1px] bg-outline-variant"></div>
+</div>
+</div>
+</section>
+<!-- Properties Panel (Right) -->
+<aside class="w-80 bg-white border-l border-outline-variant flex flex-col">
+<div class="flex border-b border-outline-variant">
+<button class="flex-1 py-md text-label-md font-label-md border-b-2 border-secondary text-on-surface">Properties</button>
+<button class="flex-1 py-md text-label-md font-label-md text-outline hover:text-on-surface">Style</button>
+</div>
+<div class="flex-1 overflow-y-auto p-md space-y-xl">
+<div class="space-y-md">
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Global Settings</h3>
+<div class="space-y-sm">
+<label class="block text-label-md font-label-md">Course Thumbnail</label>
+<div class="aspect-video rounded-lg overflow-hidden relative group border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A sophisticated digital artwork representing cybersecurity, featuring a stylized padlock icon integrated into a circuit board pattern with deep blue and electric cyan accents. The style is modern, technical, and clean, suitable for a professional corporate LMS course cover." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACPL1yVqFgV28MP4igGFXkqU8mqhkto1d43-Yx1h5VXxFFiBNBMZuCaDQg1fL1-nSzQ-9bQQP1ZsV5JEEjet1d0rEI4njlKu6bMuQF7vyDf0Ufi9IIyNG-W4B6kVm20jxVsQuFsX3hUw5JnvD8Mv9pENV-89vJ14V4_xEShbvIMgnNi0VT84l9tl_R_OqhRyoG8BGgzVm9WD17Yj37zc5TuibQPciciI6fkkrvDFwD4PRfh4vjENAQAJ5FWxREiNnH3O-Nb3IDMYvy"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
+<span class="text-white text-label-md font-label-md">Change Image</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block text-label-md font-label-md">Category</label>
+<select class="w-full rounded-lg border-outline-variant text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary">
+<option>Information Technology</option>
+<option>Compliance</option>
+<option>Professional Development</option>
+</select>
+</div>
+</div>
+<div class="space-y-md">
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Accessibility</h3>
+<div class="flex items-center justify-between p-sm bg-surface-container-low rounded-lg">
+<span class="text-body-sm font-body-sm">Require Completion</span>
+<div class="w-10 h-5 bg-secondary rounded-full relative p-0.5 cursor-pointer">
+<div class="w-4 h-4 bg-white rounded-full ml-auto"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container-low rounded-lg">
+<span class="text-body-sm font-body-sm">Linear Navigation</span>
+<div class="w-10 h-5 bg-outline-variant rounded-full relative p-0.5 cursor-pointer">
+<div class="w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-highest p-md rounded-xl space-y-sm">
+<div class="flex items-center gap-sm text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-label-md font-label-md">Auto-validation Active</span>
+</div>
+<p class="text-[11px] text-outline">Course assets are automatically checked for SCORM compliance and accessibility standards.</p>
+</div>
+</div>
+<div class="p-md border-t border-outline-variant bg-surface-bright">
+<button class="w-full py-2 bg-surface text-on-surface border border-outline-variant rounded-lg font-medium hover:bg-surface-container-low flex items-center justify-center gap-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                        Collaborate
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<script>
+        // Simple drag and drop visual feedback script
+        const draggables = document.querySelectorAll('[draggable="true"]');
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', () => {
+                draggable.classList.add('asset-ghost');
+            });
+            draggable.addEventListener('dragend', () => {
+                draggable.classList.remove('asset-ghost');
+            });
+        });
+
+        // Toggle simulation for switches
+        document.querySelectorAll('.w-10.h-5').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const dot = toggle.querySelector('div');
+                if(toggle.classList.contains('bg-secondary')) {
+                    toggle.classList.remove('bg-secondary');
+                    toggle.classList.add('bg-outline-variant');
+                    dot.classList.remove('ml-auto');
+                } else {
+                    toggle.classList.add('bg-secondary');
+                    toggle.classList.remove('bg-outline-variant');
+                    dot.classList.add('ml-auto');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Reports - LMStory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        /* Professional Tonal Layering for Cards */
+        .lms-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; transition: border-color 0.2s ease; }
+        .lms-card:hover { border-color: #3b82f6; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface-container": "#e5eeff",
+                "on-tertiary-fixed": "#002113",
+                "on-primary-container": "#7c839b",
+                "outline-variant": "#c6c6cd",
+                "background": "#f8f9ff",
+                "surface-container-high": "#dce9ff",
+                "tertiary-fixed": "#6ffbbe",
+                "inverse-primary": "#bec6e0",
+                "primary-container": "#131b2e",
+                "surface-container-lowest": "#ffffff",
+                "surface-dim": "#cbdbf5",
+                "primary": "#000000",
+                "on-tertiary-container": "#009668",
+                "inverse-on-surface": "#eaf1ff",
+                "tertiary-fixed-dim": "#4edea3",
+                "on-error": "#ffffff",
+                "outline": "#76777d",
+                "on-secondary-fixed": "#001a42",
+                "on-secondary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "on-tertiary-fixed-variant": "#005236",
+                "surface-container-highest": "#d3e4fe",
+                "primary-fixed-dim": "#bec6e0",
+                "tertiary-container": "#002113",
+                "on-primary-fixed-variant": "#3f465c",
+                "error": "#ba1a1a",
+                "surface-tint": "#565e74",
+                "on-secondary-fixed-variant": "#004395",
+                "on-primary": "#ffffff",
+                "primary-fixed": "#dae2fd",
+                "on-background": "#0b1c30",
+                "on-primary-fixed": "#131b2e",
+                "inverse-surface": "#213145",
+                "tertiary": "#000000",
+                "surface-container-low": "#eff4ff",
+                "on-secondary-container": "#fefcff",
+                "on-error-container": "#93000a",
+                "on-surface": "#0b1c30",
+                "secondary-fixed": "#d8e2ff",
+                "error-container": "#ffdad6",
+                "on-surface-variant": "#45464d",
+                "surface": "#f8f9ff",
+                "secondary-container": "#2170e4",
+                "surface-variant": "#d3e4fe",
+                "surface-bright": "#f8f9ff",
+                "secondary": "#0058be",
+                "secondary-fixed-dim": "#adc6ff"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "gutter": "16px",
+                "lg": "24px",
+                "xl": "32px",
+                "xs": "4px",
+                "sm": "8px",
+                "md": "16px",
+                "margin-mobile": "16px",
+                "base": "4px",
+                "margin-desktop": "32px"
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container flex flex-col py-4 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 bg-secondary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">LMStory</span>
+<span class="text-[10px] uppercase tracking-widest text-on-primary-container font-bold">Enterprise LMS</span>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">person</span> Users
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">group</span> Groups
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">local_library</span> Library
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">campaign</span> Campaigns
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">school</span> Courses
+            </a>
+<!-- Reports Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg mx-2 transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bar_chart</span> Reports
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="bg-white/5 rounded-lg p-4 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border border-white/10 object-cover" data-alt="Close up professional portrait of a business executive for a corporate LMS profile avatar, high-quality lighting, studio setting, neutral professional colors, blurred background, 8k resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBix5Up5ILx3KymYB2sqZ4rgF7gW1db9gYEm40eik0YzAoitU-zoQUB_0hylFkWIkJDfNp54uI6fFibJOSy88PBLIGooq7MdDpPICWFwizrWnm2kuL_C2fDI1rArjlIRiA5imr5vixA4ZjjLWRo_dIFmEsCUjczle93q3m807rfCmduDFVgb3Dl4zvLupu9yo8bvfd82Dxyu8Bp5XTX6HcunNbFV5E8vHu6wYvMyVHunqknMw3IGo1ENvz2PFTNE75z41SnU5-Tbnpr"/>
+<div class="flex flex-col overflow-hidden">
+<span class="text-on-primary font-bold text-label-md truncate">Admin User</span>
+<span class="text-on-primary-container text-[10px] truncate">admin@lmstory.corp</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar & Main Layout Container -->
+<div class="ml-[260px] w-[calc(100%-260px)] min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center h-16 px-margin-desktop sticky top-0 z-40 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-gutter w-full max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline font-title-md">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-body-sm focus:ring-2 focus:ring-secondary/20 transition-all" placeholder="Search reports, users, or datasets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-4 px-4 py-1.5 bg-surface-variant/30 rounded-full cursor-pointer hover:bg-surface-variant/50 transition-colors">
+<span class="text-label-md font-bold text-on-surface">Global Enterprise</span>
+<span class="material-symbols-outlined text-primary text-body-md">expand_more</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-margin-desktop max-w-[1440px] mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">User Learning Reports</h1>
+<p class="text-body-md text-on-surface-variant">Detailed performance metrics across all active learners.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded bg-white text-on-surface font-label-md hover:bg-surface-variant/10 transition-colors">
+<span class="material-symbols-outlined text-body-md">file_download</span>
+                        Export CSV
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-secondary text-on-secondary rounded font-label-md hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-body-md">add</span>
+                        Schedule Report
+                    </button>
+</div>
+</div>
+<!-- KPI Cards Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-8">
+<!-- KPI 1 -->
+<div class="lms-card p-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/10 rounded">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">person_search</span>
+</div>
+<span class="text-label-sm font-bold text-tertiary-container bg-tertiary-fixed rounded px-2 py-0.5">+12.5%</span>
+</div>
+<div class="mt-4">
+<p class="text-label-md text-on-surface-variant uppercase tracking-wider">Total Learners</p>
+<h2 class="text-display font-display text-on-surface mt-1">24,892</h2>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="lms-card p-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/10 rounded">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+<span class="text-label-sm font-bold text-tertiary-container bg-tertiary-fixed rounded px-2 py-0.5">+4.2%</span>
+</div>
+<div class="mt-4">
+<p class="text-label-md text-on-surface-variant uppercase tracking-wider">Avg. Completion Rate</p>
+<h2 class="text-display font-display text-on-surface mt-1">78.4%</h2>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="lms-card p-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/10 rounded">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<span class="text-label-sm font-bold text-tertiary-container bg-tertiary-fixed rounded px-2 py-0.5">Steady</span>
+</div>
+<div class="mt-4">
+<p class="text-label-md text-on-surface-variant uppercase tracking-wider">Certificates Issued</p>
+<h2 class="text-display font-display text-on-surface mt-1">11,205</h2>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="lms-card p-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/10 rounded">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<span class="text-label-sm font-bold text-tertiary-container bg-tertiary-fixed rounded px-2 py-0.5">+0.8%</span>
+</div>
+<div class="mt-4">
+<p class="text-label-md text-on-surface-variant uppercase tracking-wider">Average Score</p>
+<h2 class="text-display font-display text-on-surface mt-1">84.1</h2>
+</div>
+</div>
+</div>
+<!-- Filters Section -->
+<div class="lms-card p-md mb-gutter flex flex-wrap items-end gap-gutter bg-surface-container-low/50">
+<div class="flex flex-col gap-1 flex-1 min-w-[200px]">
+<label class="text-label-sm text-on-surface-variant font-bold">Date Range</label>
+<select class="form-select w-full border-outline-variant rounded py-2 text-body-sm focus:border-secondary focus:ring-0">
+<option>Last 30 Days</option>
+<option>Last Quarter</option>
+<option>Last Year</option>
+<option>Custom Range</option>
+</select>
+</div>
+<div class="flex flex-col gap-1 flex-1 min-w-[200px]">
+<label class="text-label-sm text-on-surface-variant font-bold">Department</label>
+<select class="form-select w-full border-outline-variant rounded py-2 text-body-sm focus:border-secondary focus:ring-0">
+<option>All Departments</option>
+<option>Engineering</option>
+<option>Sales &amp; Marketing</option>
+<option>Human Resources</option>
+<option>Finance</option>
+</select>
+</div>
+<div class="flex flex-col gap-1 flex-1 min-w-[200px]">
+<label class="text-label-sm text-on-surface-variant font-bold">Group</label>
+<select class="form-select w-full border-outline-variant rounded py-2 text-body-sm focus:border-secondary focus:ring-0">
+<option>All Groups</option>
+<option>Onboarding 2024</option>
+<option>Compliance Team</option>
+<option>Management Hub</option>
+</select>
+</div>
+<button class="h-[38px] px-6 bg-primary text-on-primary font-label-md rounded hover:bg-on-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-body-sm">filter_list</span>
+                    Apply Filters
+                </button>
+<button class="h-[38px] px-4 text-on-surface-variant font-label-md hover:text-secondary transition-colors underline underline-offset-4 decoration-outline-variant">
+                    Clear
+                </button>
+</div>
+<!-- Data Table Section -->
+<div class="lms-card overflow-hidden">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-gutter py-4 font-label-md text-on-surface-variant uppercase tracking-wider">Learner Name</th>
+<th class="px-gutter py-4 font-label-md text-on-surface-variant uppercase tracking-wider">Email</th>
+<th class="px-gutter py-4 font-label-md text-on-surface-variant uppercase tracking-wider">Department</th>
+<th class="px-gutter py-4 font-label-md text-on-surface-variant uppercase tracking-wider text-center">Courses</th>
+<th class="px-gutter py-4 font-label-md text-on-surface-variant uppercase tracking-wider">Completion</th>
+<th class="px-gutter py-4 font-label-md text-on-surface-variant uppercase tracking-wider text-center">Avg Score</th>
+<th class="px-gutter py-4 font-label-md text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary flex items-center justify-center font-bold text-label-md">JH</div>
+<span class="font-title-md text-on-surface">James Harrison</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">james.h@corp-it.com</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Engineering</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface text-center font-bold">12</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-outline-variant rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-secondary" style="width: 95%"></div>
+</div>
+<span class="text-label-sm font-bold text-on-surface">95%</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-center">
+<span class="text-label-sm font-bold px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded">98</span>
+</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-secondary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-label-md">SL</div>
+<span class="font-title-md text-on-surface">Sarah Lane</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">s.lane@marketing.com</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Marketing</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface text-center font-bold">8</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-outline-variant rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-secondary" style="width: 42%"></div>
+</div>
+<span class="text-label-sm font-bold text-on-surface">42%</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-center">
+<span class="text-label-sm font-bold px-2 py-1 bg-surface-variant text-on-surface-variant rounded">72</span>
+</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-secondary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary flex items-center justify-center font-bold text-label-md">MK</div>
+<span class="font-title-md text-on-surface">Michael Kuan</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">mkuan@finance.com</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Finance</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface text-center font-bold">15</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-outline-variant rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-secondary" style="width: 100%"></div>
+</div>
+<span class="text-label-sm font-bold text-on-surface">100%</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-center">
+<span class="text-label-sm font-bold px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded">94</span>
+</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-secondary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-label-md">RT</div>
+<span class="font-title-md text-on-surface">Rebecca Tims</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">rtims@hr.com</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Human Resources</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface text-center font-bold">4</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-outline-variant rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-error" style="width: 15%"></div>
+</div>
+<span class="text-label-sm font-bold text-on-surface">15%</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-center">
+<span class="text-label-sm font-bold px-2 py-1 bg-error-container text-on-error-container rounded">65</span>
+</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-secondary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary flex items-center justify-center font-bold text-label-md">DC</div>
+<span class="font-title-md text-on-surface">David Chen</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">dchen@salesforce.com</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Sales</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface text-center font-bold">10</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-outline-variant rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-secondary" style="width: 82%"></div>
+</div>
+<span class="text-label-sm font-bold text-on-surface">82%</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-center">
+<span class="text-label-sm font-bold px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded">91</span>
+</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-secondary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-gutter py-4 border-t border-outline-variant flex justify-between items-center bg-white">
+<span class="text-body-sm text-on-surface-variant">Showing 1 to 5 of 24,892 learners</span>
+<div class="flex gap-2">
+<button class="p-1 border border-outline-variant rounded hover:bg-surface-variant/10 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-body-md">chevron_left</span>
+</button>
+<button class="w-8 h-8 bg-secondary text-on-secondary rounded text-label-md font-bold">1</button>
+<button class="w-8 h-8 hover:bg-surface-variant/10 rounded text-label-md font-bold">2</button>
+<button class="w-8 h-8 hover:bg-surface-variant/10 rounded text-label-md font-bold">3</button>
+<span class="px-2 py-1 text-on-surface-variant">...</span>
+<button class="w-8 h-8 hover:bg-surface-variant/10 rounded text-label-md font-bold">4979</button>
+<button class="p-1 border border-outline-variant rounded hover:bg-surface-variant/10">
+<span class="material-symbols-outlined text-body-md">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Insight Chart Area -->
+<div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<div class="lg:col-span-2 lms-card p-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-lg text-on-surface">Completion Trends</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-label-sm text-on-surface-variant">Target</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="text-label-sm text-on-surface-variant">Actual</span>
+</div>
+</div>
+</div>
+<div class="h-64 flex items-end gap-2 px-2">
+<!-- Mock Chart Bars -->
+<div class="flex-1 bg-surface-container flex flex-col justify-end gap-1 rounded-t p-1 h-full">
+<div class="bg-tertiary-fixed-dim w-full rounded-t" style="height: 45%"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end gap-1 rounded-t p-1 h-full">
+<div class="bg-tertiary-fixed-dim w-full rounded-t" style="height: 60%"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end gap-1 rounded-t p-1 h-full">
+<div class="bg-tertiary-fixed-dim w-full rounded-t" style="height: 75%"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end gap-1 rounded-t p-1 h-full">
+<div class="bg-tertiary-fixed-dim w-full rounded-t" style="height: 90%"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end gap-1 rounded-t p-1 h-full relative">
+<div class="bg-secondary w-full rounded-t shadow-lg animate-pulse" style="height: 95%"></div>
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-primary text-on-primary text-[9px] font-bold px-1 rounded">PEAK</div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end gap-1 rounded-t p-1 h-full">
+<div class="bg-tertiary-fixed-dim w-full rounded-t" style="height: 65%"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end gap-1 rounded-t p-1 h-full">
+<div class="bg-tertiary-fixed-dim w-full rounded-t" style="height: 55%"></div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-label-sm text-on-surface-variant font-bold border-t border-outline-variant pt-2">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<div class="lms-card p-lg bg-primary-container text-on-primary overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="font-title-lg mb-2">Automated Analysis</h3>
+<p class="text-body-sm text-on-primary-container mb-6">Learning velocity has increased by 8% in the Engineering department this month. 12 learners are at risk of missing the compliance deadline.</p>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed">trending_up</span>
+<div>
+<p class="text-label-md font-bold">Top Performing Group</p>
+<p class="text-body-sm text-on-primary-container">Cloud Arch 2024</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error">warning</span>
+<div>
+<p class="text-label-md font-bold">At-Risk Learners</p>
+<p class="text-body-sm text-on-primary-container">14 individuals pending Safety v2</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Aesthetic background element -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.lms-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.995)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

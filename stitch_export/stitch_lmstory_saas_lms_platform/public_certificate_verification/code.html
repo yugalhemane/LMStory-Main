@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verify Credential | LMStory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed": "#002113",
+                    "on-primary-container": "#7c839b",
+                    "outline-variant": "#c6c6cd",
+                    "background": "#f8f9ff",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary-fixed": "#6ffbbe",
+                    "inverse-primary": "#bec6e0",
+                    "primary-container": "#131b2e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "primary": "#000000",
+                    "on-tertiary-container": "#009668",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-error": "#ffffff",
+                    "outline": "#76777d",
+                    "on-secondary-fixed": "#001a42",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary-container": "#002113",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#565e74",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dae2fd",
+                    "on-background": "#0b1c30",
+                    "on-primary-fixed": "#131b2e",
+                    "inverse-surface": "#213145",
+                    "tertiary": "#000000",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-container": "#fefcff",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed": "#d8e2ff",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#45464d",
+                    "surface": "#f8f9ff",
+                    "secondary": "#0058be",
+                    "secondary-fixed-dim": "#adc6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .cert-glow {
+            box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.15);
+        }
+        .verified-badge-animate {
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(.8); opacity: 0; }
+            50% { opacity: .5; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col">
+<!-- Header Navigation (Public Version) -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-outline-variant h-16 flex items-center px-gutter md:px-margin-desktop justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<span class="font-title-lg text-title-lg font-black text-primary tracking-tight">LMStory</span>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<span class="font-label-md text-label-md text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">Enterprise LMS</span>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<button class="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+                Verify Portal
+            </button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-gutter">
+<div class="max-w-4xl w-full flex flex-col gap-8 py-12">
+<!-- Success Notification / Status -->
+<div class="flex flex-col items-center text-center gap-4">
+<div class="relative">
+<div class="absolute inset-0 verified-badge-animate rounded-full bg-on-tertiary-container/20"></div>
+<div class="relative w-20 h-20 bg-tertiary-fixed-dim/20 rounded-full flex items-center justify-center border-2 border-on-tertiary-container">
+<span class="material-symbols-outlined text-[40px] text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h1 class="font-display text-display text-primary">Credential Verified</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto">
+                        This digital certificate is authentic and was issued by LMStory to the recipient listed below upon successful completion of the course requirements.
+                    </p>
+</div>
+</div>
+<!-- Bento Layout for Certificate Info -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Certificate Preview -->
+<div class="md:col-span-7 bg-white border border-outline-variant rounded-xl overflow-hidden cert-glow group cursor-zoom-in transition-transform hover:scale-[1.01]">
+<div class="aspect-[1.414/1] relative">
+<img class="w-full h-full object-cover" data-alt="A professional, high-fidelity digital learning certificate design for LMStory. The document features an elegant minimalist layout with a deep navy blue border, sophisticated gold foil seal of authenticity, and crisp serif typography for the recipient's name and course title. The background has a subtle high-end paper texture with fine security guilloche patterns. Soft studio lighting highlights the premium corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLt-pBob7PweEn2msr0Vpg2ioJRgzSzx7PS4i--9I8EuZ_C1wzUUBoC1T5NxTGQgKruPnhjsc6vYaknWhghmUwm6Tn_ASSNFJLRP0OjaYB5SRNQWvZDEpgCN6IXfruCne-aD1oIV9L2r1EoIKjPVjtzC7Moy_n_rYB-WYK2FH797VnvixDojque6gY2vDcy860y67D2Zm0kv5bqN3XcCfjDcejoedxxfD85tSIvQakfwc-cmEtX0KPeBjouGQdX-ikWMSnz1D97HwN"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<div class="bg-white/90 px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-primary">fullscreen</span>
+<span class="font-label-md text-label-md text-primary">View Full Screen</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Credential Details -->
+<div class="md:col-span-5 flex flex-col gap-gutter">
+<div class="bg-white border border-outline-variant rounded-xl p-6 flex flex-col gap-6">
+<div>
+<span class="font-label-md text-label-md text-on-primary-container uppercase tracking-widest">Recipient</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-1">Alexander Vance</h2>
+</div>
+<div class="h-px bg-outline-variant"></div>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">menu_book</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-primary-container">Course Title</span>
+<p class="font-title-md text-title-md text-primary">Advanced Enterprise Systems Architecture</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">calendar_today</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-primary-container">Date Issued</span>
+<p class="font-title-md text-title-md text-primary">October 24, 2023</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">fingerprint</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-primary-container">Credential ID</span>
+<p class="font-body-sm text-body-sm font-mono text-primary bg-surface-container-low px-2 py-1 rounded">LMS-8832-XV-2023</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Card -->
+<div class="bg-primary-container rounded-xl p-6 text-white flex flex-col gap-4">
+<h3 class="font-title-md text-title-md">Share Verification</h3>
+<p class="font-body-sm text-body-sm text-on-primary-container">The authenticity of this document can be shared directly with employers or institutions via this permanent URL.</p>
+<div class="flex gap-2">
+<button class="flex-1 bg-secondary text-white py-2.5 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-secondary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">link</span>
+                                Copy Link
+                            </button>
+<button class="px-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Search Section -->
+<div class="mt-8 flex flex-col items-center gap-6">
+<div class="w-full max-w-xl bg-white border border-outline-variant p-2 rounded-2xl flex items-center gap-3 shadow-sm focus-within:border-secondary transition-colors">
+<div class="pl-4 text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex-grow border-none focus:ring-0 font-body-md text-body-md text-primary py-3 px-0 bg-transparent" placeholder="Verify another credential ID..." type="text"/>
+<button class="bg-surface-container-high text-primary px-6 py-3 rounded-xl font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">
+                        Verify
+                    </button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                    Public verification portal for the LMStory Enterprise ecosystem.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="py-8 border-t border-outline-variant bg-white px-gutter">
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2 opacity-60">
+<span class="font-label-md text-label-md">Powered by</span>
+<span class="font-title-md text-title-md font-black">LMStory</span>
+</div>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary" href="#">Contact Support</a>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+                © 2024 LMStory Inc.
+            </div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for Copy Link
+        document.querySelector('button:contains("Copy Link")')?.addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Copied';
+            btn.classList.replace('bg-secondary', 'bg-on-tertiary-container');
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.replace('bg-on-tertiary-container', 'bg-secondary');
+            }, 2000);
+        });
+
+        // Helper for selector containing text (vanilla doesn't have :contains)
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            if(btn.innerText.includes('Copy Link')) {
+                btn.addEventListener('click', function() {
+                    const original = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Copied';
+                    this.classList.add('!bg-green-600');
+                    setTimeout(() => {
+                        this.innerHTML = original;
+                        this.classList.remove('!bg-green-600');
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body></html>

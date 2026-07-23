@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@ui/*": ["../../packages/ui/src/*"],
+      "@theme/*": ["../../packages/theme/src/*"],
+      "@icons/*": ["../../packages/icons/src/*"],
+      "@types/*": ["../../packages/types/src/*"],
+      "@utils/*": ["../../packages/utils/src/*"],
+      "@hooks/*": ["../../packages/hooks/src/*"],
+      "@assets/*": ["../../packages/assets/src/*"]
+    }
+  }
+}

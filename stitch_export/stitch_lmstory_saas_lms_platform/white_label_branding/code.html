@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>White Label Branding | LMStory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-primary-container": "#7c839b",
+                        "outline-variant": "#c6c6cd",
+                        "background": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "inverse-primary": "#bec6e0",
+                        "primary-container": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "primary": "#000000",
+                        "on-tertiary-container": "#009668",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-error": "#ffffff",
+                        "outline": "#76777d",
+                        "on-secondary-fixed": "#001a42",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-container": "#002113",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "on-background": "#0b1c30",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-surface": "#213145",
+                        "tertiary": "#000000",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-container": "#fefcff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed": "#d8e2ff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#45464d",
+                        "surface": "#f8f9ff",
+                        "secondary": "#0058be",
+                        "secondary-fixed-dim": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar (from JSON) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container flex flex-col py-4 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container font-black font-headline-md text-headline-md">L</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">LMStory</span>
+<span class="font-label-sm text-label-sm text-on-primary-container opacity-80 uppercase tracking-wider">Enterprise LMS</span>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto no-scrollbar">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">person</span> Users
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">group</span> Groups
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">local_library</span> Library
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">campaign</span> Campaigns
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">school</span> Courses
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:bg-surface-variant/10 mx-2 transition-colors transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">bar_chart</span> Reports
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg mx-2 transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="mt-auto px-4">
+<div class="p-4 bg-surface-variant/10 rounded-xl flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border-2 border-secondary/20" data-alt="A professional headshot of a middle-aged male administrator with silver hair and a sharp navy blazer, set against a blurred corporate office background with clean, modern glass partitions. The lighting is soft and neutral, reinforcing a high-end enterprise SaaS aesthetic with balanced tones of white and cool gray." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAvNn1IEB6plPX_T2jbxD_YMlu4xHEvXXubWks38BEcGg-kW3lcf27SjGYb0o4aowAenkqCTXP_guxE5YUOMf0ksNqwESxM79cx35zTRElXJBpNsuvERg9pyzyjCLsrNnLvPYQn1ispShiOtXynmLlzAwcrEvF-swAkSyUi4spp7-kJIhO1JhFkgqv9rbLi18FKJmAmYF5Athc-vg03JqZkST3c7-IPL_xOBodOQDneJIgJuDy0juTni_Qe8ewWiKTifkxdpe-nMgA"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-primary">Admin User</span>
+<span class="text-[10px] text-on-primary-container">Enterprise Plan</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (from JSON) -->
+<header class="flex justify-between items-center h-16 px-margin-desktop ml-[260px] w-[calc(100%-260px)] bg-surface dark:bg-surface-dim border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 w-64 font-body-sm text-body-sm focus:ring-2 focus:ring-secondary/50" placeholder="Search settings..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 border-r border-outline-variant pr-6 mr-2">
+<button class="text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<div class="flex items-center gap-3 cursor-pointer">
+<span class="font-title-md text-title-md text-primary font-bold">Acme Corp</span>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[260px] p-margin-desktop max-w-[1440px]">
+<div class="mb-8">
+<h1 class="font-headline-lg text-headline-lg text-on-background">White Label Branding</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Customize the platform appearance to align with your organization's brand identity.</p>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Settings Form Column -->
+<div class="col-span-12 lg:col-span-7 space-y-gutter">
+<!-- Logo Uploads -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary">image</span>
+<h2 class="font-title-lg text-title-lg">Brand Logos</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Header Logo -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Header Logo</label>
+<div class="h-24 border-2 border-dashed border-outline-variant rounded-lg bg-surface-container-low flex flex-col items-center justify-center group hover:border-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-outline group-hover:text-secondary">cloud_upload</span>
+<span class="font-label-sm text-label-sm text-outline">240 x 60 px</span>
+</div>
+<p class="font-body-sm text-[11px] text-outline text-center">Used in the main sidebar &amp; top nav.</p>
+</div>
+<!-- Email Logo -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Email Logo</label>
+<div class="h-24 border-2 border-dashed border-outline-variant rounded-lg bg-surface-container-low flex flex-col items-center justify-center group hover:border-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-outline group-hover:text-secondary">alternate_email</span>
+<span class="font-label-sm text-label-sm text-outline">400 x 100 px</span>
+</div>
+<p class="font-body-sm text-[11px] text-outline text-center">Used in transactional emails.</p>
+</div>
+<!-- Login Logo -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Login Logo</label>
+<div class="h-24 border-2 border-dashed border-outline-variant rounded-lg bg-surface-container-low flex flex-col items-center justify-center group hover:border-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-outline group-hover:text-secondary">login</span>
+<span class="font-label-sm text-label-sm text-outline">600 x 200 px</span>
+</div>
+<p class="font-body-sm text-[11px] text-outline text-center">Visible on the login screen.</p>
+</div>
+</div>
+</section>
+<!-- Color & Typography Configuration -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary">palette</span>
+<h2 class="font-title-lg text-title-lg">Visual Identity</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<!-- Primary Color -->
+<div class="space-y-md">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Primary Brand Color</label>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary shadow-inner cursor-pointer border border-outline-variant" id="colorPreview"></div>
+<div class="flex-1">
+<input class="w-full border border-outline-variant rounded-lg px-4 py-2 font-body-sm text-body-sm focus:ring-2 focus:ring-secondary/50" id="hexInput" type="text" value="#0058BE"/>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-6 h-6 rounded-full bg-secondary ring-2 ring-offset-2 ring-secondary" onclick="updateBrandColor('#0058BE')"></button>
+<button class="w-6 h-6 rounded-full bg-[#E11D48]" onclick="updateBrandColor('#E11D48')"></button>
+<button class="w-6 h-6 rounded-full bg-[#16A34A]" onclick="updateBrandColor('#16A34A')"></button>
+<button class="w-6 h-6 rounded-full bg-[#7C3AED]" onclick="updateBrandColor('#7C3AED')"></button>
+<button class="w-6 h-6 rounded-full bg-[#EA580C]" onclick="updateBrandColor('#EA580C')"></button>
+</div>
+</div>
+<!-- Favicon -->
+<div class="space-y-md">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Custom Favicon</label>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container border border-outline-variant rounded flex items-center justify-center">
+<img class="w-8 h-8 object-contain" data-alt="A highly detailed 32x32 pixel art icon of a stylized book with a glowing circuits pattern on its cover. The color palette uses deep navy and electric blue highlights. The background is a clean white, emphasizing the sharpness and technological nature of this modern favicon design for a high-end enterprise software platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYB0_didPd1p8lmRt5OOC2ZRvOnGUWrLmc8WmchASzNpKcpcNesnHhxMtjJKfv_KOjcreo-JdtVgekmXf2K5dAICBc1U__WNuyNt-gC6ZbNeZTplCso0sqdmwujXKYz1uynMbGWX8irX1YkZ36gUXDwMOFKBRSsoivY_0mGkfM8CJlftSiD8saS-_AmOCgVzTtARb1kUhCaLwKYk_bEfmaHVmXRaLBQyC9bxtoyiaWUhxXAC12XV6u3t1q3DLRorzk1Ftrm_OfXOQF"/>
+</div>
+<button class="px-4 py-2 border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">Replace ICO</button>
+</div>
+</div>
+</div>
+</section>
+<div class="flex justify-end gap-md pt-4">
+<button class="px-6 py-2 border border-outline-variant rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container-low transition-all">Discard Changes</button>
+<button class="px-8 py-2 bg-secondary text-on-secondary rounded font-title-md text-title-md hover:opacity-90 active:scale-95 transition-all">Save Branding</button>
+</div>
+</div>
+<!-- Preview Column -->
+<div class="col-span-12 lg:col-span-5">
+<div class="sticky top-24 space-y-gutter">
+<div class="bg-primary-container rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/30">
+<div class="p-4 border-b border-on-primary/10 flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-primary">Live Preview</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div class="w-2 h-2 rounded-full bg-amber-400"></div>
+<div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+</div>
+</div>
+<!-- Miniature UI Shell -->
+<div class="bg-background min-h-[400px] relative p-6">
+<!-- Mini SideNav -->
+<div class="absolute left-0 top-0 bottom-0 w-16 bg-primary-container flex flex-col items-center py-4 gap-4">
+<div class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-on-secondary-container" id="previewIconBg" style="background-color: #0058BE;">L</div>
+<div class="w-8 h-1 bg-on-primary/10 rounded"></div>
+<div class="w-8 h-8 rounded-lg bg-on-primary/5"></div>
+<div class="w-8 h-8 rounded-lg bg-on-primary/5"></div>
+<div class="w-8 h-8 rounded-lg bg-on-primary/5"></div>
+</div>
+<!-- Mini TopNav -->
+<div class="absolute left-16 top-0 right-0 h-10 bg-surface border-b border-outline-variant flex items-center px-4 justify-between">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-outline-variant/40 rounded-full"></div>
+</div>
+<div class="w-4 h-4 rounded-full bg-outline-variant/40"></div>
+</div>
+<!-- Mini Content -->
+<div class="ml-16 mt-10 p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="space-y-2">
+<div class="w-32 h-4 bg-on-surface/80 rounded"></div>
+<div class="w-48 h-2 bg-on-surface/20 rounded"></div>
+</div>
+<div class="px-3 py-1.5 rounded text-[10px] text-white font-bold" id="previewButton" style="background-color: #0058BE;">ACTION</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low border border-outline-variant p-4 rounded-xl space-y-3">
+<div class="flex justify-between items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" id="previewAccentIcon" style="color: #0058BE;">bar_chart</span>
+</div>
+<div class="w-6 h-2 bg-emerald-500/20 rounded-full"></div>
+</div>
+<div class="w-full h-2 bg-on-surface/5 rounded-full overflow-hidden">
+<div class="h-full w-3/4" id="previewProgressBar" style="background-color: #0058BE;"></div>
+</div>
+<div class="w-12 h-2 bg-on-surface/20 rounded"></div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-4 rounded-xl space-y-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" id="previewAccentIcon2" style="color: #0058BE;">school</span>
+</div>
+<div class="space-y-1">
+<div class="w-20 h-2 bg-on-surface/60 rounded"></div>
+<div class="w-12 h-1.5 bg-on-surface/10 rounded"></div>
+</div>
+</div>
+</div>
+<!-- Mini Table Mock -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-hidden">
+<div class="bg-surface-container-low px-4 py-2 flex gap-4">
+<div class="w-4 h-2 bg-outline/20 rounded"></div>
+<div class="w-12 h-2 bg-outline/20 rounded"></div>
+<div class="w-8 h-2 bg-outline/20 rounded"></div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex gap-4 items-center">
+<div class="w-4 h-4 rounded-sm border border-outline-variant"></div>
+<div class="w-24 h-2 bg-on-surface/10 rounded"></div>
+<div class="w-10 h-3 rounded-full" style="background-color: rgba(0, 88, 190, 0.1);"></div>
+</div>
+<div class="flex gap-4 items-center opacity-50">
+<div class="w-4 h-4 rounded-sm border border-outline-variant"></div>
+<div class="w-20 h-2 bg-on-surface/10 rounded"></div>
+<div class="w-10 h-3 rounded-full bg-on-surface/5"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container rounded-xl border border-outline-variant flex items-start gap-4">
+<span class="material-symbols-outlined text-amber-600 mt-0.5">info</span>
+<div class="space-y-1">
+<p class="font-title-md text-title-md text-on-surface">Did you know?</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Changes to branding are propagated instantly across all tenant portals and user dashboards. Users currently logged in will see changes upon their next refresh.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function updateBrandColor(color) {
+            // Update Inputs
+            document.getElementById('hexInput').value = color.toUpperCase();
+            document.getElementById('colorPreview').style.backgroundColor = color;
+            
+            // Update Preview Elements
+            document.getElementById('previewIconBg').style.backgroundColor = color;
+            document.getElementById('previewButton').style.backgroundColor = color;
+            document.getElementById('previewProgressBar').style.backgroundColor = color;
+            document.getElementById('previewAccentIcon').style.color = color;
+            document.getElementById('previewAccentIcon2').style.color = color;
+            
+            // Adjust contrast for the preview button text if needed
+            const brightness = getBrightness(color);
+            document.getElementById('previewButton').style.color = brightness > 155 ? '#000000' : '#FFFFFF';
+            document.getElementById('previewIconBg').style.color = brightness > 155 ? '#000000' : '#FFFFFF';
+        }
+
+        function getBrightness(hex) {
+            const rgb = hexToRgb(hex);
+            return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+        }
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
+        document.getElementById('hexInput').addEventListener('input', (e) => {
+            const val = e.target.value;
+            if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(val)) {
+                updateBrandColor(val);
+            }
+        });
+
+        // Initialize
+        updateBrandColor('#0058BE');
+    </script>
+</body></html>

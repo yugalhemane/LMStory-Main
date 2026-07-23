@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LMStory - Library Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#76777d",
+                        "surface-tint": "#565e74",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#009668",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary-fixed": "#6ffbbe",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-container": "#131b2e",
+                        "tertiary-container": "#002113",
+                        "tertiary": "#000000",
+                        "on-secondary-container": "#fefcff",
+                        "surface": "#f8f9ff",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#0058be",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "secondary-container": "#2170e4",
+                        "on-primary-container": "#7c839b",
+                        "primary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "primary-fixed": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#d8e2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container border-r border-outline-variant flex flex-col py-lg z-50">
+<div class="px-md mb-xl flex items-center gap-sm">
+<div class="w-10 h-10 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+</div>
+<div>
+<h1 class="text-title-lg font-title-lg font-bold text-on-primary">LMStory</h1>
+<p class="text-label-md font-label-md text-on-primary-container">LMS Platform</p>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-xs overflow-y-auto">
+<!-- Navigation Items Mapping from JSON -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-label-md font-label-md">Groups</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg opacity-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="text-label-md font-label-md">Library</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="text-label-md font-label-md">Campaigns</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="text-label-md font-label-md">Courses</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[260px] min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="h-16 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-desktop sticky top-0 z-40">
+<div class="flex items-center gap-lg flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-xl pl-10 pr-4 py-2 text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="Search content, courses, files..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-2 bg-surface-container-high hover:bg-surface-container-highest rounded-lg transition-colors border border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface">Acme Corp</span>
+<span class="material-symbols-outlined text-on-surface text-[18px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-outline" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="apps">apps</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-fixed-dim overflow-hidden ml-2 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a diverse corporate executive for a high-end LMS dashboard. The person has a friendly but authoritative expression, set against a softly blurred modern office background with blue and gray tones. The lighting is bright and clean, reflecting a high-quality professional atmosphere consistent with enterprise software design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZngt39fez14amF2L5wMGAlmEVXGKc9er7EMOaP-gHDnL5fKJ0LKfx35kmBrIQkM87QTDKU-LScxes2A0SrV9RZfWtsDiNWByE85F52r4ZEphpsUci__vXy3ed9vIqw0A3vjrF8ToeUnu_X9yqqQWm0h9boVKOtv5wAW6KseYYdrcDD5LmuGai2KLt86nP4IIo7TvX5PFp499g4g0x2PoW7SkQlCZRsJd6Keipgjk7hgIzmxDu5GGYzSnaBISqpEjofvGr8nNDvski"/>
+</div>
+</div>
+</header>
+<!-- Content Shell -->
+<div class="p-margin-desktop max-w-[1440px] w-full mx-auto space-y-lg">
+<!-- Header & Primary Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="space-y-sm">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Content Library</h2>
+<p class="text-body-md text-on-surface-variant max-w-xl">Manage and organize your learning assets across the entire organization. Access global resources or your personal curated list.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-sm px-xl py-2.5 bg-secondary text-on-secondary font-label-md rounded-lg shadow-sm hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="upload">upload</span>
+<span>Upload Content</span>
+</button>
+</div>
+</div>
+<!-- Tabs & Filters -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-outline-variant px-md">
+<div class="flex items-center">
+<button class="px-lg py-4 text-label-md text-secondary font-bold border-b-2 border-secondary transition-all">
+                            Global Library
+                        </button>
+<button class="px-lg py-4 text-label-md text-on-surface-variant font-medium hover:text-on-surface hover:bg-surface-container-low transition-all">
+                            My Library
+                        </button>
+<button class="px-lg py-4 text-label-md text-on-surface-variant font-medium hover:text-on-surface hover:bg-surface-container-low transition-all">
+                            Archived
+                        </button>
+</div>
+<div class="flex items-center gap-sm py-2 px-md">
+<div class="flex items-center gap-xs text-on-surface-variant border-r border-outline-variant pr-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+<span class="text-label-md font-label-md">Filters</span>
+</div>
+<select class="bg-transparent border-none text-label-md font-label-md text-on-surface focus:ring-0 cursor-pointer">
+<option>All Types</option>
+<option>Video</option>
+<option>PDF</option>
+<option>SCORM</option>
+</select>
+<select class="bg-transparent border-none text-label-md font-label-md text-on-surface focus:ring-0 cursor-pointer">
+<option>All Difficulties</option>
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Advanced</option>
+</select>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="p-md bg-surface-bright">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer">
+<div class="relative aspect-video bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional high-definition cinematic shot of a modern clean workspace with a laptop showing complex data visualizations. The environment is high-end, featuring a soft-focus office background with professional corporate lighting in cool blue and white tones. This image represents a technology-focused learning course for an enterprise SaaS platform library." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEUKFBLAHNPbjn3aZWME5CTStQtDRRlhSIjTCW1fW2_gCyepDJjKYn81FcJiv6ZF36XgPlsGmpNAy78mSM3Wi9Hld-ydH1DKiUS_Drc5_iAn3ahrrOEUxFUDxNQTGS9ed7sojaUlgpR9lBoe4Poiw9KbcjbYdephMh1pV0G89DqMH3zZZoNmgR8POEGknB2FDxDKPzRuCny-9DNrdgRwij4FkMyPgVBg6WPh6MCgU7fpd3gjRunAKTQ3u58ZmdWVCy1yWh0p6JADub"/>
+<div class="absolute top-3 left-3 bg-primary-container/80 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider uppercase">
+                                    Video
+                                </div>
+<div class="absolute bottom-3 right-3 bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full text-label-sm shadow-sm">
+                                    12:45
+                                </div>
+</div>
+<div class="p-md flex flex-col flex-1 space-y-md">
+<div class="space-y-xs">
+<h3 class="text-title-md font-title-md text-on-surface group-hover:text-secondary transition-colors line-clamp-1">Advanced Data Analytics 101</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Master the fundamentals of big data processing and visualization within the LMStory ecosystem.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-label-sm">
+                                            Active
+                                        </div>
+<span class="text-label-md text-on-surface-variant">•</span>
+<span class="text-label-md text-on-surface-variant">Intermediate</span>
+</div>
+<button class="p-1.5 hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer">
+<div class="relative aspect-video bg-surface-container overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-surface-container-high to-surface-container-highest">
+<span class="material-symbols-outlined text-[48px] text-secondary/30" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div class="absolute top-3 left-3 bg-primary-container/80 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider uppercase">
+                                    PDF
+                                </div>
+</div>
+<div class="p-md flex flex-col flex-1 space-y-md">
+<div class="space-y-xs">
+<h3 class="text-title-md font-title-md text-on-surface group-hover:text-secondary transition-colors line-clamp-1">Corporate Compliance 2024</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Essential guidelines and regulatory requirements for all regional managers and stakeholders.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded text-label-sm">
+                                            Draft
+                                        </div>
+<span class="text-label-md text-on-surface-variant">•</span>
+<span class="text-label-md text-on-surface-variant">Beginner</span>
+</div>
+<button class="p-1.5 hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer">
+<div class="relative aspect-video bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant professional 3D abstract illustration featuring flowing interconnected spheres and nodes, representing a SCORM interactive learning module. The colors are dominated by secondary blue and enterprise teal, with high-key lighting. The style is modern, professional, and sophisticated, suitable for a high-end corporate LMS platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpNLea4aXjWj149v3iKTQncq3ANDS7iDh8d1nVC0ryhN03xnK69ex8jx-9MlobSsVchQ6Vjf6jVKA7lcwiLkm4WqnxWV6GAaTsb8jhe8gk6QjvzljASKkJMQYwWQE08vPC-B_cP2DBQvvCUJp8PHEe-Ui-Bj7D3tC4TKxFwqId2SftJwXkxNSxmgMIgFPwA3b9R86fil1-a62pAdjzIAVX5XPKTvCLfKYEwMXowFWws11_h0V7fNgx9P_nwAdnSOHMyvRYYQJiYf25"/>
+<div class="absolute top-3 left-3 bg-primary-container/80 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider uppercase">
+                                    SCORM
+                                </div>
+</div>
+<div class="p-md flex flex-col flex-1 space-y-md">
+<div class="space-y-xs">
+<h3 class="text-title-md font-title-md text-on-surface group-hover:text-secondary transition-colors line-clamp-1">Sales Psychology Mastery</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Interactive module designed to enhance conversion rates through advanced cognitive behavioral insights.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-label-sm">
+                                            Active
+                                        </div>
+<span class="text-label-md text-on-surface-variant">•</span>
+<span class="text-label-md text-on-surface-variant">Advanced</span>
+</div>
+<button class="p-1.5 hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer">
+<div class="relative aspect-video bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist architectural shot of a clean, bright, and modern conference room with glass walls and professional office furniture. The lighting is natural and high-key, creating an atmosphere of transparency and growth. The overall aesthetic is professional corporate, focusing on organizational clarity for an LMS platform library asset." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGDRrrlKbnuCwL3Qhi5Z0V_GKmJ_usOiDpbvR6NSFiEH12AmL-J9C9JfhnGZgGZ5L14SBc4mCEyjaOsspZjOYlfthw4IXFMdQnwEaYCV2WaIGnKVkUZT2ow98E27J_3y9RWFyqNXQ0G2ylArPDJazJSPPLevgyCEla6UkLe0tuoFMepQCyF0lbmla-SJMBM31bg4WtHWQS63CpWjjmx0o6ZfYVOdXurQtIeSqrjKvfq0wrnbNX16ZGjl6DcD470nRM5flrOi5MSBVB"/>
+<div class="absolute top-3 left-3 bg-primary-container/80 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider uppercase">
+                                    Video
+                                </div>
+<div class="absolute bottom-3 right-3 bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full text-label-sm shadow-sm">
+                                    45:00
+                                </div>
+</div>
+<div class="p-md flex flex-col flex-1 space-y-md">
+<div class="space-y-xs">
+<h3 class="text-title-md font-title-md text-on-surface group-hover:text-secondary transition-colors line-clamp-1">Leadership in the Hybrid Era</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Best practices for managing distributed teams across different time zones and cultural backgrounds.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-label-sm">
+                                            Active
+                                        </div>
+<span class="text-label-md text-on-surface-variant">•</span>
+<span class="text-label-md text-on-surface-variant">Intermediate</span>
+</div>
+<button class="p-1.5 hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 5 (Repeated for density) -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer">
+<div class="relative aspect-video bg-surface-container overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-tertiary-fixed to-surface-variant">
+<span class="material-symbols-outlined text-[48px] text-on-tertiary-fixed-variant/40" data-icon="quiz">quiz</span>
+</div>
+<div class="absolute top-3 left-3 bg-primary-container/80 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider uppercase">
+                                    SCORM
+                                </div>
+</div>
+<div class="p-md flex flex-col flex-1 space-y-md">
+<div class="space-y-xs">
+<h3 class="text-title-md font-title-md text-on-surface group-hover:text-secondary transition-colors line-clamp-1">Annual Security Assessment</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Mandatory interactive quiz and simulation for data privacy and cybersecurity protocols.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-label-sm">
+                                            Revision Required
+                                        </div>
+<span class="text-label-md text-on-surface-variant">•</span>
+<span class="text-label-md text-on-surface-variant">Beginner</span>
+</div>
+<button class="p-1.5 hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer">
+<div class="relative aspect-video bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, high-end professional photography of a modern server room with glowing blue LED lights. The composition is artistic and clean, emphasizing high technology, reliability, and precision. This image represents a backend technical course for IT professionals in a premium enterprise LMS library." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5PZP_j_6PgkI1UAt5nqrT0KRenV-NUXnWHLtVfZDwuuMa3UvaqhEaeDednStwWbI-0NGzf5wJ0fa6r-6LJMf7a0IyhFEbHvZCLYKfA529ES1XnZRsMsv2iShP7AawnoMtadvE92zZgx3dlqrfW4NaS0g_eQCRtfZtAGwkVPeh-v1qTcqQicjZN55odl4jZ5AWdTq11kZmrE2UCrlnQ5Rg9W7b4Rju0eM-1QfcD9UYeCGf6S9tx3QewmkTpgGPpO3V9YXYf8sTU7bj"/>
+<div class="absolute top-3 left-3 bg-primary-container/80 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider uppercase">
+                                    PDF
+                                </div>
+</div>
+<div class="p-md flex flex-col flex-1 space-y-md">
+<div class="space-y-xs">
+<h3 class="text-title-md font-title-md text-on-surface group-hover:text-secondary transition-colors line-clamp-1">Server Infrastructure Guide</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Comprehensive documentation on the 2024 cloud migration strategy and server protocols.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-label-sm">
+                                            Active
+                                        </div>
+<span class="text-label-md text-on-surface-variant">•</span>
+<span class="text-label-md text-on-surface-variant">Advanced</span>
+</div>
+<button class="p-1.5 hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 7 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer">
+<div class="relative aspect-video bg-surface-container overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center bg-gradient-to-tr from-surface-container to-secondary-fixed">
+<span class="material-symbols-outlined text-[48px] text-secondary/30" data-icon="collections_bookmark">collections_bookmark</span>
+</div>
+<div class="absolute top-3 left-3 bg-primary-container/80 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider uppercase">
+                                    Video
+                                </div>
+<div class="absolute bottom-3 right-3 bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full text-label-sm shadow-sm">
+                                    08:20
+                                </div>
+</div>
+<div class="p-md flex flex-col flex-1 space-y-md">
+<div class="space-y-xs">
+<h3 class="text-title-md font-title-md text-on-surface group-hover:text-secondary transition-colors line-clamp-1">Product Roadmap Q3/Q4</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">A video walkthrough of upcoming features and strategic shifts for the latter half of the year.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-label-sm">
+                                            Active
+                                        </div>
+<span class="text-label-md text-on-surface-variant">•</span>
+<span class="text-label-md text-on-surface-variant">Beginner</span>
+</div>
+<button class="p-1.5 hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 8 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer">
+<div class="relative aspect-video bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-end professional lifestyle image of a group of diverse professionals collaborating around a large touch-screen display in a brightly lit, glass-walled office. The aesthetic is clean, modern, and collaborative, with high-key lighting. This visual represents a course on corporate teamwork and communication for a premium LMS library." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjPNTIWnK_a9OJxarfHf_MoeeqrZ52Fqe8fwKX_V3Das6pE_sCljtpsBkBPIgI3-iEyrYiTiHIIWl0_14kne1vzcJmELjWBTqfIZL7YuC-3TuosQ-WiximquHbxsHBpRdnOxwNqleSQEHfokaA4Yrab9FNMLqju-hx_d9jHcgHQxpoZt4LPuSrZE-pIem4XL40kND-Q3xUUGDusjzDAgZub-lGL4W7e5FYydKQyS_aqws--RFn9h-5XcplZ7u_8eVGGuoZczaWshSd"/>
+<div class="absolute top-3 left-3 bg-primary-container/80 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold tracking-wider uppercase">
+                                    SCORM
+                                </div>
+</div>
+<div class="p-md flex flex-col flex-1 space-y-md">
+<div class="space-y-xs">
+<h3 class="text-title-md font-title-md text-on-surface group-hover:text-secondary transition-colors line-clamp-1">Strategic Communication</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Interactive scenarios for improving internal communication and conflict resolution in high-stakes environments.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-label-sm">
+                                            Active
+                                        </div>
+<span class="text-label-md text-on-surface-variant">•</span>
+<span class="text-label-md text-on-surface-variant">Intermediate</span>
+</div>
+<button class="p-1.5 hover:bg-surface-variant/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Pagination -->
+<div class="px-md py-4 border-t border-outline-variant flex items-center justify-between bg-surface-container-low">
+<span class="text-label-md text-on-surface-variant">Showing 8 of 124 content pieces</span>
+<div class="flex items-center gap-xs">
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-secondary text-on-secondary rounded-lg font-label-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-lg font-label-md transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-lg font-label-md transition-colors">3</button>
+<span class="px-2">...</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-lg font-label-md transition-colors">16</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Upload Modal Placeholder (Interactive Element Example) -->
+<div class="fixed inset-0 bg-primary-container/40 backdrop-blur-sm z-[60] flex items-center justify-center hidden opacity-0 transition-all duration-300" id="uploadModal">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-2xl shadow-xl overflow-hidden transform scale-95 transition-transform duration-300">
+<div class="p-lg border-b border-outline-variant flex items-center justify-between">
+<h3 class="text-headline-md font-headline-md text-on-surface">Upload Content</h3>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors" onclick="closeUploadModal()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="p-lg space-y-lg">
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-xl flex flex-col items-center justify-center space-y-md bg-surface-bright hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-16 h-16 bg-secondary-container/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] text-secondary" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<div class="text-center">
+<p class="text-title-md font-title-md text-on-surface">Click to upload or drag and drop</p>
+<p class="text-body-sm text-on-surface-variant">PDF, MP4, SCORM or ZIP (max. 500MB)</p>
+</div>
+</div>
+<div class="space-y-md">
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Content Title</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-md py-2.5 text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="Enter title" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Type</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-md py-2.5 text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all">
+<option>Select type...</option>
+<option>Video</option>
+<option>PDF Document</option>
+<option>SCORM Package</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="p-lg bg-surface-container-low flex items-center justify-end gap-md">
+<button class="px-xl py-2.5 text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeUploadModal()">Cancel</button>
+<button class="px-xl py-2.5 bg-secondary text-on-secondary font-label-md rounded-lg shadow-sm hover:opacity-90 transition-all">Start Upload</button>
+</div>
+</div>
+</div>
+<script>
+        function openUploadModal() {
+            const modal = document.getElementById('uploadModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeUploadModal() {
+            const modal = document.getElementById('uploadModal');
+            modal.classList.remove('opacity-100');
+            modal.firstElementChild.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Attach event listener to the main "Upload Content" button
+        document.addEventListener('DOMContentLoaded', () => {
+            const uploadBtn = document.querySelector('button.bg-secondary');
+            if (uploadBtn) {
+                uploadBtn.addEventListener('click', openUploadModal);
+            }
+        });
+    </script>
+</body></html>

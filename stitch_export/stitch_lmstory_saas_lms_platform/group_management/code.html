@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Group Management | LMStory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#76777d",
+                    "surface-tint": "#565e74",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#0b1c30",
+                    "surface-container": "#e5eeff",
+                    "on-background": "#0b1c30",
+                    "surface-container-high": "#dce9ff",
+                    "surface-dim": "#cbdbf5",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-surface": "#213145",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-container": "#009668",
+                    "on-surface-variant": "#45464d",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary-fixed": "#6ffbbe",
+                    "inverse-primary": "#bec6e0",
+                    "on-tertiary-fixed": "#002113",
+                    "primary-container": "#131b2e",
+                    "tertiary-container": "#002113",
+                    "tertiary": "#000000",
+                    "on-secondary-container": "#fefcff",
+                    "surface": "#f8f9ff",
+                    "background": "#f8f9ff",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary": "#0058be",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#131b2e",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "secondary-container": "#2170e4",
+                    "on-primary-container": "#7c839b",
+                    "primary": "#000000",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c6c6cd",
+                    "primary-fixed": "#dae2fd",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#d8e2ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "title-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar (Predicted Component Implementation) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container text-on-primary-container flex flex-col py-lg border-r border-outline-variant z-50">
+<div class="px-md mb-xl flex items-center gap-sm">
+<div class="w-8 h-8 bg-secondary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-on-primary">LMStory</h1>
+</div>
+<nav class="flex-1 px-sm space-y-xs overflow-y-auto">
+<!-- Active Tab: Groups -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg opacity-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-label-md font-label-md">Groups</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-label-md font-label-md">Library</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-label-md font-label-md">Campaigns</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-label-md font-label-md">Courses</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-md pt-lg border-t border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary">
+<img class="w-full h-full object-cover" data-alt="Professional corporate headshot of a female executive with a confident smile, wearing professional business attire. The background is a clean, bright office setting with soft bokeh. The lighting is bright and even, reflecting a corporate modern aesthetic with a palette of blues and whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC0AqmwyGg8e3MBp3avVwsSuYicWMZMRCnddbu6-_IoelRsnKhEEKaV3LGxjUXoHElQi9ODVK9Jt9-QPS19M3B5tF-pm9Qry7eAEXjYJd1inXKBkEbpcN9_WZaoNEZ6yRq8T-FVc7o1JEmOlzixPpx8-2hlrxOQmCYANkfxEwsAMw7ChlCzMeQJ78DP6iLTcqSyJG_zxkqComM6D8n6UA18YsWirDg3DcN_xb8onK_arYrNZWheKzwecPGmzWPxd9werpLgiKiPnBc"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-label-md font-bold text-on-primary truncate">Alex Rivera</p>
+<p class="text-[10px] text-on-primary-container truncate">Global Administrator</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] min-h-screen flex flex-col relative">
+<!-- TopNavBar (Predicted Component Implementation) -->
+<header class="sticky top-0 z-40 bg-surface border-b border-outline-variant flex justify-between items-center h-16 px-margin-desktop w-full">
+<div class="flex items-center gap-lg flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" placeholder="Search groups, types, or members..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm px-3 py-1.5 bg-surface-container-high rounded-full cursor-pointer hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary">corporate_fare</span>
+<span class="text-label-md font-medium text-on-surface">Global North-East</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/10 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/10">
+<span class="material-symbols-outlined">apps</span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-margin-desktop space-y-lg max-w-[1440px]">
+<!-- Header Section with Stats -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Group Management</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Configure and monitor learning cohorts across organizations.</p>
+</div>
+<div class="flex gap-md">
+<!-- Quick Stats Cards -->
+<div class="flex items-center gap-lg bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Total Groups</span>
+<span class="text-headline-md font-headline-md text-on-surface">128</span>
+</div>
+<div class="w-px h-10 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Total Members</span>
+<span class="text-headline-md font-headline-md text-on-surface">4,822</span>
+</div>
+</div>
+<button class="bg-secondary-container hover:bg-secondary-container/90 text-on-secondary-container px-lg py-sm rounded-lg flex items-center gap-sm font-label-md transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                        Create Group
+                    </button>
+</div>
+</div>
+<!-- Bento Grid - Groups List -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md">
+<!-- Group Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-secondary transition-all hover:shadow-md flex flex-col">
+<div class="h-2 bg-secondary/10 group-hover:bg-secondary transition-colors"></div>
+<div class="p-md space-y-md flex-1">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'opsz' 40;">domain</span>
+</div>
+<span class="px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold rounded uppercase tracking-tighter">Department</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-on-surface">Engineering Global</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2 mt-1">Core engineering teams including infrastructure and product development.</p>
+</div>
+<div class="flex items-center gap-sm pt-sm border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<span class="text-body-sm text-on-surface">412 Members</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="text-secondary font-label-md hover:underline decoration-2 underline-offset-4">Edit Members</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Group Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-secondary transition-all hover:shadow-md flex flex-col">
+<div class="h-2 bg-secondary/10 group-hover:bg-secondary transition-colors"></div>
+<div class="p-md space-y-md flex-1">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'opsz' 40;">public</span>
+</div>
+<span class="px-2 py-1 bg-surface-container-highest text-secondary-container text-[10px] font-bold rounded uppercase tracking-tighter">Region</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-on-surface">APAC Sales Hub</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2 mt-1">Regional sales offices across Singapore, Tokyo, and Sydney.</p>
+</div>
+<div class="flex items-center gap-sm pt-sm border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<span class="text-body-sm text-on-surface">156 Members</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="text-secondary font-label-md hover:underline decoration-2 underline-offset-4">Edit Members</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Group Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-secondary transition-all hover:shadow-md flex flex-col">
+<div class="h-2 bg-secondary/10 group-hover:bg-secondary transition-colors"></div>
+<div class="p-md space-y-md flex-1">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'opsz' 40;">assignment</span>
+</div>
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded uppercase tracking-tighter">Project</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-on-surface">Compliance 2024</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2 mt-1">Cross-functional group for annual mandatory regulatory training.</p>
+</div>
+<div class="flex items-center gap-sm pt-sm border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<span class="text-body-sm text-on-surface">1,200 Members</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="text-secondary font-label-md hover:underline decoration-2 underline-offset-4">Edit Members</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Group Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-secondary transition-all hover:shadow-md flex flex-col">
+<div class="h-2 bg-secondary/10 group-hover:bg-secondary transition-colors"></div>
+<div class="p-md space-y-md flex-1">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'opsz' 40;">rocket_launch</span>
+</div>
+<span class="px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold rounded uppercase tracking-tighter">Department</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-on-surface">Product Marketing</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2 mt-1">Marketing and creative teams focused on new product launches.</p>
+</div>
+<div class="flex items-center gap-sm pt-sm border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<span class="text-body-sm text-on-surface">88 Members</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="text-secondary font-label-md hover:underline decoration-2 underline-offset-4">Edit Members</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Group Card 5 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-secondary transition-all hover:shadow-md flex flex-col">
+<div class="h-2 bg-secondary/10 group-hover:bg-secondary transition-colors"></div>
+<div class="p-md space-y-md flex-1">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'opsz' 40;">psychology</span>
+</div>
+<span class="px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold rounded uppercase tracking-tighter">Department</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-on-surface">Data Science Unit</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2 mt-1">Specialized group for analytics and machine learning researchers.</p>
+</div>
+<div class="flex items-center gap-sm pt-sm border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<span class="text-body-sm text-on-surface">45 Members</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="text-secondary font-label-md hover:underline decoration-2 underline-offset-4">Edit Members</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Group Card 6 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-secondary transition-all hover:shadow-md flex flex-col">
+<div class="h-2 bg-secondary/10 group-hover:bg-secondary transition-colors"></div>
+<div class="p-md space-y-md flex-1">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'opsz' 40;">shield</span>
+</div>
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded uppercase tracking-tighter">Project</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-on-surface">Cybersecurity Taskforce</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2 mt-1">High-priority group for security awareness and response training.</p>
+</div>
+<div class="flex items-center gap-sm pt-sm border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+<span class="text-body-sm text-on-surface">210 Members</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="text-secondary font-label-md hover:underline decoration-2 underline-offset-4">Edit Members</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Empty State / Add Card -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center p-xl group hover:border-secondary transition-colors cursor-pointer bg-surface-container/20">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center text-outline group-hover:text-secondary group-hover:bg-secondary/10 transition-all">
+<span class="material-symbols-outlined">add</span>
+</div>
+<p class="text-label-md font-bold mt-md text-on-surface-variant group-hover:text-secondary">New Group</p>
+<p class="text-[11px] text-on-surface-variant mt-1">Create a new cohort</p>
+</div>
+</div>
+<!-- Table-like List for Detailed View (Alternative View Toggle Mockup) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="text-title-md font-title-md text-on-surface">Recent Activity</h3>
+<div class="flex gap-sm">
+<button class="p-2 hover:bg-surface-variant/20 rounded-lg text-on-surface-variant"><span class="material-symbols-outlined text-sm">filter_list</span></button>
+<button class="p-2 hover:bg-surface-variant/20 rounded-lg text-on-surface-variant"><span class="material-symbols-outlined text-sm">download</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant">
+<th class="px-lg py-3 text-label-md text-on-surface-variant">GROUP NAME</th>
+<th class="px-lg py-3 text-label-md text-on-surface-variant">TYPE</th>
+<th class="px-lg py-3 text-label-md text-on-surface-variant">MEMBERS</th>
+<th class="px-lg py-3 text-label-md text-on-surface-variant">LAST UPDATED</th>
+<th class="px-lg py-3 text-label-md text-on-surface-variant text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-variant/5 transition-colors">
+<td class="px-lg py-4">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-secondary/10 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">diversity_3</span>
+</div>
+<span class="text-body-md font-medium text-on-surface">Leadership Accelerator</span>
+</div>
+</td>
+<td class="px-lg py-4">
+<span class="px-2 py-0.5 bg-surface-container-highest text-secondary-container text-[10px] font-bold rounded uppercase tracking-tighter">Project</span>
+</td>
+<td class="px-lg py-4">
+<div class="flex -space-x-2">
+<img class="w-7 h-7 rounded-full border-2 border-white object-cover" data-alt="Close-up portrait of a diverse male team member in a professional studio setting, neutral expression, crisp lighting, high resolution, corporate style with a blue and white theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-bQRN0yiVEgSzJ-d4XjOXRVNsl_F5fLzqEe2hGIZJrJQHixRjW3zEiom-Yvv2FRd4LZhIy9yFqoF6DDT3tNWSaOmtJT3u4a7FIeIaduYtPEWe5BnH3Tr301ZG1R3TnRvZzOaAx5o7O9eTxmcR0JsGncSclV5hJvhTGuzbPN2O6P1f7kmZf90L8XXLisUYCk58gP1FLguSydy7A3OsKRxXJJHcuZN6J-CHvT4JobJ3ck6VEwcLaAGTjhqOrUKOwfs4IWRCa65Xlfmy"/>
+<img class="w-7 h-7 rounded-full border-2 border-white object-cover" data-alt="Detailed portrait of a female professional with glasses, modern corporate lighting, blurred office background, professional attire, high quality photography, part of a consistent UI design palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsV_ch1yE5aoRe4pMWOWVQoxTdWlL7L0DsvoEYhvMzHwSKZDk2_OH-NkfiE24Y1jjNnwPldKYOTIr4frXiUqHmQj46yzk2mLQ-8_6H842j6n5yl7aCJubUy0RPHusbYLSzj6Ig3ZM89fPkjqIz-soNnnpWM89TkwtsxUIeiGEc-3GxIADDUExtinZizuoDY23nEJBm6UYxPr5pL6R8nrJk_WeYxI_xy5AZssrGEdwez_cqU2PHH2YyCF8gqr6cXXVDft6K6qIqo-6c"/>
+<img class="w-7 h-7 rounded-full border-2 border-white object-cover" data-alt="Portrait of a smiling young male executive, clean-cut, modern corporate photography style, soft high-key lighting, consistent with a premium SaaS dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0oM7ZCs8U5K6jlMt-5GtCGNVRCyo45KnYyaR5oF_EFRhothQHvdxEv1QC7j9l4VHvlhlDBjNPLiNs0RsFO3icXMhWOLzhrH2SzIueNoILwmLUip2NxLX2S8F8NbOGZQ4TiprD9_usZsu8hLd2FQKLskbBIUj7vxeQgtMcqnjy0vk83M2QfYvf2GQKR1AQBAdChsVxe6HGa9GzpVF6ucbl0RmSSH5iiwCG5Txay91sXiuGA9jzL0ZSV0N18ExA-kxvoAwvbvB6K8SV"/>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-secondary">+21</div>
+</div>
+</td>
+<td class="px-lg py-4 text-body-sm text-on-surface-variant">Oct 12, 2024</td>
+<td class="px-lg py-4 text-right">
+<button class="text-secondary font-label-md hover:text-secondary-container">Edit</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/5 transition-colors">
+<td class="px-lg py-4">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-surface-container-high text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">groups_2</span>
+</div>
+<span class="text-body-md font-medium text-on-surface">Content Strategy</span>
+</div>
+</td>
+<td class="px-lg py-4">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold rounded uppercase tracking-tighter">Department</span>
+</td>
+<td class="px-lg py-4">
+<div class="flex -space-x-2">
+<img class="w-7 h-7 rounded-full border-2 border-white object-cover" data-alt="Portrait of an experienced female leader, professional business environment, soft focus background, corporate color palette, high resolution digital photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKjX9kuT97s8dCQZno8v_R1eSbLe5pEc_8Q5OVjAWfk6nMXbrDGSVj5sDsYFeRxtCAGSFbsu3diEMhsGII4La2S3NzNvXnV959NuLONsRC_S11qn16N4RLIvl3lDmEVCOmBvbQKklfLM0n_A9pKFQV0-UVFkWt7GcG2HmliZh8YFlND-TE-ZBEb26ftaQKXWg30G58efT1ZifAYHaLVrv4KfkLUVmIfCFmtamPqLDVP0_cgVadU0jcwcNjf6Mki3LlP0L-fOBWDP8p"/>
+<img class="w-7 h-7 rounded-full border-2 border-white object-cover" data-alt="Young professional man in a creative studio, bright and energetic lighting, modern corporate aesthetic, clean and professional style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEhlwFQhbdWP8YIDoI68APsZL-sx4ezLqnNrjuMn_Pfp9P9hD2fm-cH0CouqBcdlnMLEhK4TKzkOJ4d5ykdM8D2Fsx1fcH_ppldUzqLga5OP9tnfj_vW-vDsNrFnI3lBRfdrAdcBMhWF5ghEQfDj79qiGdca8kGJ38kygRE4c34JFp7mpZp8x-bgzeICTyOIvTt0bcZWxdFccL8dCFNSxAOztHAEo32eFdx0e3z3qnDtaQWNJskQzw25E8JaBWF0HgYtWaBcUIAZfg"/>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-secondary">+14</div>
+</div>
+</td>
+<td class="px-lg py-4 text-body-sm text-on-surface-variant">Oct 08, 2024</td>
+<td class="px-lg py-4 text-right">
+<button class="text-secondary font-label-md hover:text-secondary-container">Edit</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md border-t border-outline-variant flex justify-center bg-surface-container-lowest">
+<button class="text-label-md font-bold text-on-surface-variant hover:text-on-surface flex items-center gap-xs">
+                        View All Activity
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Interactive Elements Script -->
+<script>
+        document.querySelectorAll('.hover\\:shadow-md').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

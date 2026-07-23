@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: lmstory_backend
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://lms_user:lms_password@postgres:5432/lms_db?schema=public
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=${JWT_SECRET:-production_secret_change_me_in_real_deployment}
+      - JWT_EXPIRES_IN=1d
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - lms_network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: lmstory_postgres
+    environment:
+      POSTGRES_USER: lms_user
+      POSTGRES_PASSWORD: lms_password
+      POSTGRES_DB: lms_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lms_user -d lms_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lms_network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: lmstory_redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lms_network
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: lmstory_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@lmstory.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - lms_network
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio:latest
+    container_name: lmstory_minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: password
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lms_network
+    restart: unless-stopped
+
+  minio-init:
+    image: minio/mc:latest
+    container_name: lmstory_minio_init
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - lms_network
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set myminio http://minio:9000 admin password &&
+      mc mb myminio/lmstory --ignore-existing &&
+      mc anonymous set private myminio/lmstory
+      "
+
+networks:
+  lms_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  minio_data:
