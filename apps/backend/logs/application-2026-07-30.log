@@ -1,0 +1,3 @@
+{"level":"info","message":"Database connection initialized successfully","timestamp":"2026-07-29T18:44:48.163Z"}
+{"level":"warn","message":"Skipping Redis connect (mocked for local verification)","timestamp":"2026-07-29T18:44:48.168Z"}
+{"level":"info","message":"Server listening on port 4000 in development mode","timestamp":"2026-07-29T18:44:48.175Z"}
