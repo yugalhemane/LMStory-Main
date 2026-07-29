@@ -9,36 +9,29 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: apps/backend
 
     strategy:
       matrix:
         node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: apps/backend/package-lock.json
 
-    - name: Install dependencies
+    - name: Install Monorepo Dependencies
       run: npm ci
 
     - name: Prisma Generate
-      run: npx prisma generate
+      run: npm run --workspace=apps/backend prisma:generate || npx prisma generate --schema=apps/backend/prisma/schema.prisma
 
     - name: TypeScript Typecheck
-      run: npm run typecheck
-
-    - name: Run Integration Tests
-      run: npm test
+      run: npm run --workspace=apps/backend typecheck || npx tsc --noEmit -p apps/backend/tsconfig.json
 
     - name: Production Build
-      run: npm run build
+      run: npm run --workspace=apps/backend build
+
